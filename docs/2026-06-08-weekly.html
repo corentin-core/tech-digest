@@ -175,137 +175,163 @@
 <ol type="1">
 <li><code>perf</code> <strong>Every byte matters</strong> · 6 min · <a
 href="https://fzakaria.com/2026/06/01/every-byte-matters">fzakaria.com</a>
-Le placement mémoire (cache lines) pèse plus que la complexité algo.
-<em>Struct of Arrays</em> &gt; <em>Array of Structs</em>.</li>
-<li><code>perf</code> <strong>amd64 microarchitecture levels in
+La façon de ranger les données en mémoire pèse plus que la complexité de
+l’algorithme. Regrouper par champ plutôt que par objet réduit les
+défauts de cache.</li>
+<li><code>perf</code> <strong>Niveaux de microarchitecture amd64 en
 Go</strong> · <a
 href="https://lemire.me/blog/2026/06/06/how-much-do-amd64-microarchitecture-levels-help-in-go/">lemire.me</a>
-Recompiler en <code>GOAMD64=v2/v3</code> → 21–43% gratis, sans toucher
-au code. v4 (AVX-512) déçoit.</li>
-<li><code>distribué</code> <strong>Why Queues Don’t Fix
-Overload</strong> · <a
+Recompiler en ciblant un jeu d’instructions plus récent donne 21–43 % de
+perf gratuitement. Directement transposable à Rust/C++.</li>
+<li><code>distribué</code> <strong>Pourquoi les files d’attente ne
+règlent pas la surcharge</strong> · <a
 href="https://pmbanugo.me/blog/why-queues-dont-fix-overload-and-what-to-do-instead">pmbanugo.me</a>
-Une file non bornée diffère la surcharge puis explose. La vraie réponse
-: load shedding explicite.</li>
-<li><code>infra</code> <strong>Sitar-agent: dynamic config at
-scale</strong> · <a
-href="https://medium.com/airbnb-engineering/sitar-agent-building-a-reliable-dynamic-configuration-sidecar-at-scale-b7e00c152068">Airbnb
-Eng</a> Sidecar k8s : snapshots S3 au boot + polling pull ~10s + cache
-SQLite local. Config sans redéploiement.</li>
-<li><code>sécu</code> <strong>1-Click GitHub Token Stealing via un bug
-VSCode</strong> · <a
+Une file non bornée ne résout pas la surcharge : elle la diffère, puis
+explose. La vraie réponse : refuser du travail explicitement.</li>
+<li><code>sécu</code> <strong>Vol de jeton GitHub en « 1 clic » via un
+bug VSCode</strong> · <a
 href="https://blog.ammaraskar.com/github-token-stealing/">ammaraskar</a>
-Une webview VSCode simule des frappes → installe une extension →
-exfiltre ton token GitHub.</li>
+Une page web embarquée dans VSCode simule des frappes clavier pour
+installer une extension et exfiltrer ton jeton GitHub.</li>
 </ol>
 <h2 id="en-détail">📖 En détail</h2>
 <h3 id="perf-every-byte-matters">1. <code>perf</code> Every byte
 matters</h3>
-<p>À complexité égale (O(N)), la disposition des données en mémoire
-domine le temps réel : le CPU charge des <strong>cache lines de 64
-octets</strong>. Itérer un <em>Array of Structs</em> de 64B pour ne lire
-qu’un booléen gâche 63B/ligne ; en <em>Struct of Arrays</em> (un tableau
-par champ) tu packes 64 booléens par ligne. Pour les accès aléatoires,
-c’est la <strong>taille du working set</strong> qui décide du niveau de
-cache : 512 structs de 64B tiennent en L1d (~3 ns), 128B débordent en L2
-(~11 ns).</p>
-<p>⚠️ Le « jusqu’à 30× » est conditionnel à un struct de 1 KiB ; cas
-réaliste 64B→128B ≈ 3,6×, et aucun bench reproductible — bonne intuition
-systèmes, pas une étude rigoureuse.</p>
-<h3 id="perf-amd64-microarchitecture-levels-in-go">2. <code>perf</code>
-amd64 microarchitecture levels in Go</h3>
-<p>Daniel Lemire mesure <code>GOAMD64</code> (v1=SSE2,
-v2=+popcnt/SSE4.2, v3=+AVX2, v4=+AVX-512) en recompilant Roaring Bitmaps
-sur Xeon Gold 6548N. Chiffré et reproductible : population count
-<strong>−43%</strong> v1→v2 (<code>popcnt</code>) ; FromDense
-<strong>−21%</strong> en v2, <strong>−38%</strong> en v3 ;
-IntersectionCardinality <strong>+22%</strong> en v3. v4 n’apporte
-~rien.</p>
-<p>Takeaway : <strong>passe tes binaires Go en
-<code>GOAMD64=v2</code></strong> — gains gratuits, v2 compatible avec
-tout CPU post-2009. Le titre sous-vend même un peu.</p>
-<h3 id="distribué-why-queues-dont-fix-overload">3.
-<code>distribué</code> Why Queues Don’t Fix Overload</h3>
-<p>Le piège classique : ajouter une file pour « absorber » la charge.
-Mais par la <strong>loi de Little</strong> (L = λW), si le débit
-d’arrivée dépasse la capacité de traitement, la file croît vers
-l’infini. S’ensuit la <em>latency death spiral</em> : files qui gonflent
-→ timeouts → retries → débit encore plus haut → pression mémoire →
-pauses GC → pire. La file ne fait que <strong>masquer</strong> la
-surcharge et retarder l’effondrement.</p>
-<p>La vraie réponse : <strong>load shedding</strong> — rejeter
-explicitement le travail à la capacité limite (files bornées, rejet
-O(1), timeouts obligatoires) pour dégrader gracieusement plutôt que
-crasher en OOM. Rendre la surcharge visible <em>quand elle
-arrive</em>.</p>
-<p>⚠️ Pédagogique mais léger sur les chiffres. L’article concède que les
-files absorbent bien la <em>variance temporaire</em> — c’est la charge
-<em>soutenue</em> le vrai sujet.</p>
-<h3 id="infra-sitar-agent-dynamic-config-sidecar-at-scale-airbnb">4.
-<code>infra</code> Sitar-agent: dynamic config sidecar at scale
-(Airbnb)</h3>
-<p>Sidecar Kubernetes qui livre la config dynamique aux pods
-<strong>sans redéploiement</strong>. Boot : préchargement de
-<strong>snapshots S3 horaires</strong> (restart rapide + résilience si
-backend down) → sync initiale → readiness → démarrage app. Ensuite
-<strong>polling pull</strong> ~10s ; stockage local en
-<strong>SQLite</strong> (a remplacé Sparkey), lu par l’app via un client
-à cache mémoire. Échelle : « dizaines de milliers de pods ».</p>
-<p>Takeaway : en pull-based, <strong>optimise le coût serveur via TTL
-courts + tokens de change-tracking plutôt que de migrer vers du
-push</strong> — la simplicité gagne à l’échelle quand le client tolère
-un peu de latence.</p>
-<p>⚠️ Le « reliable » du titre est gonflé : panorama d’archi (sidecar vs
-lib, pull vs push, SQLite vs RocksDB), zéro métrique de fiabilité ou
-mode de panne.</p>
-<h3 id="sécu-1-click-github-token-stealing-via-un-bug-vscode">5.
-<code>sécu</code> 1-Click GitHub Token Stealing via un bug VSCode</h3>
-<p>Pas un simple XSS : une vraie chaîne d’exploitation des webviews
-VSCode. (1) Un notebook Jupyter malveillant (sur github.dev) embarque du
-JS via un handler <code>onerror</code> ; (2) le script <strong>dispatch
-des événements clavier synthétiques</strong> que VSCode traite comme de
-vraies frappes ; (3) via des raccourcis il installe une
-<strong>extension locale de workspace</strong> (qui contourne les checks
-de confiance éditeur) ; (4) l’extension lit le <strong>token OAuth
-GitHub</strong> et énumère tes repos privés.</p>
-<p>Takeaway pour toi (VSCode + agents) : <strong>les événements clavier
-synthétiques peuvent contourner les contrôles UI pensés pour
-l’humain</strong>.</p>
-<p>⚠️ « 1-Click » survend : il faut t’être <strong>déjà authentifié sur
+<p>À complexité égale, la façon dont les données sont rangées en mémoire
+domine le temps réel, parce que le processeur charge la mémoire par
+blocs de 64 octets (<em>cache line</em>, « ligne de cache »). Parcourir
+un tableau d’objets de 64 octets pour ne lire qu’un booléen gaspille 63
+octets de cache à chaque ligne. En rangeant les données par champ (un
+tableau de tous les booléens, un autre de tous les noms…), chaque ligne
+de cache se remplit de données utiles. Pour les accès aléatoires, c’est
+la taille du <em>working set</em> (les données réellement touchées à un
+instant donné) qui décide du niveau de cache atteint : 512 objets de 64
+o tiennent dans le cache L1 (~3 ns), 128 o débordent dans le L2 (~11
+ns).</p>
+<p>⚠️ Le « jusqu’à 30× » du titre suppose des objets de 1 Ko ; sur un
+cas réaliste (64→128 o) le gain tombe à ~3,6×, et il n’y a aucun banc
+d’essai reproductible — bonne intuition, pas une étude rigoureuse.</p>
+<p><strong>Pour toi :</strong> sur tes boucles chaudes en C++
+(traitement de séries temporelles EMS), passer d’un tableau d’objets à
+des tableaux par champ peut couper les défauts de cache sur les parcours
+séquentiels — exactement le raisonnement de l’article.</p>
+<h3 id="perf-niveaux-de-microarchitecture-amd64-en-go">2.
+<code>perf</code> Niveaux de microarchitecture amd64 en Go</h3>
+<p>Daniel Lemire mesure l’effet de recompiler pour un jeu d’instructions
+plus récent (variable <code>GOAMD64</code> : v1 = base, v2 =
++<code>popcnt</code>/SSE4.2, v3 = +AVX2, v4 = +AVX-512 — <em>popcnt</em>
+compte les bits à 1 ; <em>AVX</em> = instructions SIMD, c.-à-d. qui
+traitent plusieurs valeurs en une seule opération). Sur la bibliothèque
+Roaring Bitmaps (Xeon Gold) : comptage de bits <strong>−43 %</strong> de
+v1 à v2, une autre opération <strong>−38 %</strong> en v3, une troisième
+<strong>+22 %</strong>. v4 (AVX-512) n’apporte presque rien.</p>
+<p><strong>Pour toi :</strong> l’équivalent en Rust/C++ c’est compiler
+avec <code>RUSTFLAGS=-C target-cpu=native</code> (ou
+<code>-march=native</code>) — tu actives les instructions SIMD de ta
+machine sans toucher au code. À éviter pour un binaire distribué (il
+planterait sur un CPU plus ancien), pertinent pour un service déployé
+sur une machine que tu maîtrises.</p>
+<h3
+id="distribué-pourquoi-les-files-dattente-ne-règlent-pas-la-surcharge">3.
+<code>distribué</code> Pourquoi les files d’attente ne règlent pas la
+surcharge</h3>
+<p>Le réflexe classique : ajouter une file pour « absorber » la charge.
+Mais par la loi de Little (taille de la file = débit d’arrivée × temps
+de traitement), si les arrivées dépassent la capacité, la file croît
+vers l’infini. S’ensuit une spirale : files qui gonflent → expirations →
+ré-essais → encore plus d’arrivées → pression mémoire → pauses du
+ramasse-miettes → pire encore. La file ne fait que
+<strong>masquer</strong> la surcharge et retarder l’effondrement.</p>
+<p>La vraie réponse : le <em>load shedding</em> (rejeter délibérément
+des requêtes dès que le système sature) — files bornées, rejet immédiat,
+expirations obligatoires — pour se dégrader proprement plutôt que
+crasher en saturation mémoire. Rendre la surcharge visible
+<em>quand</em> elle arrive.</p>
+<p><strong>Pour toi :</strong> pertinent pour tes flux temps réel EMS —
+quand un consommateur sature (écriture en base, dialogue onduleur),
+mieux vaut refuser proprement que laisser une file enfler jusqu’à la
+panne.</p>
+<h3 id="sécu-vol-de-jeton-github-en-1-clic-via-un-bug-vscode">4.
+<code>sécu</code> Vol de jeton GitHub en « 1 clic » via un bug
+VSCode</h3>
+<p>Pas un simple piège web : une vraie chaîne d’attaque sur les
+<em>webviews</em> de VSCode (pages web embarquées dans l’éditeur). Un
+notebook piégé (sur github.dev) exécute du JavaScript qui <strong>simule
+des frappes clavier</strong> — VSCode les traite comme de vraies touches
+de l’utilisateur. Via des raccourcis, le script installe une extension
+locale (qui contourne les contrôles de confiance) ; l’extension lit
+alors le jeton d’authentification GitHub et liste tes dépôts privés.</p>
+<p>⚠️ « 1 clic » survend : il faut s’être <strong>déjà connecté à
 github.dev</strong> au préalable.</p>
+<p><strong>Pour toi :</strong> tu vis dans VSCode + agents — la leçon :
+des frappes clavier simulées peuvent déclencher des actions « de
+confiance », donc prudence avec ce qu’on ouvre dans l’éditeur.</p>
+<h2 id="métier">🧭 Métier</h2>
+<ul>
+<li><code>métier</code> <strong>When Code Becomes Cheap, What’s
+Left?</strong> · <a
+href="https://spin.atomicobject.com/code-cheap-whats-left/">atomicobject</a>
+— Quand l’IA rend l’écriture de code quasi gratuite, le goulot se
+déplace vers la <strong>revue et le jugement</strong> : chez l’autrice,
+certaines tâches passent à ~21 min d’écriture, mais les revues
+s’empilent sur 3 jours. Le vrai métier devient « savoir à quoi ressemble
+du bon code et tenir la barre ». Elle pose franchement la question non
+résolue : comment un junior forge-t-il ce jugement s’il n’écrit plus le
+code lui-même ? Honnête, sans techno-béatitude.</li>
+</ul>
+<h2 id="ouverture">🪟 Ouverture</h2>
+<ul>
+<li><code>ouverture</code> <strong>Le nœud de lacet sécurisé de
+Ian</strong> · <a
+href="https://www.fieggen.com/shoelace/secureknot.htm">fieggen.com</a> —
+l’ingénierie méthodique d’un nœud de lacet qui ne se défait jamais. La
+rigueur appliquée à l’objet le plus banal du monde — une respiration
+loin de l’écran.</li>
+</ul>
 <h2 id="brèves">⚡ Brèves</h2>
 <ul>
-<li><code>systèmes</code> <strong>Ladybird ferme les PR
+<li><code>infra</code> <strong>Sitar-agent : config dynamique à grande
+échelle</strong> (Airbnb) · <a
+href="https://medium.com/airbnb-engineering/sitar-agent-building-a-reliable-dynamic-configuration-sidecar-at-scale-b7e00c152068">Medium</a>
+— <em>sidecar</em> (conteneur compagnon déployé à côté du service)
+Kubernetes : instantanés S3 au démarrage + interrogation toutes les ~10
+s + cache SQLite local, pour changer la config sans redéployer.
+(Panorama d’archi, peu de métriques concrètes.)</li>
+<li><code>systèmes</code> <strong>Ladybird ferme ses contributions
 publiques</strong> · <a
 href="https://ladybird.org/posts/changing-how-we-develop-ladybird/">ladybird.org</a>
-— le moteur de navigateur C++ indépendant ; signal sur l’effet de l’IA
-sur la contribution OSS (gouvernance, pas technique).</li>
-<li><code>rust</code> <strong>Deep-dive cooperative scheduling
+— le moteur de navigateur C++ indépendant n’accepte plus les
+contributions externes ; signal sur l’effet de l’IA sur l’open
+source.</li>
+<li><code>rust</code> <strong>Ordonnancement coopératif &amp;
 Tokio</strong> · <a
 href="https://kerkour.com/async-rust-cooperative-scheduling-tokio">kerkour.com</a>
-— ⚠️ titre « deep dive » survend : c’est un intro async/Tokio (republié
-du livre <em>Black Hat Rust</em>, chiffres 2022). Bon pour réviser les
-bases, rien de neuf pour toi.</li>
+— ⚠️ titre « deep dive » trompeur : c’est un cours d’intro à l’async
+(republié, chiffres de 2022). Bon pour réviser les bases.</li>
 <li><code>rust</code> <strong>Roto</strong> · <a
 href="https://blog.nlnetlabs.nl/one-year-of-roto-the-compiled-scripting-language-for-rust/">NLnet
-Labs</a> — langage de script <em>compilé</em> embarquable dans
-Rust.</li>
-<li><code>rust</code> <strong>std/compilo (TWiR #654)</strong> —
-<code>IoSlice</code>→<code>core::io</code>, expansion des <em>async
-drops</em>, <code>Path::is_empty</code> stabilisé.</li>
+Labs</a> — langage de script <em>compilé</em> embarquable dans un
+programme Rust.</li>
+<li><code>rust</code> <strong>std / compilateur (This Week in Rust
+#654)</strong> — <code>IoSlice</code> déplacé dans
+<code>core::io</code>, extension des <em>async drops</em>,
+<code>Path::is_empty</code> stabilisé.</li>
 <li><code>rust</code> <strong>Crate de la semaine : <a
-href="https://github.com/manuelgdlvh/remyx">remyx</a></strong> —
-framework de TUI au-dessus de Ratatui.</li>
+href="https://github.com/manuelgdlvh/remyx">remyx</a></strong> — boîte à
+outils d’interfaces en terminal (TUI) au-dessus de Ratatui.</li>
 <li><code>devtool</code> <strong><a
 href="https://slumber.lucaspickering.me/">Slumber</a></strong> — client
-HTTP en terminal (TUI, recettes en config).</li>
+HTTP en terminal (TUI), requêtes décrites dans un fichier de
+config.</li>
 <li><code>devtool</code> <strong><a
-href="https://github.com/harehare/mq">mq</a></strong> — « jq pour
-Markdown », en CLI et REPL.</li>
+href="https://github.com/harehare/mq">mq</a></strong> — « le jq du
+Markdown » : interroger et transformer du Markdown en ligne de
+commande.</li>
 <li><code>culture</code> <strong><a
-href="https://lcamtuf.substack.com/p/weekend-trivia-your-process-memory">/proc/&lt;pid&gt;/mem
-comme un fichier</a></strong> (lcamtuf) — accès direct à la mémoire d’un
-process.</li>
+href="https://lcamtuf.substack.com/p/weekend-trivia-your-process-memory">La
+mémoire d’un processus est un fichier</a></strong> (lcamtuf) —
+lire/écrire la mémoire d’un programme en cours via
+<code>/proc/&lt;pid&gt;/mem</code>.</li>
 </ul>
 </body>
 </html>
