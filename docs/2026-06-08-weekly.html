@@ -171,42 +171,36 @@
 </header>
 <h1 id="tech-digest-hebdo-18-juin-2026">📨 Tech Digest hebdo — 1–8 juin
 2026</h1>
-<p><em>Sources scannées : TLDR Dev (02→05/06), This Week in Rust #654,
-Console.dev, Hacker News (&gt;150 pts), Lobste.rs (tags systèmes), blogs
-(Cloudflare/fasterthanlime/Brooker/Gregg — rien de neuf dans la
-fenêtre).</em></p>
 <h2 id="en-bref-scan">🎯 En bref (scan)</h2>
 <ol type="1">
-<li><strong>Every byte matters</strong> · 6 min · <a
+<li><code>perf</code> <strong>Every byte matters</strong> · 6 min · <a
 href="https://fzakaria.com/2026/06/01/every-byte-matters">fzakaria.com</a>
-Le placement mémoire (cache lines, niveau de cache touché) pèse plus que
-la complexité algo. <em>Struct of Arrays</em> &gt; <em>Array of
-Structs</em>.</li>
-<li><strong>How much do amd64 microarchitecture levels help in
-Go?</strong> · <a
+Le placement mémoire (cache lines) pèse plus que la complexité algo.
+<em>Struct of Arrays</em> &gt; <em>Array of Structs</em>.</li>
+<li><code>perf</code> <strong>amd64 microarchitecture levels in
+Go</strong> · <a
 href="https://lemire.me/blog/2026/06/06/how-much-do-amd64-microarchitecture-levels-help-in-go/">lemire.me</a>
-Recompiler en <code>GOAMD64=v2/v3</code> donne 21–43% gratis sur des
-opérations courantes, sans toucher au code. v4 (AVX-512) déçoit.</li>
-<li><strong>Why Queues Don’t Fix Overload</strong> · <a
+Recompiler en <code>GOAMD64=v2/v3</code> → 21–43% gratis, sans toucher
+au code. v4 (AVX-512) déçoit.</li>
+<li><code>distribué</code> <strong>Why Queues Don’t Fix
+Overload</strong> · <a
 href="https://pmbanugo.me/blog/why-queues-dont-fix-overload-and-what-to-do-instead">pmbanugo.me</a>
-Une file non bornée ne résout pas la surcharge, elle la diffère (puis
-explose). La vraie réponse : load shedding explicite.</li>
-<li><strong>Sitar-agent: dynamic config at scale</strong> · <a
+Une file non bornée diffère la surcharge puis explose. La vraie réponse
+: load shedding explicite.</li>
+<li><code>infra</code> <strong>Sitar-agent: dynamic config at
+scale</strong> · <a
 href="https://medium.com/airbnb-engineering/sitar-agent-building-a-reliable-dynamic-configuration-sidecar-at-scale-b7e00c152068">Airbnb
-Eng</a> Sidecar k8s qui pousse la config sans redéploiement : snapshots
-S3 au boot + polling pull ~10s + cache SQLite local.</li>
-<li><strong>1-Click GitHub Token Stealing via un bug VSCode</strong> ·
-<a
+Eng</a> Sidecar k8s : snapshots S3 au boot + polling pull ~10s + cache
+SQLite local. Config sans redéploiement.</li>
+<li><code>sécu</code> <strong>1-Click GitHub Token Stealing via un bug
+VSCode</strong> · <a
 href="https://blog.ammaraskar.com/github-token-stealing/">ammaraskar</a>
-Une webview VSCode qui simule des frappes clavier → installe une
-extension locale → exfiltre ton token GitHub.</li>
-<li><strong>Changing how we develop Ladybird</strong> · <a
-href="https://ladybird.org/posts/changing-how-we-develop-ladybird/">ladybird.org</a>
-Le moteur de navigateur C++ indépendant ferme les PR publiques (signal
-sur l’effet de l’IA sur l’OSS).</li>
+Une webview VSCode simule des frappes → installe une extension →
+exfiltre ton token GitHub.</li>
 </ol>
 <h2 id="en-détail">📖 En détail</h2>
-<h3 id="every-byte-matters">1. Every byte matters</h3>
+<h3 id="perf-every-byte-matters">1. <code>perf</code> Every byte
+matters</h3>
 <p>À complexité égale (O(N)), la disposition des données en mémoire
 domine le temps réel : le CPU charge des <strong>cache lines de 64
 octets</strong>. Itérer un <em>Array of Structs</em> de 64B pour ne lire
@@ -218,129 +212,100 @@ cache : 512 structs de 64B tiennent en L1d (~3 ns), 128B débordent en L2
 <p>⚠️ Le « jusqu’à 30× » est conditionnel à un struct de 1 KiB ; cas
 réaliste 64B→128B ≈ 3,6×, et aucun bench reproductible — bonne intuition
 systèmes, pas une étude rigoureuse.</p>
-<h3 id="how-much-do-amd64-microarchitecture-levels-help-in-go">2. How
-much do amd64 microarchitecture levels help in Go?</h3>
-<p>Daniel Lemire mesure l’effet de <code>GOAMD64</code> (v1=SSE2,
+<h3 id="perf-amd64-microarchitecture-levels-in-go">2. <code>perf</code>
+amd64 microarchitecture levels in Go</h3>
+<p>Daniel Lemire mesure <code>GOAMD64</code> (v1=SSE2,
 v2=+popcnt/SSE4.2, v3=+AVX2, v4=+AVX-512) en recompilant Roaring Bitmaps
-sur Xeon Gold 6548N. Résultats <strong>reproductibles, chiffrés</strong>
-: population count <strong>−43%</strong> v1→v2 (instruction
-<code>popcnt</code>) ; FromDense <strong>−21%</strong> en v2,
-<strong>−38%</strong> en v3 ; IntersectionCardinality
-<strong>+22%</strong> en v3. v4 n’apporte ~rien malgré AVX-512.</p>
-<p>Takeaway : <strong>passe tes binaires Go en <code>GOAMD64=v2</code>
-par défaut</strong> — 21–43% gratis sur des opérations courantes, sans
-changer une ligne, et v2 reste universellement compatible (tout CPU
-post-2009). Le titre sous-vend même un peu : les gains sont réels et
-matériels.</p>
-<h3 id="why-queues-dont-fix-overload">3. Why Queues Don’t Fix
-Overload</h3>
+sur Xeon Gold 6548N. Chiffré et reproductible : population count
+<strong>−43%</strong> v1→v2 (<code>popcnt</code>) ; FromDense
+<strong>−21%</strong> en v2, <strong>−38%</strong> en v3 ;
+IntersectionCardinality <strong>+22%</strong> en v3. v4 n’apporte
+~rien.</p>
+<p>Takeaway : <strong>passe tes binaires Go en
+<code>GOAMD64=v2</code></strong> — gains gratuits, v2 compatible avec
+tout CPU post-2009. Le titre sous-vend même un peu.</p>
+<h3 id="distribué-why-queues-dont-fix-overload">3.
+<code>distribué</code> Why Queues Don’t Fix Overload</h3>
 <p>Le piège classique : ajouter une file pour « absorber » la charge.
 Mais par la <strong>loi de Little</strong> (L = λW), si le débit
 d’arrivée dépasse la capacité de traitement, la file croît vers
 l’infini. S’ensuit la <em>latency death spiral</em> : files qui gonflent
-→ timeouts → retries → débit d’arrivée encore plus haut → pression
-mémoire → pauses GC → pire encore. La file ne fait que
-<strong>masquer</strong> la surcharge et retarder l’effondrement.</p>
+→ timeouts → retries → débit encore plus haut → pression mémoire →
+pauses GC → pire. La file ne fait que <strong>masquer</strong> la
+surcharge et retarder l’effondrement.</p>
 <p>La vraie réponse : <strong>load shedding</strong> — rejeter
 explicitement le travail à la capacité limite (files bornées, rejet
 O(1), timeouts obligatoires) pour dégrader gracieusement plutôt que
-crasher en OOM. Rendre la surcharge visible <em>quand elle arrive</em>,
-pas via des timeouts 2 min plus tard.</p>
-<p>⚠️ Pédagogique mais léger sur les chiffres (pas de bench comparant
-les stratégies). L’article concède que les files absorbent bien la
-<em>variance temporaire</em> — c’est la charge <em>soutenue</em> le vrai
-sujet.</p>
-<h3 id="sitar-agent-dynamic-config-sidecar-at-scale-airbnb">4.
-Sitar-agent: dynamic config sidecar at scale (Airbnb)</h3>
+crasher en OOM. Rendre la surcharge visible <em>quand elle
+arrive</em>.</p>
+<p>⚠️ Pédagogique mais léger sur les chiffres. L’article concède que les
+files absorbent bien la <em>variance temporaire</em> — c’est la charge
+<em>soutenue</em> le vrai sujet.</p>
+<h3 id="infra-sitar-agent-dynamic-config-sidecar-at-scale-airbnb">4.
+<code>infra</code> Sitar-agent: dynamic config sidecar at scale
+(Airbnb)</h3>
 <p>Sidecar Kubernetes qui livre la config dynamique aux pods
-<strong>sans redéploiement</strong>. Séquence de boot : préchargement de
+<strong>sans redéploiement</strong>. Boot : préchargement de
 <strong>snapshots S3 horaires</strong> (restart rapide + résilience si
-le backend est down) → sync initiale avec le Sitar Service → signal de
-readiness → démarrage de l’app. Ensuite <strong>polling pull</strong>
-~10s sur les groupes souscrits ; stockage local en
-<strong>SQLite</strong> (a remplacé l’ancien datastore Sparkey), lu par
-l’app via un client avec cache mémoire. Échelle : « dizaines de milliers
-de pods ».</p>
+backend down) → sync initiale → readiness → démarrage app. Ensuite
+<strong>polling pull</strong> ~10s ; stockage local en
+<strong>SQLite</strong> (a remplacé Sparkey), lu par l’app via un client
+à cache mémoire. Échelle : « dizaines de milliers de pods ».</p>
 <p>Takeaway : en pull-based, <strong>optimise le coût serveur via TTL
 courts + tokens de change-tracking plutôt que de migrer vers du
 push</strong> — la simplicité gagne à l’échelle quand le client tolère
 un peu de latence.</p>
-<p>⚠️ Le « reliable » du titre est gonflé : c’est un panorama d’archi
-(sidecar vs lib, pull vs push, SQLite vs RocksDB), zéro métrique de
-fiabilité, mode de panne ou garantie de récupération.</p>
-<h3 id="click-github-token-stealing-via-un-bug-vscode">5. 1-Click GitHub
-Token Stealing via un bug VSCode</h3>
+<p>⚠️ Le « reliable » du titre est gonflé : panorama d’archi (sidecar vs
+lib, pull vs push, SQLite vs RocksDB), zéro métrique de fiabilité ou
+mode de panne.</p>
+<h3 id="sécu-1-click-github-token-stealing-via-un-bug-vscode">5.
+<code>sécu</code> 1-Click GitHub Token Stealing via un bug VSCode</h3>
 <p>Pas un simple XSS : une vraie chaîne d’exploitation des webviews
 VSCode. (1) Un notebook Jupyter malveillant (sur github.dev) embarque du
 JS via un handler <code>onerror</code> ; (2) le script <strong>dispatch
 des événements clavier synthétiques</strong> que VSCode traite comme de
-vraies frappes — « rien n’empêche le script de la webview de faire
-semblant d’être l’utilisateur » ; (3) via des raccourcis (Ctrl+Shift+A…)
-il installe une <strong>extension locale de workspace</strong> (qui
-contourne les checks de confiance éditeur en workspace de confiance) ;
-(4) l’extension lit le <strong>token OAuth GitHub</strong> et énumère
-tes repos privés.</p>
+vraies frappes ; (3) via des raccourcis il installe une
+<strong>extension locale de workspace</strong> (qui contourne les checks
+de confiance éditeur) ; (4) l’extension lit le <strong>token OAuth
+GitHub</strong> et énumère tes repos privés.</p>
 <p>Takeaway pour toi (VSCode + agents) : <strong>les événements clavier
 synthétiques peuvent contourner les contrôles UI pensés pour
-l’humain</strong> ; méfiance avec github.dev.</p>
+l’humain</strong>.</p>
 <p>⚠️ « 1-Click » survend : il faut t’être <strong>déjà authentifié sur
 github.dev</strong> au préalable.</p>
-<h3 id="changing-how-we-develop-ladybird">6. Changing how we develop
-Ladybird</h3>
-<p>Ladybird (moteur de navigateur C++ <strong>indépendant</strong>, from
-scratch) <strong>ferme les pull requests publiques</strong> : seuls les
-mainteneurs commitent, toutes les PR ouvertes sont fermées. Rationale :
-le volume de contributions dopé à l’IA fait qu’« une PR ne dit plus
-grand-chose sur la personne qui la soumet » — l’effort ne signale plus
-la bonne foi, ce qui pose un problème de sécurité/responsabilité pour un
-soft qui traite du contenu web hostile.</p>
-<p>⚠️ Le titre survend : « Changing how we develop » laisse croire à une
-évolution technique/archi — en réalité c’est <strong>purement de la
-gouvernance</strong> (tuer une voie de contribution). Intéressant comme
-<strong>signal de fond</strong> sur l’impact de l’IA sur l’OSS, pas
-comme contenu technique.</p>
-<h2 id="rust-this-week-in-rust-654">🦀 Rust — This Week in Rust
-#654</h2>
+<h2 id="brèves">⚡ Brèves</h2>
 <ul>
-<li><strong>Deep-dive <a
-href="https://kerkour.com/async-rust-cooperative-scheduling-tokio">Async
-Rust : cooperative scheduling &amp; Tokio</a></strong> — l’architecture
-de l’ordonnancement coopératif de Tokio. Pile dans ton terrain
-ruxe.</li>
-<li><strong><a
-href="https://blog.nlnetlabs.nl/one-year-of-roto-the-compiled-scripting-language-for-rust/">One
-year of Roto</a></strong> — langage de script <em>compilé</em>
-embarquable dans Rust (NLnet Labs).</li>
-<li><strong>std/compilo</strong> : <code>IoSlice</code> déplacé dans
-<code>core::io</code>, expansion des <em>async drops</em>,
-<code>Path::is_empty</code> stabilisé, gains compilo « across the board
-» via requêtes fusionnées.</li>
-<li><strong>Crate of the week</strong> : <a
-href="https://github.com/manuelgdlvh/remyx">remyx</a> — framework de TUI
-au-dessus de Ratatui.</li>
-</ul>
-<h2 id="outils-console.dev">🛠️ Outils (Console.dev)</h2>
-<ul>
-<li><strong><a
+<li><code>systèmes</code> <strong>Ladybird ferme les PR
+publiques</strong> · <a
+href="https://ladybird.org/posts/changing-how-we-develop-ladybird/">ladybird.org</a>
+— le moteur de navigateur C++ indépendant ; signal sur l’effet de l’IA
+sur la contribution OSS (gouvernance, pas technique).</li>
+<li><code>rust</code> <strong>Deep-dive cooperative scheduling
+Tokio</strong> · <a
+href="https://kerkour.com/async-rust-cooperative-scheduling-tokio">kerkour.com</a>
+— ⚠️ titre « deep dive » survend : c’est un intro async/Tokio (republié
+du livre <em>Black Hat Rust</em>, chiffres 2022). Bon pour réviser les
+bases, rien de neuf pour toi.</li>
+<li><code>rust</code> <strong>Roto</strong> · <a
+href="https://blog.nlnetlabs.nl/one-year-of-roto-the-compiled-scripting-language-for-rust/">NLnet
+Labs</a> — langage de script <em>compilé</em> embarquable dans
+Rust.</li>
+<li><code>rust</code> <strong>std/compilo (TWiR #654)</strong> —
+<code>IoSlice</code>→<code>core::io</code>, expansion des <em>async
+drops</em>, <code>Path::is_empty</code> stabilisé.</li>
+<li><code>rust</code> <strong>Crate de la semaine : <a
+href="https://github.com/manuelgdlvh/remyx">remyx</a></strong> —
+framework de TUI au-dessus de Ratatui.</li>
+<li><code>devtool</code> <strong><a
 href="https://slumber.lucaspickering.me/">Slumber</a></strong> — client
-HTTP en terminal (TUI + recettes de requêtes en config). Alternative CLI
-à Postman.</li>
-<li><strong><a href="https://github.com/harehare/mq">mq</a></strong> — «
-jq pour Markdown » : query/filtre/transforme du Markdown, en CLI et
-REPL.</li>
+HTTP en terminal (TUI, recettes en config).</li>
+<li><code>devtool</code> <strong><a
+href="https://github.com/harehare/mq">mq</a></strong> — « jq pour
+Markdown », en CLI et REPL.</li>
+<li><code>culture</code> <strong><a
+href="https://lcamtuf.substack.com/p/weekend-trivia-your-process-memory">/proc/&lt;pid&gt;/mem
+comme un fichier</a></strong> (lcamtuf) — accès direct à la mémoire d’un
+process.</li>
 </ul>
-<h2 id="culture">🎁 Culture</h2>
-<p><strong><a
-href="https://lcamtuf.substack.com/p/weekend-trivia-your-process-memory">Weekend
-trivia: your process’ memory is a file</a></strong> (lcamtuf) — accès
-direct à la mémoire d’un process via <code>/proc/&lt;pid&gt;/mem</code>
-avec des sémantiques de fichier. Petit plaisir bas niveau.</p>
-<h2 id="skippé">⏭️ Skippé</h2>
-<p>IA hype/recherche en masse (Gemma 4 12B, model welfare Opus, RAG
-d’images, recursive self-improvement, MAI-Code, interprétabilité) ·
-frontend/mobile (React Native runtimes, Expo/JSI, Foldkit) · opinions
-IA-et-carrière (« code becomes cheap », « LLMs erode my career », « AI
-is a meteor ») · sécurité grand public (exploit Instagram) · sponsors
-(InsForge, Clerk, QVAC, offres TLDR).</p>
 </body>
 </html>
