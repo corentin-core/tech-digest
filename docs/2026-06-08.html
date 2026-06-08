@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-06-08</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-06-08</h1>
+</header>
+<h1 id="tech-digest-tldr-dev-du-0406">📨 Tech Digest — TLDR Dev du
+04/06</h1>
+<h2 id="en-bref-scan-30s">🎯 En bref (scan 30s)</h2>
+<ol type="1">
+<li><strong>Every byte matters</strong> · 6 min · <a
+href="https://fzakaria.com/2026/06/01/every-byte-matters">fzakaria.com</a>
+Le placement mémoire (cache lines, niveau de cache touché) pèse souvent
+plus que la complexité algorithmique. <em>Struct of Arrays</em> &gt;
+<em>Array of Structs</em> pour ne pas gâcher la ligne de cache.</li>
+<li><strong>How we contain Claude across products</strong> · 23 min · <a
+href="https://www.anthropic.com/engineering/how-we-contain-claude">anthropic.com</a>
+Le retour d’XP d’Anthropic sur le sandboxing d’agents IA, en 3 couches
+(environnement / modèle / outils). Concret et honnête sur ses propres
+échecs — utile vu que tu vis dans Claude Code.</li>
+</ol>
+<h2 id="en-détail">📖 En détail</h2>
+<h3 id="every-byte-matters">1. Every byte matters</h3>
+<p>L’idée centrale : à complexité algorithmique égale (O(N)), la
+<em>disposition des données en mémoire</em> domine le temps réel parce
+que le CPU charge des <strong>cache lines de 64 octets</strong>. Si tu
+itères un <em>Array of Structs</em> où chaque struct fait 64B mais que
+tu ne lis qu’un booléen, tu gâches 63B de capacité de cache à chaque
+ligne. En <em>Struct of Arrays</em> (un tableau par champ), tu peux
+packer 64 booléens dans une seule ligne → lecture séquentielle
+dense.</p>
+<p>Pour les accès aléatoires (hash maps, arbres), c’est la
+<strong>taille du working set</strong> qui décide du niveau de cache
+atteint : la table de l’article montre 512 structs de 64B qui tiennent
+en L1d (~3 ns), contre 128B qui débordent en L2 (~11 ns). Le takeaway
+actionnable : <strong>minimise la taille de tes structs sur les chemins
+chauds en accès aléatoire</strong> — doubler 64B→128B double le working
+set et te pousse vers un cache plus lent.</p>
+<p>⚠️ Le « jusqu’à 30× » du titre est conditionnel à un struct de
+<strong>1 KiB</strong>. Sur un cas réaliste 64B→128B, le gain mesuré est
+~3,6× (3 → 11 ns). Et il n’y a <strong>aucun code ni méthodo de bench
+reproductible</strong> : c’est de la bonne intuition systèmes (diagramme
+de hiérarchie de cache à l’appui), pas une étude empirique
+rigoureuse.</p>
+<h3 id="how-we-contain-claude-across-products">2. How we contain Claude
+across products</h3>
+<p>Le principe directeur : des défenses qui se
+<strong>chevauchent</strong> (« quand la couche environnement n’est pas
+dispo, la couche modèle prend le relais »). Trois couches : -
+<strong>Environnement (primaire)</strong> : conteneurs gVisor
+(claude.ai), sandboxes OS type Seatbelt/bubblewrap (Claude Code), VMs
+complètes avec isolation vsock (Cowork). - <strong>Modèle
+(secondaire)</strong> : system prompts + classifiers qui attrapent les «
+overeager behaviors ». Le mode auto de Claude Code bloque
+<strong>~83%</strong> de ces actions avant exécution — donc <strong>~17%
+passent</strong> (les défenses probabilistes ont une limite par
+construction). - <strong>Outils/contenu</strong> : allowlists, proxy
+MITM, mounts (read-only, read-write, read-write-no-delete).</p>
+<p>Détails qui transfèrent à n’importe quel déploiement d’agent : (1)
+<strong>la résolution des symlinks doit se faire <em>avant</em> la
+validation de chemin</strong>, sinon un symlink dans un dossier autorisé
+peut pointer dehors et s’échapper ; (2) un allowlist egress vers
+<code>api.anthropic.com</code> n’est pas un filtre de destination mais
+une <strong>capacité</strong> d’exfiltration — ils ont dû mettre un
+proxy MITM <em>dans</em> la VM qui ne laisse passer que le token de
+session de la VM et rejette les clés API volées ; (3) la <strong>fatigue
+d’approbation est réelle</strong> (taux d’acceptation de 93%) → ne
+jamais compter sur les dialogues seuls, doubler avec de l’enforcement
+OS.</p>
+<p><em>Pas de putaclick : vraie profondeur d’ingénierie. 5 incidents
+documentés en post-mortem, et la leçon « la couche la plus faible est
+celle que tu as codée toi-même » (leurs proxys maison ont cédé, les
+primitives éprouvées — hyperviseurs, seccomp, gVisor — ont
+tenu).</em></p>
+<h2 id="culture-optionnel">🎁 Culture (optionnel)</h2>
+<p><strong>Gooey</strong> · <a
+href="https://github.com/duanebester/gooey">github.com/duanebester/gooey</a>
+— framework UI déclaratif GPU-accéléré en <strong>Zig</strong>
+(Metal/Vulkan/WebGPU), zéro dépendance externe, listes virtualisées +
+async I/O. À regarder pour l’approche systèmes/perf, voisine de ton
+terrain Rust.</p>
+<h2 id="skippé">⏭️ Skippé</h2>
+<p>Frontend (TanStack Start, Angular v22) · IA hype/recherche (Gemma 4
+12B, taxonomie des world models, Mnemo, Sandboxed) · opinion/carrière
+(Modern engineering values, « tu seras re-orgé ») · sponsors (GitLab,
+DORA, InsForge).</p>
+<hr />
+<p><em>Un seul numéro dans la fenêtre par défaut (7j) → 2 keepers. Pour
+plus de matière : <code>/tech-digest 14d</code> (ajoute le TLDR du 28/05
++ The Overflow #331) ou <code>/tech-digest weekly</code>.</em></p>
+</body>
+</html>
