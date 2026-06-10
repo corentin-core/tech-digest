@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 10 juin 2026</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 10 juin 2026</h1>
+</header>
+<h1 id="tech-digest-10-juin-2026">📨 Tech Digest — 10 juin 2026</h1>
+<h2 id="en-bref-scan-30s">🎯 En bref (scan 30s)</h2>
+<ol type="1">
+<li><p><code>perf</code> <strong>SQLite : trier avant d’insérer pour
+aller ~3× plus vite</strong> · ~6 min · andersmurphy.com · <a
+href="https://andersmurphy.com/2026/06/07/sqlite-improving-performance-with-pre-sort.html">lien</a>
+Quand on insère un gros lot de lignes dans SQLite, trier d’abord les
+données par clé primaire fait passer le temps d’insertion de ~11 s à
+~3,8 s sur 10 millions de lignes. Le tri coûte du temps mais en fait
+gagner bien plus.</p></li>
+<li><p><code>systèmes</code> <strong>Pourquoi Git a une variable nommée
+<code>false_but_the_compiler_does_not_know_it_</code></strong> · ~8 min
+· codingconfessions.com · <a
+href="https://blog.codingconfessions.com/p/false-but-the-compiler-does-not-know-it">lien</a>
+Une astuce en C pour faire taire un faux avertissement du compilateur :
+une variable globale toujours nulle, mais que le compilateur ne <em>peut
+pas</em> prouver nulle, ce qui l’empêche de croire un bout de code «
+mort ».</p></li>
+<li><p><code>IA</code> <strong>« Grep suffit-il ? » — la plomberie de
+l’agent compte plus que la méthode de recherche</strong> · ~7 min ·
+stacksweep.dev · <a
+href="https://www.stacksweep.dev/grep-vs-vector-agentic-search">lien</a>
+Une étude où la recherche par mots-clés (grep) bat la recherche «
+sémantique » (vecteurs) pour qu’un agent retrouve des infos — mais le
+vrai enseignement, c’est qu’un même modèle gagne ou perd 16 points selon
+<em>comment</em> on lui livre les résultats.</p></li>
+</ol>
+<h2 id="en-détail">📖 En détail</h2>
+<h3 id="perf-sqlite-trier-avant-dinsérer">1. <code>perf</code> SQLite :
+trier avant d’insérer</h3>
+<p>Le constat est simple et mesuré : sur l’insertion de 10 millions de
+lignes (clés primaires aléatoires, blobs de 20 octets), passer par un
+tri préalable fait tomber le temps de <strong>11 103 ms à 3 835
+ms</strong>, soit un facteur <strong>~2,9×</strong> — d’environ 900 000
+insertions/s à ~2,6 millions/s. Et ce, <em>malgré</em> le coût du tri
+lui-même, qui est largement remboursé.</p>
+<p>Le mécanisme tient à la structure de stockage de SQLite, un
+<strong>B+ tree</strong> (l’arbre équilibré qui range les lignes par
+ordre de clé sur des « pages » disque). Insérer dans l’ordre des clés,
+c’est toujours écrire « à la fin » de la page courante : séquentiel,
+donc rapide. Insérer des clés aléatoires, c’est au contraire viser sans
+cesse des pages déjà pleines un peu partout dans l’arbre, ce qui force
+des <strong>éclatements de page</strong> (<em>page splits</em> : couper
+une page pleine en deux pour faire de la place) et des rééquilibrages de
+l’arbre. Ces opérations multiplient les écritures réelles par rapport
+aux données logiques — le phénomène d’<em>amplification d’écriture</em>.
+En triant en amont, on supprime presque tout ce remue-ménage.</p>
+<p>La nuance honnête : le banc d’essai reste <strong>agrégé</strong>. On
+a le temps total, pas la mesure directe du nombre d’éclatements de page,
+des I/O disque ou du comportement de cache — et un seul format de
+données (blobs de 20 octets, clés aléatoires). Le gain est donc démontré
+dans <em>ce</em> cas (insertion par lots de données non ordonnées) mais
+pas disséqué. À noter aussi : si vos données arrivent déjà à peu près
+triées, le bénéfice fond.</p>
+<p><strong>En pratique :</strong> utile dès qu’on alimente une base
+embarquée par gros lots — ingestion de séries temporelles, import de
+fichiers, ETL local. Le réflexe « trier par clé primaire avant le batch
+insert » est quasi gratuit en code et se transpose à d’autres moteurs à
+B-tree (le même raisonnement vaut pour les index en général).</p>
+<h3
+id="systèmes-la-variable-git-false_but_the_compiler_does_not_know_it_">2.
+<code>systèmes</code> La variable Git
+<code>false_but_the_compiler_does_not_know_it_</code></h3>
+<p>Git embarque, dans un fichier source à part, un
+<code>int false_but_the_compiler_does_not_know_it_ = 0;</code> et une
+macro
+<code>#define NOT_CONSTANT(expr) ((expr) || false_but_the_compiler_does_not_know_it_)</code>.
+Le but : éteindre un <strong>faux positif</strong> de l’avertissement
+Clang <code>-Wunreachable-code</code> (« ce code ne sera jamais exécuté
+»).</p>
+<p>Le problème de fond est typique du C multi-configuration. Selon les
+options de compilation, une fonction peut être remplacée par une macro
+constante : avec <code>NO_SYMLINK_HEAD</code> défini,
+<code>create_ref_symlink(...)</code> devient littéralement
+<code>(-1)</code>. Du coup un <code>if (!(-1)) continue;</code> paraît
+mort <em>pour cette configuration</em>, et le compilateur râle — alors
+que dans les autres builds, ce code est bien atteignable. On ne veut ni
+supprimer le code, ni désactiver l’avertissement partout.</p>
+<p>L’astuce exploite finement le modèle de compilation du C : la
+variable est <strong>non-<code>const</code>, à liaison externe, définie
+dans une autre unité de compilation</strong>. Quand le compilateur
+traite le fichier qui utilise <code>NOT_CONSTANT</code>, il voit la
+variable mais <em>ne peut pas prouver</em> qu’elle vaut toujours 0 (elle
+pourrait être modifiée ailleurs). Il est donc obligé de garder la
+branche : plus d’avertissement « code mort ». L’élégance : à l’édition
+de liens avec <strong>LTO</strong> (<em>link-time optimization</em>,
+l’optimisation qui voit tout le programme d’un coup), le compilateur
+constate enfin que la variable reste nulle et élimine quand même la
+branche du binaire final. On a donc le beurre (silence du compilateur)
+et l’argent du beurre (code mort supprimé au final).</p>
+<p><strong>En pratique :</strong> une alternative chirurgicale à
+<code>volatile</code> ou aux <code>#ifdef</code> pour neutraliser une
+analyse statique trop zélée, sans changer la sémantique. Bon à connaître
+pour quiconque maintient du C/C++ portable compilé sous plusieurs
+toolchains et configurations.</p>
+<h3 id="ia-is-grep-all-you-need-la-plomberie-prime-sur-la-recherche">3.
+<code>IA</code> « Is Grep All You Need ? » — la plomberie prime sur la
+recherche</h3>
+<p>L’article s’appuie sur une étude (PwC) qui teste <strong>116
+questions</strong> du jeu LongMemEval — des questions de rappel sur de
+la mémoire conversationnelle — en comparant recherche lexicale (grep,
+mots-clés) et recherche vectorielle (embeddings « sémantiques »).
+Verdict apparent : grep gagne. Quelques chiffres, à livraison « inline »
+et harnais Chronos : Claude Opus 4.6 à <strong>93,1 % (grep) contre 83,6
+% (vecteurs)</strong> ; Gemini 3.1 Flash-Lite <strong>86,2 % contre 62,9
+%</strong> (23 points d’écart).</p>
+<p>Mais le vrai enseignement est ailleurs, et il est plus profond. À
+modèle, corpus et méthode de recherche <strong>identiques</strong>,
+changer seulement le <strong>harnais</strong> (la façon dont l’agent
+reçoit et manipule les résultats) fait bouger Opus 4.6 de <strong>93,1 %
+à 76,7 %</strong> — 16 points, juste sur la « plomberie ». Plus
+spectaculaire : GPT-5.4 tombe de <strong>93,1 % (résultats livrés
+inline, dans le contexte) à 55,2 % (livrés via fichiers)</strong>, à
+recherche rigoureusement identique. Autrement dit, <em>comment</em> on
+présente l’information au modèle pèse autant, voire plus, que <em>par
+quelle méthode</em> on l’a trouvée.</p>
+<p>⚠️ Putaclic partiel : le titre laisse croire que « grep gagne
+toujours ». Les auteurs eux-mêmes nuancent — le banc d’essai porte sur
+du rappel d’extraits <strong>présents mot pour mot</strong> ; pour de la
+synthèse ou du raisonnement sur des formulations paraphrasées, le
+vectoriel peut reprendre l’avantage. Le résultat solide n’est pas « grep
+&gt; vecteurs » mais « la conception du harnais rivalise avec le choix
+de la méthode de recherche ».</p>
+<p><strong>En pratique :</strong> directement parlant pour qui exploite
+des agents de code (Claude Code &amp; co.) ou bâtit du RAG : avant
+d’investir dans des embeddings sophistiqués, soignez la livraison du
+contexte (inline vs fichiers, format, budget de contexte) — c’est
+souvent là que se cache le gain. Et méfiez-vous des bancs d’essai dont
+le périmètre ne colle pas à votre usage réel.</p>
+<h2 id="métier">🧭 Métier</h2>
+<ul>
+<li><p><code>métier</code> <strong>Cleaning up after AI rockstar
+developers</strong> · <a
+href="https://www.codingwithjesse.com/blog/rockstar-developers/">lien</a>
+— Le « rockstar » (humain ou IA) optimise la vitesse et l’astuce au
+détriment de la maintenabilité ; l’IA industrialise le problème en
+produisant « des centaines de rockstars, une fonctionnalité à la fois ».
+La distinction utile : complexité <em>compréhensible</em> vs complexité
+<em>inutile</em>. Plaidoyer pour la simplification intentionnelle —
+ralentir, élaguer, faire coller l’architecture à la complexité réelle du
+problème, pas à celle qu’on aurait pu se permettre.</p></li>
+<li><p><code>métier</code> <strong>The Better the Autopilot, the Worse
+the Pilot</strong> · <a
+href="https://julienreszka.com/blog/the-better-the-autopilot-the-worse-the-pilot/">lien</a>
+— Le paradoxe de l’automatisation : plus un système est fiable, moins
+l’opérateur reste prêt pour le moment où il lâche. Ce n’est pas de la
+négligence mais de la neurobiologie — le cerveau décroche d’une tâche
+sans surprise. Documenté en aviation (les pilotes ratent des pannes
+qu’ils auraient vues en pilotage manuel). La parade proposée : couper
+volontairement l’automatisation de temps en temps pour entretenir la
+compétence. Transposable à l’ingénierie : nos capacités de réponse aux
+incidents s’érodent pendant les périodes calmes.</p></li>
+</ul>
+<h2 id="brèves">⚡ Brèves</h2>
+<ul>
+<li><code>distribué</code> <strong>How to read distributed traces when
+you didn’t write the code</strong> · <a
+href="https://newsletter.signoz.io/p/how-to-read-distributed-traces-when">lien</a>
+— Méthode en 4 temps pour lire une trace distribuée d’un code inconnu :
+repérer le span racine, suivre le <em>chemin critique</em> (qui bloque
+quoi, pas le span le plus long), reconnaître les motifs (escalier = N+1
+requêtes, trou = travail non instrumenté, fins synchronisées =
+timeout/verrou), puis lire les attributs (<code>db.statement</code>,
+<code>code.lineno</code>). Solide pour débuter ; du « niveau 101 » pour
+les habitués.</li>
+<li><code>devtool</code> <strong>Desktop Commander MCP</strong> · <a
+href="https://github.com/wonderwhy-er/DesktopCommanderMCP">lien</a> —
+Serveur MCP open-source qui donne à un modèle l’accès au système de
+fichiers et au terminal local.</li>
+<li><code>devtool</code> <strong>asm</strong> · <a
+href="https://github.com/luongnv89/asm">lien</a> — CLI unifié pour
+organiser ses « skills » d’agent à travers Claude, Cursor et
+Windsurf.</li>
+</ul>
+</body>
+</html>
