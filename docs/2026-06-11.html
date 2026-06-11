@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-06-11</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-06-11</h1>
+</header>
+<h1 id="tech-digest-1011-juin-2026">📨 Tech Digest — 10–11 juin
+2026</h1>
+<h2 id="en-bref-scan-30s">🎯 En bref (scan 30s)</h2>
+<ol type="1">
+<li><code>perf</code> <strong>Comparatif des bibliothèques de décimaux
+en Rust</strong> · ~10 min · wubingzheng.github.io · <a
+href="https://wubingzheng.github.io/en/Decimal-Crates-Comparison.html">lien</a>
+Cinq bibliothèques Rust pour les nombres décimaux <em>exacts</em> (ceux
+des montants d’argent, où 0,1 + 0,2 doit faire 0,3 pile et non
+0,30000000004) mises au banc d’essai. Verdict : les nouveaux venus à
+virgule fixe écrasent les classiques, et le bon choix dépend surtout de
+la façon dont le nombre est stocké en mémoire.</li>
+<li><code>devtool</code> <strong>Concevoir une clé de cache de
+compilation <em>correcte</em> (kache 0.5.0)</strong> · ~9 min ·
+kunobi.ninja · <a href="https://kunobi.ninja/blog/kache-v0-5-0">lien</a>
+Le vrai danger d’un cache de build n’est pas qu’il soit trop lent :
+c’est qu’il vous rende un binaire faux sans rien signaler. Tour
+d’horizon des pièges d’une clé de cache et de comment toujours échouer «
+vers le lent », jamais « vers le faux ».</li>
+<li><code>rust</code> <strong>smb2 : un client SMB2/3 « tout-Rust » plus
+rapide que le client natif de macOS</strong> · ~8 min · veszelovszki.com
+· <a href="https://www.veszelovszki.com/a/smb2/">lien</a> Un nouveau
+client pour SMB (le protocole de partage de fichiers Windows/NAS) écrit
+à 100 % en Rust, qui bat le client intégré de macOS — et, en prime, une
+belle leçon de méthode sur comment ne pas se faire berner par le cache
+du système d’exploitation quand on mesure des perfs.</li>
+</ol>
+<h2 id="en-détail">📖 En détail</h2>
+<h3 id="perf-comparatif-des-bibliothèques-de-décimaux-en-rust">1.
+<code>perf</code> Comparatif des bibliothèques de décimaux en Rust</h3>
+<p>On a souvent besoin de nombres décimaux <em>exacts</em> — typiquement
+pour de l’argent ou des quantités — là où le <code>f64</code> (flottant
+binaire du processeur) introduit des erreurs d’arrondi inacceptables.
+L’article compare cinq bibliothèques Rust (<code>bigdecimal</code>,
+<code>fastnum</code>, <code>rust_decimal</code>, <code>decimax</code>,
+<code>primitive_fixed_point_decimal</code>) plus le <code>f64</code>
+comme témoin, avec l’outil Criterion, sur une machine AMD EPYC 9754.
+L’angle vraiment utile n’est pas le classement brut mais le
+<em>pourquoi</em> : la perf est entièrement déterminée par la
+<strong>représentation interne</strong>.</p>
+<p>Deux grands axes. Premier axe : virgule flottante décimale (chaque
+nombre transporte sa propre échelle — le nombre de décimales — et il
+faut donc <em>aligner</em> les échelles avant chaque opération) contre
+virgule fixe (l’échelle est figée par le type, donc zéro alignement à
+l’exécution). Second axe : précision arbitraire (la mantisse vit dans un
+tableau alloué sur le tas) contre taille fixe (un ou plusieurs entiers
+stockés directement dans la valeur). L’empreinte mémoire prédit la
+vitesse de façon presque mécanique : <code>bigdecimal</code> traîne ~40
+octets de métadonnées et une allocation sur le tas (et n’est même pas
+<code>Copy</code>), tandis que <code>decimax</code> fait tenir son
+échelle sur 6 bits.</p>
+<p>Les chiffres, traduits en sens. Sur une addition à échelle égale en
+128 bits : ~5 ns pour <code>prim-fpdec</code>, ~8 ns pour
+<code>decimax</code>, ~12 ns pour <code>rust_decimal</code>, ~15 ns pour
+<code>fastnum</code> — soit un facteur ~3 entre le plus rapide et le
+plus lent pour une simple addition. L’écart explose en multiplication :
+une fois la capacité dépassée, <code>fastnum</code> part en
+microsecondes (×1000) là où <code>decimax</code> reste en nanosecondes.
+L’auteur reste honnête sur les limites : la virgule fixe <em>paraît</em>
+plus lente sur de petites multiplications parce qu’elle diffère
+l’ajustement d’échelle — mais elle rattrape, et dépasse, sur des chaînes
+de calcul longues. Côté capacité : <code>rust_decimal</code> (trois
+<code>u32</code>) plafonne à ~28 chiffres significatifs,
+<code>decimax</code> monte à 36, <code>bigdecimal</code> est illimité
+mais paie le prix fort.</p>
+<p>Pas de survente ici : le texte multiplie les mises en garde par cas
+d’usage plutôt que de proclamer un gagnant universel. La conclusion
+pratique : pour un backend qui veut des décimaux exacts sans contrainte
+exotique, prendre <code>decimax</code> pour la performance, ou
+<code>rust_decimal</code> pour son écosystème établi. <strong>En
+pratique :</strong> utile dès qu’on manipule des montants ou des
+quantités exacts en Rust (facturation, comptabilité, agrégation de
+séries de mesures), partout où l’arrondi du <code>f64</code> est
+rédhibitoire — et bon rappel que le choix d’une bibliothèque « numérique
+» se joue sur sa représentation mémoire, pas sur son nom.</p>
+<h3
+id="devtool-concevoir-une-clé-de-cache-de-compilation-correcte-kache">2.
+<code>devtool</code> Concevoir une clé de cache de compilation
+<em>correcte</em> (kache)</h3>
+<p><code>kache</code> est un cache de build : il stocke les artefacts
+compilés et les ressort quand rien n’a changé, pour éviter de
+recompiler. Tout repose sur une <strong>clé de cache</strong> — un
+condensé (hachage) des entrées de compilation — avec la règle « même clé
+⇒ même sortie ». L’article s’attaque au cœur du problème : que faut-il
+mettre dans cette clé pour qu’elle soit <em>correcte</em> ? Et il pose
+la bonne dissymétrie, celle que tout le monde sous-estime.</p>
+<p>Deux modes d’échec, mais pas du tout équivalents. Une clé
+<strong>trop spécifique</strong> inclut des informations sans rapport
+(un chemin absolu, par exemple) : deux compilations pourtant identiques
+ne se reconnaissent pas, on recompile pour rien — c’est <em>lent mais
+correct</em>. Une clé <strong>trop laxiste</strong> oublie une entrée
+qui change réellement le résultat : deux compilations différentes
+entrent en collision et on sert le mauvais artefact — <em>faux, et
+silencieux</em>. Le second cas est bien pire, parce que personne ne s’en
+aperçoit. Tout le travail de conception consiste donc à toujours pencher
+du côté « lent » plutôt que « faux ».</p>
+<p>Concrètement, côté « trop spécifique » à neutraliser : les chemins
+absolus encodés via <code>--remap-path-prefix</code> (censés rendre les
+builds reproductibles) sont désormais remplacés par des sentinelles
+<em>avant</em> hachage ; la ligne <code>-cc1</code> du compilateur C/C++
+contient des chemins absolus d’include et de sortie, normalisés pour
+rendre la clé portable d’une machine à l’autre ; les fichiers sources
+<em>générés</em> dans le répertoire de build reçoivent eux aussi des
+sentinelles dérivées des dossiers d’include. Côté « trop laxiste » à
+combler : un audit des options de <code>rustc</code> qui changent
+vraiment la sortie — <code>--sysroot</code>, les flags d’édition de
+liens <code>-L</code>/<code>-l</code>, les spécifications de cible JSON
+sur mesure — toutes ajoutées à la clé.</p>
+<p>Le plus intéressant est l’aveu des angles morts : certaines entrées
+sont <strong>inobservables</strong> par l’outil — une macro procédurale
+qui lit un fichier externe (par ex. le cache de requêtes de
+<code>sqlx</code>), ou un changement de <em>toolchain</em> sous le
+compilateur. Comme <code>kache</code> ne peut pas les voir, la solution
+est explicite et opt-in : un <code>kache.toml</code> pour déclarer des
+entrées supplémentaires, et un « sel » fourni par l’utilisateur pour
+invalider à la main lors d’un changement de toolchain. Pas de benchmark,
+pas de survente — un article de conception sobre. <strong>En pratique
+:</strong> pertinent pour quiconque conçoit du cache de build ou de CI
+(genre <code>sccache</code>, ou un système façon Bazel), ou plus
+généralement tout mécanisme de mémoïsation où une collision de clé
+produit un résultat faux et silencieux — la leçon « rate vers le lent,
+jamais vers le faux » est universelle.</p>
+<h3 id="rust-smb2-un-client-smb23-tout-rust-plus-rapide-que-le-natif">3.
+<code>rust</code> smb2 : un client SMB2/3 « tout-Rust » plus rapide que
+le natif</h3>
+<p>L’auteur écrit un gestionnaire de fichiers et trouvait toute copie
+vers son NAS (serveur de stockage en réseau) trop lente. Le crate Rust
+existant, <code>smb</code>, envoyait <em>une lecture à la fois</em> là
+où les clients natifs <em>pipelinent</em> (enchaînent plusieurs requêtes
+sans attendre la réponse de chacune). L’architecture de <code>smb</code>
+ne se prêtant pas au pipelining, il a réécrit un client,
+<code>smb2</code>, avec le pipelining au cœur, directement à partir de
+la spécification Microsoft MS-SMB2. Le moteur de vitesse : des requêtes
+<em>composées</em> (CREATE+READ+CLOSE en un seul aller-retour réseau),
+une I/O pipelinée à fenêtre glissante avec taille de bloc adaptative, et
+256 « crédits » SMB demandés d’emblée pour ouvrir une large fenêtre de
+requêtes en vol.</p>
+<p>Les chiffres, contre le client natif de macOS sur un NAS QNAP en
+Gigabit (SMB 3.1.1) : sur petits fichiers, téléchargement 5,0× plus
+rapide, suppression 3,0×, envoi 1,9× ; sur gros fichiers, téléchargement
+5,1× — mais envoi à <em>parité</em>. Autrement dit, des gains réels mais
+inégaux : spectaculaires en lecture, nuls sur l’envoi de gros
+fichiers.</p>
+<p>Le vrai joyau de l’article est une leçon de méthode. Son premier
+benchmark donnait macOS à 249 ms pour 150 Mo, soit 600 Mo/s — impossible
+sur du Gigabit (~125 Mo/s plafond théorique). En creusant : les lectures
+SMB natives passent par le <em>page cache</em> du noyau (la mémoire vive
+où le système garde les pages de fichiers récemment lues), si bien
+qu’après un tour de chauffe le « téléchargement » ne touche plus du tout
+le réseau. En forçant <code>F_NOCACHE</code>, le vrai chiffre remonte à
+5,62 s, cohérent pour un disque dur en Gigabit. Tous les chiffres
+ci-dessus utilisent <code>F_NOCACHE</code>. La morale, transposable bien
+au-delà de SMB : tout benchmark d’entrées/sorties contre un partage
+monté par l’OS est faussé par le cache si on ne le désactive pas
+explicitement. À noter aussi un effort de test remarquable — ~970 tests,
+tests basés sur les propriétés, 12 cibles de <em>fuzzing</em>, et 14
+conteneurs Samba (Docker) simulant latence, coupures réseau et tailles
+de lecture réduites — avec un harnais réutilisable par les applications
+clientes. ⚠️ Le « bat le natif sur <em>chaque</em> opération » est
+presque vrai mais pas tout à fait : l’envoi de gros fichiers est à
+parité, pas plus rapide. Et c’est un client jeune (v0.11), sans
+multi-canal ni QUIC/RDMA. Cela dit, l’auteur est intellectuellement
+honnête — c’est lui-même qui débusque et corrige son benchmark trompeur.
+<strong>En pratique :</strong> utile pour de l’accès NAS/partage de
+fichiers performant en Rust ; mais surtout un excellent cas d’école sur
+l’implémentation d’un protocole binaire (parsing, fuzzing, pipelining)
+et sur le benchmark rigoureux d’I/O — le piège du cache OS vaut pour
+tout test de débit disque ou réseau, en C++ comme en Rust.</p>
+<h2 id="brèves">⚡ Brèves</h2>
+<ul>
+<li><code>infra</code> <strong>Cloudflare : router du trafic public vers
+des origines privées</strong> · <a
+href="https://blog.cloudflare.com/private-origins-dns-routing/">lien</a>
+— Un drapeau <code>use_private_routing</code> sur un enregistrement DNS
+suffit désormais à faire passer du trafic public vers une IP privée
+<em>sans</em> connecteur <code>cloudflared</code> sur le serveur, en
+réutilisant un tunnel existant (IPsec/GRE) ; toute la pile applicative
+(pare-feu, limitation de débit, cache) s’applique avant le dernier saut.
+Annonce produit (aucun chiffre), mais mécanisme propre — à condition
+d’avoir déjà l’infrastructure de connectivité privée.</li>
+<li><code>rust</code> <strong>stdx : une « bibliothèque standard étendue
+» pour Rust</strong> · <a href="https://kerkour.com/stdx">lien</a> —
+Sylvain Kerkour regroupe en un crate les utilitaires qu’on finit
+toujours par réimporter par-dessus la std.</li>
+<li><code>rust</code> <strong>Who Runs Your Rust Future? — intro
+pratique à l’async</strong> · <a
+href="https://aibodh.com/posts/async-rust-chapter-1-hands-on-intro-to-async-rust/">lien</a>
+— Premier chapitre d’une série qui explique <em>qui</em> exécute
+réellement vos <code>Future</code> (l’exécuteur), avec les mains dans le
+cambouis. Bon point d’entrée pour démystifier l’async Rust.</li>
+</ul>
+</body>
+</html>
