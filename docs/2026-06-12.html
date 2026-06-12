@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-06-12</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-06-12</h1>
+</header>
+<h1 id="tech-digest-1112-juin-2026">📨 Tech Digest — 11–12 juin
+2026</h1>
+<h2 id="en-bref-scan-30s">🎯 En bref (scan 30s)</h2>
+<ol type="1">
+<li><code>perf</code> <strong>Zeroserve — un serveur HTTPS bâti sur
+io_uring qui sert des sites packagés en tarball</strong> · ~7 min ·
+github.com/losfair · <a
+href="https://github.com/losfair/zeroserve">lien</a> Un petit serveur
+web Linux qui sert un site statique directement <em>depuis</em> une
+archive <code>.tar</code>, sans jamais en extraire les fichiers sur
+disque, en s’appuyant sur l’interface I/O moderne du noyau. L’idée
+d’architecture est plus intéressante que le produit lui-même.</li>
+<li><code>bdd</code> <strong>pg_durable — de l’« exécution durable »
+directement dans PostgreSQL (Microsoft)</strong> · ~6 min ·
+github.com/microsoft · <a
+href="https://github.com/microsoft/pg_durable">lien</a> Une extension
+Postgres qui fait survivre vos traitements (jobs, pipelines) aux crashs
+et redémarrages en sauvegardant leur progression dans la base, plutôt
+que de tout relancer. Ça remplace le trio cron + table de statut +
+logique de retry — quand vos données vivent déjà dans Postgres.</li>
+</ol>
+<h2 id="en-détail">📖 En détail</h2>
+<h3 id="perf-zeroserve-servir-un-site-depuis-un-tarball-via-io_uring">1.
+<code>perf</code> Zeroserve — servir un site depuis un tarball, via
+io_uring</h3>
+<p>Le cœur de Zeroserve tient en une décision d’architecture : au
+démarrage, il lit une archive <code>.tar</code> une seule fois et en
+construit un index « chemin de fichier → plage d’octets » (à quel
+décalage et sur quelle longueur se trouve chaque fichier dans
+l’archive). Ensuite, chaque requête HTTP est servie par une
+<strong>lecture directe de la plage d’octets correspondante dans le
+tar</strong>, sans jamais décompresser ni écrire de fichiers temporaires
+sur le disque. Le déploiement devient donc « un seul fichier, immuable
+», et un signal <code>SIGHUP</code> suffit à recharger une nouvelle
+version à chaud.</p>
+<p>Côté entrées/sorties, tout passe par <strong>io_uring</strong>
+(l’interface du noyau Linux, depuis le 5.1, qui permet de soumettre et
+récupérer des opérations d’I/O par lots via des files partagées entre
+l’application et le noyau, en réduisant fortement le nombre d’appels
+système). Zeroserve ne l’utilise pas directement mais via
+<strong>monoio</strong>, un <em>runtime</em> asynchrone « un thread par
+cœur » (chaque cœur traite ses propres connexions sans partage d’état,
+ce qui évite la synchronisation entre threads). Le TLS est géré par
+<code>monoio-rustls</code>, et un middleware <strong>eBPF</strong> (du
+code vérifié qu’on charge dans le noyau pour filtrer/router au plus près
+de la carte réseau) est proposé en option pour traiter certaines
+requêtes à très faible latence.</p>
+<p>La nuance importante : <strong>il n’y a aucun chiffre</strong>. Le
+dépôt contient bien un répertoire <code>/benchmark</code>, mais le
+README ne publie aucune mesure, aucune comparaison face à nginx ou
+Caddy. Les qualificatifs « rapide » et « propre » ne sont donc pour
+l’instant <em>pas démontrés</em> publiquement. Et le périmètre est
+volontairement étroit : statique uniquement (aucun contenu dynamique),
+Linux uniquement (io_uring oblige). Ce n’est pas un remplaçant de votre
+reverse-proxy ; c’est une démonstration soignée d’un principe.</p>
+<p>L’insight à retenir n’est pas « voici un serveur web de plus » mais
+le motif de conception : <em>indexer une archive en plages d’octets et
+la servir telle quelle élimine tout l’état intermédiaire</em> (fichiers
+extraits, cache disque à invalider, montages). Pour une charge « écrire
+une fois, lire des millions de fois », c’est un compromis élégant entre
+simplicité opérationnelle et performance. ⚠️ Le mot « fast » est mis en
+avant sans le moindre <em>benchmark</em> — alors qu’un dossier
+<code>/benchmark</code> existe dans le dépôt. À juger sur le mécanisme,
+pas sur la promesse de perf. <strong>En pratique :</strong> utile si
+vous servez du contenu statique en lecture seule à fort volume sur Linux
+et que vous voulez vous frotter à io_uring/monoio en Rust ; le motif «
+indexer un tar en plages d’octets et servir sans extraction » se
+réutilise pour n’importe quel cache en lecture seule.</p>
+<h3 id="bdd-pg_durable-lexécution-durable-native-à-postgres">2.
+<code>bdd</code> pg_durable — l’exécution durable native à Postgres</h3>
+<p>« Exécution durable » (<em>durable execution</em>) désigne un style
+de traitement où l’état d’avancement d’une fonction est persisté à
+chaque étape : si le processus crashe, redémarre ou bascule sur un
+<em>failover</em>, le traitement <strong>reprend là où il s’était
+arrêté</strong> au lieu de tout réexécuter. C’est le modèle popularisé
+par des orchestrateurs externes comme Temporal — sauf qu’ici, tout se
+passe à l’intérieur de PostgreSQL.</p>
+<p>Le mécanisme : <code>pg_durable</code> s’installe comme une extension
+dotée d’un <em>background worker</em> (un processus que Postgres lance
+et garde en vie en arrière-plan), écrit avec <strong>pgrx</strong> (le
+framework qui permet d’écrire des extensions Postgres en Rust). Ce
+worker orchestre des graphes de fonctions définis en SQL en s’appuyant
+sur deux briques : <strong>duroxide</strong>, qui gère la logique
+d’orchestration par <em>replay déterministe</em> (on rejoue l’historique
+des étapes déjà franchies pour reconstruire l’état exact, sans refaire
+les effets de bord) et le <em>checkpointing</em> (sauvegarde du point
+d’avancement entre chaque étape) ; et <strong>duroxide-pg</strong>, qui
+range cet état (instances, historique, files de travail) dans un schéma
+<code>duroxide.*</code>. Le développeur n’écrit aucune gestion d’état
+manuelle : la sauvegarde entre étapes est automatique.</p>
+<p>Les limites sont à lire de près, car elles conditionnent l’usage. Il
+faut pouvoir <strong>installer une extension et faire tourner un
+background worker</strong> — deux choses souvent interdites sur un
+Postgres managé verrouillé (RDS &amp; co.). Le rôle du worker doit être
+<em>superuser</em> pour que la sécurité au niveau ligne fonctionne. Ce
+n’est pas fait pour des opérations synchrones sous la milliseconde. Et
+la doc reconnaît honnêtement qu’un traitement qui a besoin de « code
+arbitraire, d’un SDK non-HTTP, ou d’un flot de contrôle riche en mémoire
+» relève d’un orchestrateur généraliste, pas de cet outil. Côté
+implémentation, la page reste en surface : <em>comment</em> duroxide
+garantit le déterminisme du replay ou gère les conflits n’est pas
+détaillé. Et — là encore — aucun chiffre de débit ou de latence.</p>
+<p>L’intérêt réel : si vos jobs et pipelines vivent
+<strong>déjà</strong> dans Postgres et que vous avez bricolé le
+classique « cron + table de statut + logique de retry maison »,
+<code>pg_durable</code> propose de remplacer cet échafaudage par des
+graphes de fonctions SQL qui reprennent tout seuls après une panne.
+Moins de pièces mobiles, une seule source de vérité transactionnelle. ⚠️
+Positionné comme « zéro infrastructure », alors qu’il exige des
+privilèges d’extension et un processus dédié — une friction bien réelle
+sur les bases managées. <strong>En pratique :</strong> pertinent si
+votre couche de traitement par lots est déjà adossée à Postgres et que
+vous réinventez la coordination de jobs ; à oublier sur un Postgres
+managé sans droits d’extension, ou pour de la coordination
+multi-systèmes hors base.</p>
+<h2 id="ouverture">🪟 Ouverture</h2>
+<ul>
+<li><code>ouverture</code> <strong>mitos — un générateur d’art ASCII
+signé Oxide Computer</strong> · <a
+href="https://github.com/oxidecomputer/mitos">lien</a> — Un constructeur
+de cartes à puces serveur sort un petit outil en ligne de commande pour
+transformer images et formes en art ASCII. Aucune prétention sérieuse :
+juste l’objet sympathique qu’une boîte d’ingénieurs systèmes se fabrique
+pour le plaisir. Un rappel que les meilleures équipes gardent du temps
+pour le superflu joli.</li>
+</ul>
+<h2 id="brèves">⚡ Brèves</h2>
+<ul>
+<li><code>devtool</code> <strong>Apple Container Machine</strong> · <a
+href="https://github.com/apple/container/blob/main/docs/container-machine.md">lien</a>
+— Apple ajoute à son outil <code>container</code> un vrai environnement
+Linux sur macOS : il démarre l’<code>init</code> de l’image OCI (donc
+<code>systemctl</code> et services longs fonctionnent) et monte votre
+<code>$HOME</code> macOS à <code>/Users/&lt;login&gt;</code> côté Linux,
+éditeurs partagés des deux côtés. Pensé comme un environnement de dev
+multi-distros (Alpine, Ubuntu, Debian en parallèle), pas comme un
+déploiement de conteneurs. Aucun détail sur la couche de virtualisation,
+aucun chiffre.</li>
+<li><code>bdd</code> <strong>PostgreSQL 19 Beta 1</strong> · <a
+href="https://www.postgresql.org/about/news/postgresql-19-beta-1-released-3313/">lien</a>
+— La première bêta du cycle 19 est sortie : le moment de tester vos
+extensions et requêtes sur la prochaine majeure avant qu’elle ne se
+fige.</li>
+<li><code>devtool</code> <strong>sem — des diffs Git « sémantiques
+»</strong> · <a
+href="https://ataraxy-labs.github.io/sem/index.html">lien</a> — Au lieu
+d’un diff ligne à ligne, <code>sem</code> cherche à exprimer un
+changement au niveau du <em>sens</em> du code (fonctions déplacées,
+renommages, refactos) pour des revues plus lisibles. Concept séduisant
+pour qui relit beaucoup de code ; à confirmer à l’usage.</li>
+<li><code>IA</code> <strong>Herdr — un multiplexeur de terminaux pour
+agents</strong> · <a href="https://herdr.dev/">lien</a> — Un « tmux pour
+agents IA » : il garde des sessions d’agents persistantes et
+détachables, comme tmux le fait pour vos shells. De l’outillage agent
+pragmatique, dans la veine du travail bien fait avec des agents de
+code.</li>
+</ul>
+</body>
+</html>
