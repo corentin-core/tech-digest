@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-06-15</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-06-15</h1>
+</header>
+<h1 id="tech-digest-hebdo-815-juin-2026">📨 Tech Digest [hebdo] — 8–15
+juin 2026</h1>
+<h2 id="en-bref-scan-30s">🎯 En bref (scan 30s)</h2>
+<ol type="1">
+<li><code>perf</code> <strong>Clojure presque aussi rapide que le
+C</strong> · ~10 min · <a
+href="https://ertu.dev/posts/4_clojure-reaching-c-performance/">ertu.dev</a>
+Un développeur fait tourner du Clojure (langage sur la machine virtuelle
+Java, réputée pour son surcoût) à ~20 % du C sur une boucle de calcul
+intensif. La vraie leçon : une faute d’écriture anodine lui coûtait un
+facteur 10 de performance, sans aucune erreur visible.</li>
+<li><code>perf</code> <strong>Unity contre les nombres
+flottants</strong> · ~8 min · <a
+href="https://aras-p.info/blog/2026/06/11/Unity-vs-floating-point/">aras-p.info</a>
+Les fonctions mathématiques de Unity convertissent inutilement les
+flottants 32 bits en 64 bits et retour, ce qui les ralentit… dans
+l’éditeur seulement — l’écart s’évapore dans les builds de production.
+Bon rappel que « lent » dépend entièrement du compilateur utilisé.</li>
+<li><code>bdd</code> <strong>Le seul DELETE qui passe à l’échelle en
+Postgres, c’est DROP TABLE</strong> · ~6 min · <a
+href="https://planetscale.com/blog/the-only-scalable-delete">planetscale.com</a>
+Supprimer beaucoup de lignes avec <code>DELETE</code> ne « rend »
+presque jamais l’espace disque et crée du travail de nettoyage en
+arrière-plan. La vraie suppression de masse se conçoit en amont, pour
+pouvoir faire <code>DROP</code>/<code>TRUNCATE</code>.</li>
+<li><code>infra</code> <strong>Comment Cloudflare est passé de 10 à 120
+scans/seconde</strong> · ~10 min · <a
+href="https://blog.cloudflare.com/scaling-security-scans/">blog.cloudflare.com</a>
+Un récit de mise à l’échelle honnête : l’essentiel des gains vient de
+corriger des goulots non-évidents (file de messages, requêtes SQL en
+boucle, latence entre régions), pas d’ajouter des serveurs.</li>
+</ol>
+<h2 id="en-détail">📖 En détail</h2>
+<h3 id="perf-clojure-presque-aussi-rapide-que-le-c">1. <code>perf</code>
+Clojure presque aussi rapide que le C</h3>
+<p>Le banc d’essai : transformer 100 000 matrices par image (900 000
+évaluations de sinus, 6 Mo envoyés au GPU à chaque image). Résultats :
+<strong>C compilé avec <code>clang -O2</code> à 0,70 ms/image, Clojure
+optimisé à 0,86 ms/image</strong> — soit ~23 % plus lent seulement. Les
+deux saturent le GPU à ~370 images/s sur un MacBook M3, donc à cette
+charge le CPU n’est plus le facteur limitant : parité effective.</p>
+<p>Pour y arriver, il a fallu passer par l’API Panama (l’accès SIMD
+depuis Java — <em>Single Instruction Multiple Data</em>, des
+instructions qui traitent plusieurs nombres en une seule opération) et
+respecter trois conditions non négociables. Un : stocker le descripteur
+de vecteur SIMD comme <strong>constante de compilation</strong>, jamais
+dans une variable. Deux : écrire le noyau de calcul en <strong>macros
+plutôt qu’en fonctions</strong>, pour que le compilateur JIT
+(<em>Just-In-Time</em>, qui optimise le code pendant l’exécution) puisse
+tout inliner dans une seule méthode. Trois : la version du JDK compte
+énormément.</p>
+<p>Le chiffre le plus parlant est un piège : stocker ce descripteur dans
+une variable au lieu d’une constante faisait
+<strong>silencieusement</strong> retomber le JIT sur un chemin « boxé »
+(avec allocations mémoire) — <strong>10× plus lent</strong>, sans le
+moindre message. C’est le cœur de la leçon : sur un JIT, une seule
+indirection invisible peut désactiver toute une optimisation. Autre
+surprise : le JDK 21 générait de mauvaises instructions NEON (le SIMD
+des puces ARM) ; <strong>passer au JDK 25 sur le même code faisait
+tomber le temps de 2,5 ms à 1 ms</strong>, sans toucher une ligne.</p>
+<p>⚠️ « Presque aussi rapide que le C » survend un peu : le C atteint sa
+vitesse par auto-vectorisation <em>gratuite</em> du compilateur, là où
+Clojure exige du SIMD écrit à la main, non-idiomatique, confiné à une
+boucle chaude. L’auteur est honnête là-dessus de bout en bout.
+<strong>En pratique :</strong> utile si tu écris des boucles numériques
+chaudes sur la JVM (Java/Kotlin/Clojure) et que tu lorgnes le Vector
+API/Panama. La leçon transférable dépasse la JVM : toute optimisation
+reposant sur de la constant-folding du compilateur peut être annulée par
+une indirection qui paraît anodine — un réflexe utile en Rust/C++
+aussi.</p>
+<h3 id="perf-unity-contre-les-nombres-flottants">2. <code>perf</code>
+Unity contre les nombres flottants</h3>
+<p>Le problème : <code>Mathf.Sqrt</code> est implémenté comme
+<code>(float)Math.Sqrt((double)f)</code> — conversion float→double,
+calcul en double précision, retour en float. Inutile pour un résultat
+qui n’a besoin que de simple précision. La cause est historique : .NET
+n’a eu de fonctions math en simple précision qu’à partir de .NET Core
+2.0 (2017), et le runtime Mono de Unity exécute <em>tout</em> en double
+précision en interne — d’où des conversions partout. Une simple boucle
+<code>v += Mathf.Sqrt(v)</code> génère, en désassemblé, une vingtaine
+d’opérations de conversion par itération.</p>
+<p>Les chiffres, et c’est là que le titre se dégonfle, dépendent
+entièrement du backend de compilation. Dans l’<strong>éditeur
+(Mono)</strong> : <code>Mathf.Sqrt</code> à 242 ms contre
+<code>System.MathF.Sqrt</code> à 149 ms (le naïf ~1,6× plus lent). Avec
+<strong>Burst</strong> (le compilateur optimisant de Unity) :
+<code>math.sqrt</code> à 34 ms contre <code>Mathf.Sqrt</code> à 66 ms
+(~2×). Mais en <strong>build IL2CPP</strong> (qui transpile en C++) :
+les deux tombent à 35 ms — le compilateur C++ efface complètement la
+distinction de précision.</p>
+<p>L’article a une vraie profondeur : code machine désassemblé à
+l’appui, explication de pourquoi chaque backend traite la précision
+différemment, et il pointe même ses propres incohérences (IL2CPP
+optimise <code>Mathf.Sqrt</code> mais pas systématiquement
+<code>Mathematics.math.sqrt</code>). Conclusion honnête : pas de réponse
+universelle — Burst+Mathematics est le plus rapide,
+<code>System.MathF</code> est bon hors Burst mais ne compile pas
+avec.</p>
+<p>⚠️ Le titre « Unity vs floating point » laisse croire à un défaut
+d’architecture ; c’est en réalité l’héritage de Mono plus des
+optimisations inégales selon le compilateur. L’écart mesuré dans
+l’éditeur ne se retrouve pas en build de production. <strong>En pratique
+:</strong> au-delà de Unity, c’est une leçon de méthode perf valable
+partout — mesure sur ta configuration de <em>production</em>, pas en
+debug/éditeur, sous peine de chasser un fantôme. Et les conversions de
+précision implicites (float↔︎double) restent un coût caché classique en
+C++/Rust dès qu’on passe un <code>float</code> à une fonction qui attend
+un <code>double</code>.</p>
+<h3 id="bdd-le-seul-delete-qui-passe-à-léchelle-cest-drop-table">3.
+<code>bdd</code> Le seul DELETE qui passe à l’échelle, c’est DROP
+TABLE</h3>
+<p>Le mécanisme tient au MVCC (<em>Multi-Version Concurrency
+Control</em>, le modèle de Postgres où chaque ligne supprimée devient un
+« tuple mort » conservé sur disque jusqu’à ce que le <code>VACUUM</code>
+le récupère). Conséquence : un gros <code>DELETE</code> <em>ajoute</em>
+du travail au lieu de le terminer. Les lignes mortes sont quand même
+répliquées (charge sur les réplicas), les entrées d’index restent en
+place, les lecteurs doivent vérifier la « mortitude » de chaque ligne au
+passage, et l’espace disque ne revient quasiment jamais à l’OS — la
+table reste gonflée (<em>bloat</em>).</p>
+<p>À l’inverse, <code>DROP TABLE</code> et <code>TRUNCATE</code>
+prennent un verrou exclusif (<code>AccessExclusiveLock</code>, qui
+bloque tout accès le temps de l’opération) mais sont <strong>quasi
+indépendants du volume de données</strong> : ils suppriment les fichiers
+directement au niveau de l’OS et balaient le cache — des opérations de
+métadonnées, sans parcourir les pages. D’où la vraie recommandation, qui
+est de <strong>conception</strong> et non d’exécution : partitionner par
+date (par exemple une partition par jour) et faire vieillir les données
+en <em>droppant</em> les vieilles partitions, plutôt qu’en lançant des
+<code>DELETE WHERE date &lt; …</code> périodiques.</p>
+<p>⚠️ Article conceptuel solide mais <strong>sans aucun
+benchmark</strong>, et le titre est volontairement absolutiste : les
+petits <code>DELETE</code> et les suppressions par lots fonctionnent
+parfaitement. C’est une leçon de modèle mental, pas une étude chiffrée.
+<strong>En pratique :</strong> directement applicable dès qu’on gère de
+la rétention de données (séries temporelles, logs, événements) sur
+Postgres ou MySQL — penser « partition + <code>DROP</code> » plutôt que
+« <code>DELETE</code> périodique » évite la dette de <code>VACUUM</code>
+et le gonflement des tables.</p>
+<h3 id="infra-cloudflare-de-10-à-120-scans-de-sécurité-par-seconde">4.
+<code>infra</code> Cloudflare : de 10 à 120 scans de sécurité par
+seconde</h3>
+<p>Quatre leviers, tous instructifs. <strong>(1) La file de messages
+(Kafka)</strong> : consommation par lots avec traitement parallèle
+(goroutines), plus une séparation « voie lente » / « voie rapide » pour
+éviter qu’un message long (minutes, voire heures) bloque tous ceux
+derrière lui — le <em>head-of-line blocking</em>, blocage en tête de
+file. <strong>(2) La base de données</strong> : remplacer des boucles
+d’<code>INSERT</code> un-par-un par <code>UNNEST</code> (sous un certain
+seuil) ou <code>COPY</code> (gros lots), ce qui fait passer des
+centaines de milliers d’allers-retours à une seule opération.
+<strong>(3) L’architecture API</strong> : passage d’actif-actif
+(Portland + Amsterdam) à actif-passif. La découverte clé du débogage :
+les requêtes vers Amsterdam prenaient ~3 s contre 10 ms à Portland, ce
+qui épuisait le pool de connexions et déclenchait des timeouts en
+cascade — le problème « a disparu du jour au lendemain » une fois la
+bascule faite. <strong>(4) L’ordonnanceur</strong> : planification
+indépendante par zone, horodatage randomisé et limitation de débit
+adaptative.</p>
+<p>Les indices de sérieux sont là : chiffres de latence précis, exemples
+de code (le compromis <code>UNNEST</code>/<code>COPY</code>),
+visualisation du retard par partition Kafka, analyse de cause racine. Le
+takeaway transversal : avant de scaler horizontalement, <strong>creuse
+les métriques</strong> — latence et épuisement de pool de connexions se
+cachent souvent sous des symptômes génériques de timeout.</p>
+<p>⚠️ Le « 10x » n’est pas que de l’optimisation : activer le scan
+automatique pour <em>tous</em> les comptes (un changement produit) y
+contribue aussi. Les gains sont réels, mais en partie architecturaux et
+produit, pas purement techniques. <strong>En pratique :</strong>
+transposable à tout backend distribué à fort débit — les patterns (lots
+Kafka, <code>COPY</code>/<code>UNNEST</code> au lieu
+d’<code>INSERT</code> en boucle, traquer la latence inter-région et la
+saturation des pools) sont du vocabulaire d’ingénierie infra
+réutilisable, que ce soit en Go, Rust ou C++.</p>
+<h2 id="métier">🧭 Métier</h2>
+<ul>
+<li><code>métier</code> <strong>Si tu demandes l’attention d’un humain,
+montre un effort humain</strong> · <a
+href="https://tombedor.dev/human-attention-and-human-effort/">tombedor.dev</a>
+— Balancer une sortie d’IA non-relue à un collègue est un manque de
+respect : ça signale que le contenu ne valait pas <em>ton</em> temps,
+alors pourquoi vaudrait-il le sien ? À l’ère du contenu généré en masse,
+ton jugement, ta curation et ta synthèse deviennent le vrai
+différenciateur. Une réflexion sur le soin qu’on met à communiquer — pas
+sur la peur de l’IA.</li>
+<li><code>métier</code> <strong>Personne n’est jamais félicité pour
+avoir réglé un problème qui n’a pas eu lieu</strong> (2001) · <a
+href="https://web.mit.edu/nelsonr/www/Repenning=Sterman_CMR_su01_.pdf">Repenning
+&amp; Sterman, MIT</a> — Le classique sur le « piège de la capacité ».
+Sous pression, on rogne le temps consacré à s’améliorer pour « faire
+plus » (éteindre des incendies) ; la capacité se dégrade, ce qui crée
+plus d’incendies — une boucle qui s’auto-entretient. Et comme un
+incident <em>évité</em> est invisible alors que le pompier est héroïsé,
+la prévention n’est jamais récompensée. Se transpose mot pour mot au
+travail de fiabilité et de dette technique.</li>
+</ul>
+<h2 id="ouverture">🪟 Ouverture</h2>
+<ul>
+<li><code>ouverture</code> <strong>πfs : le système de fichiers qui
+stocke tout dans les décimales de π</strong> · <a
+href="https://github.com/philipl/pifs">github.com/philipl/pifs</a> —
+Puisque π est (conjecturalement) un nombre normal, toute séquence finie
+— donc tout fichier possible — existe déjà quelque part dans ses
+décimales. Alors πfs ne stocke rien : juste la <em>position</em> de tes
+données dans π. « 100 % de compression »… au prix d’une lenteur abyssale
+(5 minutes pour un fichier de 400 lignes). Une vraie implémentation FUSE
+en C, montée comme une blague brillante sur la compression.</li>
+</ul>
+<h2 id="brèves">⚡ Brèves</h2>
+<ul>
+<li><code>sécu</code> <strong>Le RCE qu’AMD ne voulait pas
+corriger</strong> · <a href="https://mrbruh.com/amd2/">mrbruh.com</a> —
+AMD AutoUpdate télécharge des exécutables en HTTP non chiffré et sans
+vérification de signature : une interception réseau suffit à faire
+exécuter du code arbitraire.</li>
+<li><code>perf</code> <strong>SQLite : pré-trier les insertions</strong>
+· <a
+href="https://andersmurphy.com/2026/06/07/sqlite-improving-performance-with-pre-sort.html">andersmurphy.com</a>
+— Trier les données avant de les insérer réduit les divisions de pages
+du B-tree et accélère sensiblement les écritures.</li>
+<li><code>bdd</code> <strong>PostgreSQL 19 Beta 1</strong> · <a
+href="https://www.postgresql.org/about/news/postgresql-19-beta-1-released-3313/">postgresql.org</a>
+— Première bêta de la prochaine version majeure, bonne à tester sur des
+charges non critiques.</li>
+<li><code>rust</code> <strong>This Week in Rust 655</strong> · <a
+href="https://this-week-in-rust.org/blog/2026/06/10/this-week-in-rust-655/">this-week-in-rust.org</a>
+— Le point hebdo de l’écosystème Rust : nouveautés, RFC, crates à
+suivre.</li>
+<li><code>rust</code> <strong>Diplomat : FFI multi-langages pour les
+bibliothèques Rust</strong> · <a
+href="http://manishearth.github.io/blog/2026/06/14/diplomat-multi-language-ffi-for-rust-libraries/">manishearth.github.io</a>
+— Génère des liaisons (C, C++, JS, Python…) pour exposer proprement une
+bibliothèque Rust à d’autres langages.</li>
+<li><code>systèmes</code> <strong>macOS Container Machines</strong> · <a
+href="https://github.com/apple/container/blob/main/docs/container-machine.md">github.com/apple/container</a>
+— Apple intègre un environnement Linux sur macOS pour faire tourner des
+conteneurs, via des micro-VM.</li>
+<li><code>langage</code> <strong>Un tableau dynamique générique en C,
+sans champ capacité ni struct</strong> · <a
+href="https://gist.github.com/alurm/2ca14be134d719fe7431217a6b18d91e">gist</a>
+— Astuce minimaliste qui évite la structure habituelle pour gérer un
+tableau redimensionnable.</li>
+<li><code>IA</code> <strong>Un agent IA ruine son opérateur en scannant
+DN42</strong> · <a
+href="https://lantian.pub/en/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/">lantian.pub</a>
+— Récit édifiant : un agent autonome lâché sur un réseau accumule une
+facture salée. Rappel concret sur les garde-fous de coût et de
+permissions pour l’IA agentique.</li>
+<li><code>culture</code> <strong>ReactOS sait désormais lancer
+Half-Life</strong> · <a
+href="https://www.phoronix.com/news/ReactOS-Running-Half-Life">phoronix.com</a>
+— Le « Windows libre » open-source franchit un nouveau jalon de
+compatibilité applicative.</li>
+</ul>
+</body>
+</html>
