@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-06-16</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-06-16</h1>
+</header>
+<h1 id="tech-digest-16-juin-2026">📨 Tech Digest — 16 juin 2026</h1>
+<h2 id="en-bref-scan-30s">🎯 En bref (scan 30s)</h2>
+<ol type="1">
+<li><p><code>bdd</code> <strong>TimescaleDB Hypercore : moteur hybride
+lignes + colonnes</strong> · ~10 min / roszigit.com · <a
+href="https://roszigit.com/en/blog/timescaledb-compression-hypercore">lien</a>
+Comment PostgreSQL stocke des données chronologiques (capteurs,
+métriques) en les compressant fortement une fois qu’elles ne bougent
+plus — récent en lignes pour écrire vite, ancien en colonnes pour lire
+vite et prendre 10× moins de place.</p></li>
+<li><p><code>sécu</code> <strong>Une porte dérobée cachée dans une offre
+d’emploi LinkedIn</strong> · ~6 min / roman.pt · <a
+href="https://roman.pt/posts/linkedin-backdoor/">lien</a> Un faux
+recruteur envoie un dépôt GitHub « à corriger » ; un simple
+<code>npm install</code> suffisait à exécuter du code distant arbitraire
+sur la machine du développeur. Récit clair d’une attaque réelle et de
+comment elle a été repérée.</p></li>
+<li><p><code>IA</code> <strong>Petit guide de l’ingénierie de
+l’inférence des LLM</strong> · ~8 min / ByteByteGo · <a
+href="https://blog.bytebytego.com/p/a-guide-to-ai-inference-engineering">lien</a>
+Pourquoi faire tourner un grand modèle de langage se découpe en deux
+phases aux contraintes opposées — et pourquoi cette grille de lecture
+explique d’un coup toutes les optimisations d’inférence qu’on
+croise.</p></li>
+</ol>
+<h2 id="en-détail">📖 En détail</h2>
+<h3 id="bdd-timescaledb-hypercore-moteur-hybride-lignes-colonnes">1.
+<code>bdd</code> TimescaleDB Hypercore : moteur hybride lignes +
+colonnes</h3>
+<p>Hypercore résout un dilemme classique des bases de séries temporelles
+: on veut écrire vite (insertions ligne par ligne, format orienté
+lignes) <strong>et</strong> lire/agréger vite sur l’historique (format
+orienté colonnes, bien plus compact). La solution est de ne pas choisir
+: les données fraîches atterrissent dans des <em>chunks</em> (tranches
+de table) classiques en lignes, et dès qu’une tranche est « refroidie »
+(plus modifiée), elle est convertie automatiquement en colonnes
+compressées. On regroupe alors ~1 000 lignes en une seule ligne «
+compressée » où chaque colonne devient un tableau — c’est ce
+regroupement en lots qui permet la compression.</p>
+<p>Le cœur, c’est que la compression est choisie <strong>par type de
+colonne</strong> : encodage delta et delta-de-delta (on stocke l’écart
+entre valeurs successives plutôt que la valeur absolue) plus
+<em>simple-8b</em> pour les horodatages et entiers ; compression XOR
+inspirée de Gorilla pour les flottants de capteurs (qui bougent peu
+d’une mesure à l’autre) ; dictionnaire + encodage par plages (RLE) pour
+le texte répétitif. Exemple parlant : une colonne de température stocke
+<code>72.5, +0.2, -0.3, +0.2…</code> au lieu des valeurs entières —
+beaucoup moins d’octets car les écarts sont minuscules.</p>
+<p>Deux paramètres pilotent tout : <code>segmentby</code> (regrouper les
+lignes partageant une même valeur, p. ex. l’identifiant de machine) et
+<code>orderby</code> (trier dans le lot, p. ex. par temps décroissant,
+pour maximiser l’efficacité du delta). Le piège à connaître : si la
+colonne <code>segmentby</code> a trop de valeurs uniques avec peu de
+lignes chacune, les lots se remplissent mal et la compression
+s’effondre. La doc recommande au moins 100 lignes par segment,
+idéalement 100 à 10 000 valeurs uniques. Sur le seul cas réel montré
+(données capteurs MQTT, ~180 identifiants), la requête passe de 10,2 ms
+à 0,36 ms (≈ 28× plus vite à l’exécution) et 308 Mo tombent à 7,2 Mo (≈
+43× de compression).</p>
+<p>⚠️ Le titre « jusqu’à 98 % » est survendu : ce chiffre n’apparaît
+dans aucun banc d’essai de l’article. L’auteur lui-même prévient que ses
+43× (97,7 %) viennent d’un jeu de données « à redondance exceptionnelle
+», et qu’une attente réaliste sur des séries temporelles typiques est
+plutôt <strong>8 à 20×</strong> (92–95 %). Honnête sur ses propres
+limites, ce qui est rare. <strong>En pratique :</strong> pertinent dès
+qu’on stocke des séries temporelles à fort volume (métriques,
+télémétrie, capteurs) sous PostgreSQL et qu’on veut éviter de sortir une
+base colonne dédiée ; le réglage de
+<code>segmentby</code>/<code>orderby</code> est exactement le genre de
+détail de tuning perf qui fait 10× d’écart.</p>
+<h3
+id="sécu-une-porte-dérobée-cachée-dans-une-offre-demploi-linkedin">2.
+<code>sécu</code> Une porte dérobée cachée dans une offre d’emploi
+LinkedIn</h3>
+<p>L’attaque est une belle leçon d’ingénierie sociale couplée à un abus
+de mécanisme. Un faux recruteur — usurpant l’identité LinkedIn réelle
+d’un journaliste — envoie un dépôt GitHub en demandant « de jeter un œil
+au souci de modules Node dépréciés ». L’appât n’est pas le code lui-même
+mais l’instruction implicite : lancer <code>npm install</code>. Or
+<code>npm</code> exécute automatiquement le script <code>prepare</code>
+à l’installation, qui ici appelait <code>node app/index.js</code>. Ce
+fichier chargeait <code>app/test/index.js</code>, où se cachait — sur
+<strong>une seule ligne minifiée, noyée au milieu de code de test
+commenté</strong> — la charge utile : elle contactait un serveur
+(<code>rest-icon-handler.store</code>) et exécutait tout ce que celui-ci
+renvoyait. Autrement dit, exécution de code distant arbitraire dès
+l’installation, sans jamais lancer l’application.</p>
+<p>Le point non-évident, c’est le vecteur : pas de faille technique
+exotique, juste le cycle de vie standard de npm
+(<code>prepare</code>/<code>postinstall</code>) détourné. Tout
+développeur qui « teste rapidement » un dépôt inconnu se fait avoir
+avant même d’avoir lu une ligne. La parade décrite est élégante :
+l’auteur n’a pas installé en local, il a cloné le dépôt sur un serveur
+jetable (VPS) puis lâché dessus un agent IA en lecture seule (outils
+restreints à <code>read,grep,find,ls</code>). L’agent a tiqué quasi
+immédiatement sur le comportement suspect. Le titre ne survend rien :
+l’attaque est réelle et le mécanisme exact. <strong>En pratique
+:</strong> réflexe utile pour quiconque audite des dépendances ou des
+dépôts tiers — désactiver les scripts d’installation
+(<code>npm install --ignore-scripts</code>), inspecter dans un bac à
+sable jetable, et garder en tête que
+<code>postinstall</code>/<code>prepare</code> sont une surface
+d’exécution de code, pas juste de la plomberie.</p>
+<h3 id="ia-petit-guide-de-lingénierie-de-linférence-des-llm">3.
+<code>IA</code> Petit guide de l’ingénierie de l’inférence des LLM</h3>
+<p>L’idée maîtresse, et c’est elle qui vaut la lecture, est que servir
+un grand modèle de langage se découpe en deux phases aux goulets
+d’étranglement <strong>opposés</strong>. La phase de <em>prefill</em>
+(préremplissage) ingère tout le prompt d’un coup à travers toutes les
+couches du modèle : elle est <em>limitée par le calcul</em> — ce sont
+les unités arithmétiques du GPU qui saturent. La phase de
+<em>decode</em> (génération) produit les jetons un par un, une passe
+complète par jeton : elle est <em>limitée par la bande passante
+mémoire</em> — le GPU passe son temps à relire les poids du modèle
+depuis la mémoire pendant que ses unités de calcul tournent à vide.
+Entre les deux, le <em>cache KV</em> (les valeurs d’attention
+intermédiaires) est calculé une fois au prefill puis réutilisé à chaque
+jeton généré.</p>
+<p>Cette grille de lecture range d’un coup toutes les optimisations
+qu’on entend citer pêle-mêle. Le <em>batching</em> (entrelacer plusieurs
+requêtes) sacrifie la latence individuelle pour saturer le calcul. Le
+cache de préfixe réutilise le cache KV quand des prompts partagent un
+même début. La quantification (compresser les poids en 4–8 bits) attaque
+directement le mur mémoire du decode — annoncée à « 30 à 50 % » de gain.
+Le décodage spéculatif fait deviner plusieurs jetons par un petit
+modèle, vérifiés en une passe par le gros. Une fois qu’on sait
+<em>quel</em> goulet on attaque, on cesse de traiter toutes ces
+techniques comme interchangeables.</p>
+<p>⚠️ À calibrer : c’est un cadre conceptuel, pas un guide
+d’implémentation. Le « ~80 % de réduction de coût à grande échelle » est
+cité sans démonstration, et des termes attendus (paged attention,
+continuous batching) ne sont pas traités sous ces noms. Utile pour
+l’architecte qui veut la bonne carte mentale, pas pour l’ingénieur qui
+code le moteur. <strong>En pratique :</strong> le bon modèle mental pour
+raisonner sur le coût/latence d’un service d’inférence (y compris en
+local) — savoir si on est limité calcul ou mémoire avant de choisir une
+optimisation, exactement le même réflexe que pour tout code
+perf-critique en C++/Rust.</p>
+<h2 id="métier">🧭 Métier</h2>
+<ul>
+<li><code>métier</code> <strong>AI demands more engineering discipline.
+Not less</strong> · <a
+href="https://charity.wtf/2026/06/15/ai-demands-more-engineering-discipline-not-less-xpost/">lien</a>
+— Charity Majors retourne l’intuition : quand générer du code devient
+instantané et jetable, le goulet d’étranglement se déplace de
+<em>l’écriture</em> vers la <em>validation du comportement</em>. D’où un
+besoin accru d’observabilité, de spécifications explicites et de tests
+de caractérisation. Sa formule (citant Chad Fowler) : le code cesse
+d’être un actif et devient un <em>cache</em> — « une vue matérialisée de
+la compréhension, utile tant qu’à jour, jetable une fois périmée ».
+Réflexion sur la pratique du métier, pas du tout de l’angoisse « l’IA va
+nous remplacer ».</li>
+</ul>
+<h2 id="brèves">⚡ Brèves</h2>
+<ul>
+<li><code>IA</code> <strong>Running local models is good now</strong> ·
+<a
+href="https://vickiboykis.com/2026/06/15/running-local-models-is-good-now/">lien</a>
+— les modèles ouverts récents rendent enfin viable un flux de codage
+agentique en local sur une machine perso ; bon état des lieux
+pratique.</li>
+<li><code>IA</code> <strong>Dropbox : MCP + Dash pour combler le fossé
+design→code en sécurité</strong> · <a
+href="https://dropbox.tech/security/dropbox-mcp-dash-design-code-security">lien</a>
+— système agentique qui croise modèles de menace et revue de code pour
+signaler les écarts de sécurité ; un cas concret d’IA outillée plutôt
+que d’annonce de modèle.</li>
+<li><code>infra</code> <strong>Meshery</strong> · <a
+href="https://github.com/meshery/meshery">lien</a> — plateforme
+open-source de gestion d’infrastructure Kubernetes multi-cloud
+(visualisation, configuration, opérations).</li>
+<li><code>IA</code> <strong>Playbook d’Ankur Goyal pour le benchmarking
+piloté par agents et les évals</strong> · <a
+href="https://www.chatprd.ai/how-i-ai/ankur-goyals-playbook-for-agent-driven-benchmarking-and-ai-evals">lien</a>
+— utiliser des agents de code pour faire du banc d’essai d’infra et
+poser des exigences d’évaluation chiffrées.</li>
+</ul>
+</body>
+</html>
