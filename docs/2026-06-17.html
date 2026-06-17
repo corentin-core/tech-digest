@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-06-17</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-06-17</h1>
+</header>
+<h1 id="tech-digest-2026-06-17">📨 Tech Digest — 2026-06-17</h1>
+<h2 id="en-bref-scan-30s">🎯 En bref (scan 30s)</h2>
+<ol type="1">
+<li><p><code>perf</code> <strong>Diviser par 2 le temps des tests en
+arrêtant de rejouer les migrations SQL</strong> · ~10 min /
+gaultier.github.io · <a
+href="https://gaultier.github.io/blog/I_sped_up_the_test_suite_by_x2.html">lien</a>
+La plupart des tests ne veulent que le schéma final, mais chaque test
+reconstruit la base en rejouant toutes les migrations. L’astuce : garder
+en cache une base déjà migrée, nommée d’après l’empreinte de ses
+fichiers de migration.</p></li>
+<li><p><code>bdd</code> <strong>Colombie-Britannique, fuseaux horaires
+et Postgres</strong> · ~8 min / Crunchy Data · <a
+href="https://www.crunchydata.com/blog/british-columbia-and-time-zone-changes">lien</a>
+Quand une région supprime le changement d’heure, les rendez-vous futurs
+déjà stockés en <code>timestamptz</code> se décalent d’une heure dès que
+la base met à jour ses règles de fuseau. Conclusion contre-intuitive :
+pour une date future, UTC est la mauvaise façon de stocker.</p></li>
+<li><p><code>sécu</code> <strong>« Arrêtez d’utiliser les JWT »</strong>
+· ~6 min / samsch (gist) · <a
+href="https://gist.github.com/samsch/0d1f3d3b4745d778f78b230cf6061452">lien</a>
+Argumentaire technique contre les JWT comme mécanisme de session web :
+ils sont pensés pour des jetons très courts, et dès qu’on veut pouvoir
+invalider une session on recrée de l’état côté serveur — autant revenir
+au bon vieux cookie de session.</p></li>
+</ol>
+<h2 id="en-détail">📖 En détail</h2>
+<h3
+id="perf-diviser-par-2-le-temps-des-tests-en-arrêtant-de-rejouer-les-migrations-sql">1.
+<code>perf</code> Diviser par 2 le temps des tests en arrêtant de
+rejouer les migrations SQL</h3>
+<p>Le constat de départ est banal mais coûteux : presque tous les tests
+ne s’intéressent qu’au <strong>dernier</strong> état du schéma, pourtant
+chacun reconstruit sa base en rejouant l’intégralité de la chaîne de
+migrations. Sur une suite qui grossit, cette reconstruction finit par
+dominer le temps d’exécution — on paie des dizaines de fois le même
+travail déterministe.</p>
+<p>La solution repose sur de l’<strong>adressage par contenu</strong>
+(<em>content addressing</em> : identifier une donnée par l’empreinte de
+son contenu plutôt que par un nom arbitraire). On calcule un SHA256 de
+l’ensemble des fichiers de migration ; cette empreinte devient le nom
+d’une base « de référence » déjà migrée. Avant chaque test : si ce
+fichier existe, on le clone pour obtenir une base isolée ; sinon, on
+applique les migrations une seule fois sur une base temporaire puis on
+la renomme atomiquement vers le nom-empreinte. L’idée élégante, c’est
+que <strong>le nom du fichier <em>est</em> la version du schéma</strong>
+: il n’y a donc jamais d’invalidation de cache à gérer (le piège
+classique du cache). Une nouvelle migration change l’empreinte, ce qui
+déclenche de façon transparente la reconstruction — un cache périmé est
+structurellement impossible.</p>
+<p>Deux détails de mise en œuvre méritent l’attention. Le clonage passe
+par l’API <em>backup</em> de SQLite et non un simple <code>cp</code>,
+parce qu’une base SQLite active traîne des fichiers WAL (<em>write-ahead
+log</em>, le journal des écritures) et de la mémoire partagée qu’une
+copie brute corromprait. Et il n’y a <strong>aucun verrou</strong> pour
+la création concurrente : si deux tests fabriquent la base de référence
+en même temps, c’est accepté comme bénin, car le <code>rename(2)</code>
+atomique garantit qu’on obtient au final un fichier cohérent. C’est un
+bon exemple de concurrence « assumée » plutôt que verrouillée.</p>
+<p>Côté chiffres, l’auteur est honnête : le prototype (copie brute d’une
+base pré-migrée) montait à <strong>7×</strong>, mais l’implémentation de
+production plafonne à <strong>2,2×</strong>. L’écart n’est pas caché —
+il vient du calcul du SHA256, des opérations de renommage atomique et de
+l’API backup. Le titre annonce « 2× », ce qui est conforme au résultat
+réel : pas de survente. <strong>En pratique :</strong> transposable à
+tout backend dont la suite de tests est dominée par la mise en place de
+la base (chaînes de migrations longues sous <code>sqlx</code>/Diesel en
+Rust, ou tout ORM avec migrations versionnées) — le principe « le nom =
+la version » vaut bien au-delà de SQLite.</p>
+<h3 id="bdd-colombie-britannique-fuseaux-horaires-et-postgres">2.
+<code>bdd</code> Colombie-Britannique, fuseaux horaires et Postgres</h3>
+<p>Le piège est subtil et touche tout le monde un jour. Une colonne
+<code>timestamptz</code> de Postgres ne stocke <strong>pas</strong> un
+fuseau : elle stocke un instant en UTC, et le fuseau ne sert qu’à
+convertir à l’entrée et à la sortie. Tant que les règles de fuseau ne
+bougent pas, tout va bien. Mais quand une région change ses règles — ici
+la Colombie-Britannique qui abandonne le passage à l’heure d’hiver — la
+mise à jour de <code>tzdata</code> (la base des règles de fuseaux du
+système) réinterprète les anciens instants UTC avec les
+<strong>nouvelles</strong> règles.</p>
+<p>Concrètement : un rendez-vous saisi pour « 10h, novembre 2026,
+Vancouver » et enregistré <em>avant</em> la mise à jour se réaffichera à
+<strong>11h</strong> après. L’instant UTC en base n’a pas changé d’un
+iota ; c’est son interprétation locale qui a glissé. Pour des événements
+passés (logs, transactions), c’est exactement ce qu’on veut : l’instant
+UTC fait foi. Pour un rendez-vous <strong>futur</strong>, c’est
+l’inverse — ce qui compte, c’est l’intention « 10h heure locale », pas
+l’instant UTC calculé sous des règles qui peuvent encore changer.</p>
+<p>Le correctif recommandé est un patron à plusieurs colonnes :
+<code>local_time</code> (l’heure murale, en <code>timestamp</code> sans
+fuseau), <code>timezone_name</code> (l’identifiant IANA, ex.
+<code>America/Vancouver</code>), et <code>starts_at_utc</code>
+(recalculé par un <em>trigger</em>). Quand les règles changent, un
+trigger recalcule l’UTC à partir de l’intention locale, restée immuable
+:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">UPDATE</span> appointments</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SET</span> starts_at_utc <span class="op">=</span> local_time <span class="kw">AT</span> <span class="dt">TIME</span> <span class="dt">ZONE</span> timezone_name</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> timezone_name <span class="op">=</span> <span class="st">&#39;America/Vancouver&#39;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">AND</span> starts_at_utc <span class="op">&gt;</span> now();</span></code></pre></div>
+<p>La règle à retenir : <code>timestamptz</code> pour le
+<strong>passé</strong> (où l’instant UTC est la vérité), heure locale +
+fuseau stockés séparément pour le <strong>futur user-défini</strong>.
+L’article reste mesuré et précise lui-même que cette complexité
+supplémentaire « ne se paie que lorsqu’il faut préserver une intention
+locale future » — pas de survente. <strong>En pratique :</strong> tout
+backend qui planifie des événements futurs (ordonnancement, rappels,
+créneaux) — un piège classique en C++/Rust comme partout, indépendant du
+langage.</p>
+<h3 id="sécu-arrêtez-dutiliser-les-jwt">3. <code>sécu</code> « Arrêtez
+d’utiliser les JWT »</h3>
+<p>L’auteur aligne quatre objections techniques. (1) La spécification
+JWT vise des jetons à très courte durée de vie (~5 min) ; or une session
+a besoin de durer bien plus. (2) L’« absence d’état »
+(<em>stateless</em>) est un mythe dès qu’on veut révoquer : il faut
+alors une base pour invalider les jetons — donc on a recréé de l’état,
+et une session classique fait ça mieux. (3) Un JWT qui ne transporte
+qu’un identifiant de session est juste un cookie plus gros et moins
+souple, sans aucun gain. (4) La spec JWT elle-même a des pièges de
+sécurité connus (confusion d’algorithme, etc.) ; si on a vraiment besoin
+d’un jeton signé court, l’auteur recommande <strong>PASETO</strong> (une
+alternative aux JWT conçue pour être sûre par défaut, sans les options
+dangereuses).</p>
+<p>L’alternative proposée est le cookie de session classique : cookie
+<code>HttpOnly</code> + <code>Secure</code>, avec les données de session
+dans un magasin (Postgres, MySQL ou SQLite). L’avantage décisif est la
+<strong>révocation</strong> (invalidation) instantanée : supprimer la
+ligne en base coupe l’accès immédiatement. Avec un JWT, soit on
+maintient une liste de blocage (<em>denylist</em>) — ce qui détruit
+l’argument « stateless » — soit on attend l’expiration, en laissant un
+jeton volé valide entre-temps.</p>
+<p>L’argumentaire est solide pour une application web classique, mais
+étroit. Il ignore deux cas où le JWT garde du sens : l’authentification
+<strong>service-à-service</strong> (interne, où la révocation immédiate
+compte moins) et le patron <strong>jeton d’accès court + jeton de
+rafraîchissement</strong> qui répond justement à l’objection sur la
+durée de vie. ⚠️ Le titre « Arrêtez d’utiliser les JWT » est absolu et
+putaclic : la thèse réelle est plus étroite — « n’utilisez pas les JWT
+comme mécanisme de session d’une appli web classique ». Pour de l’auth
+entre services ou des API stateless, l’argument ne tient pas tel quel.
+<strong>En pratique :</strong> un choix d’architecture
+d’authentification pour un backend web (par ex.
+<code>axum</code>/<code>actix</code> en Rust) — la vraie question à se
+poser est « ai-je réellement besoin d’un état réparti, ou un magasin de
+sessions suffit-il ? ».</p>
+<h2 id="ouverture">🪟 Ouverture</h2>
+<ul>
+<li><code>ouverture</code> <strong>SVG et PDF peuvent tous deux être
+interactifs</strong> · <a
+href="https://vexlio.com/blog/svgs-and-pdfs-can-both-be-interactive/">lien</a>
+— Deux formats qu’on croit figés cachent un moteur d’exécution : un SVG
+peut embarquer du JavaScript (cercle déplaçable à la souris, mini-appli
+qui tourne hors-ligne dans un seul fichier) et un PDF sait faire pareil
+via les API pensées au départ pour les formulaires (rectangle qui
+s’aligne sur une grille). Des documents autonomes et « presque vivants »
+— et les chatbots récents commencent enfin à les générer à la
+demande.</li>
+</ul>
+<h2 id="brèves">⚡ Brèves</h2>
+<ul>
+<li><code>systèmes</code> <strong>Faire des requêtes HTTP depuis un
+conteneur avec <code>bash /dev/tcp</code></strong> · <a
+href="https://mareksuppa.com/til/bash-dev-tcp-http-without-curl/">lien</a>
+— La redirection TCP intégrée de bash (<code>/dev/tcp/hôte/port</code>)
+permet d’émettre une requête HTTP à la main, sans <code>curl</code> ni
+outil réseau — pratique pour déboguer dans une image minimale.</li>
+<li><code>devtool</code> <strong>LikeC4</strong> · <a
+href="https://github.com/likec4/likec4">lien</a> — Un langage dédié «
+architecture-as-code » qui génère des diagrammes d’architecture tenus à
+jour automatiquement depuis leur description, au lieu de schémas qui
+pourrissent dans un coin.</li>
+<li><code>sécu</code> <strong>Humiliating IIS servers for fun and jail
+time</strong> · <a
+href="https://mll.sh/humiliating-iis-servers-for-fun-and-jail-time/">lien</a>
+— Guide de bug bounty pour repérer mauvaises configurations et fuites
+d’information sur les serveurs IIS de Microsoft.</li>
+</ul>
+</body>
+</html>
