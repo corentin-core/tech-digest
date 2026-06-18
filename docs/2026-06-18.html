@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-06-18</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-06-18</h1>
+</header>
+<h1 id="tech-digest-18-juin-2026">📨 Tech Digest — 18 juin 2026</h1>
+<h2 id="en-bref-scan-30s">🎯 En bref (scan 30s)</h2>
+<ol type="1">
+<li><p><code>infra</code> <strong>Des navigateurs cloud 3× moins chers
+grâce à Firecracker</strong> · ~10 min / Browser Use · <a
+href="https://browser-use.com/posts/firecracker-browser-infra">lien</a>
+Ils font tourner chaque navigateur dans sa propre micro-machine
+virtuelle et descendent le coût à 0,02 $/h avec un démarrage sous la
+seconde. Surtout, un retour d’expérience très honnête sur l’optimisation
+mémoire bas niveau qui rend ça possible.</p></li>
+<li><p><code>rust</code> <strong>Dirge : rendre les petits modèles bon
+marché aussi utiles que les gros</strong> · ~12 min / yogthos.net · <a
+href="https://yogthos.net/posts/2026-06-08-dirge-code.html">lien</a> Un
+« harnais » de codage écrit en Rust qui compense les erreurs des modèles
+LLM économiques au lieu de payer pour de la puissance brute. La thèse :
+la qualité de l’outillage autour du modèle compte plus que la taille du
+modèle.</p></li>
+<li><p><code>devtool</code> <strong>Lore : Epic Games open-source un
+gestionnaire de versions pour gros binaires</strong> · ~8 min / GitHub ·
+<a href="https://github.com/EpicGames/lore">lien</a> Un système de
+gestion de versions écrit en Rust, pensé pour les dépôts mêlant code et
+énormes fichiers binaires (jeux, assets) — là où la combinaison Git +
+LFS finit par craquer.</p></li>
+</ol>
+<h2 id="en-détail">📖 En détail</h2>
+<h3
+id="infra-des-navigateurs-cloud-3-moins-chers-grâce-à-firecracker">1.
+<code>infra</code> Des navigateurs cloud 3× moins chers grâce à
+Firecracker</h3>
+<p>Browser Use loue des navigateurs Chrome « dans le cloud » à des
+agents IA. Le billet raconte comment ils sont passés de 0,06 $ à 0,02 $
+l’heure de session. Le choix d’architecture central est contre-intuitif
+: chaque navigateur tourne dans sa propre <em>micro-VM</em> Firecracker
+(une machine virtuelle ultra-légère, la même brique que les fonctions
+serverless d’AWS), mais ces micro-VM sont elles-mêmes imbriquées
+<strong>à l’intérieur</strong> d’instances EC2 classiques plutôt que sur
+des serveurs dédiés (<em>bare-metal</em>). On paie un surcoût de
+virtualisation imbriquée, mais on gagne un approvisionnement de machine
+en ~30 s et un coût de base bien plus bas — un arbitrage assumé et bien
+expliqué.</p>
+<p>Le cœur technique, et la vraie raison de lire l’article, c’est
+l’optimisation du démarrage. Reprendre une VM depuis un instantané
+(<em>snapshot</em>) coûtait 9,8 s. En passant la granularité de mappage
+mémoire de 4 Ko à 2 Mo (des <em>huge pages</em>) et en écrivant leur
+propre gestionnaire de défauts de page via <code>userfaultfd</code> (un
+mécanisme Linux qui laisse un programme en espace utilisateur décider
+quoi faire quand une page mémoire manque), ils font tomber le nombre de
+défauts de page de ~100 000 à ~1 100 par reprise — un facteur 91.
+Résultat : reprise de VM ramenée à 3,1 s. Ils ajoutent une gestion fine
+du CPU : cœurs virtuels laissés libres pendant le lancement puis
+épinglés (<em>pinned</em>) à des cœurs stables, plus une priorité temps
+réel, ce qui fait passer le taux d’échec d’un test à 1 000 navigateurs
+simultanés de 17 % à 0 %.</p>
+<p>Les chiffres sont concrets et reproductibles, et l’article ne cache
+pas ce qui reste lent : le démarrage de Chromium lui-même (545 ms) est
+désormais le goulet d’étranglement, sans solution encore implémentée. La
+leçon générale est solide : à grande échelle, quand on optimise
+simultanément coût et latence, ce sont les schémas d’accès mémoire et
+l’ordonnancement CPU qui décident — pas le choix d’infrastructure de
+haut niveau.</p>
+<p>⚠️ Putaclic partiel : le « 3× plus rapide ET moins cher » du titre ne
+tient que pour le coût (0,06 → 0,02 $). Côté vitesse, le gain est réel
+mais pas d’un facteur 3 de bout en bout (reprise VM 9,8 → 3,1 s).
+<strong>En pratique :</strong> la leçon <code>userfaultfd</code> +
+<em>huge pages</em> s’applique à tout système où le coût du démarrage à
+froid domine — bac à sable multi-locataire, fonctions serverless,
+runners de CI éphémères. Pertinent pour qui construit de l’isolation
+légère à grande échelle en Rust/C/C++.</p>
+<h3
+id="rust-dirge-rendre-les-petits-modèles-bon-marché-aussi-utiles-que-les-gros">2.
+<code>rust</code> Dirge : rendre les petits modèles bon marché aussi
+utiles que les gros</h3>
+<p>Dirge est un <em>harnais</em> de codage agentique (la couche qui
+orchestre un LLM pour qu’il écrive et corrige du code), écrit en Rust.
+Son pari : l’efficacité d’un agent vient surtout de la qualité de cette
+couche, pas de la taille du modèle — donc un modèle bon marché bien
+encadré pourrait rivaliser avec un gros. Concrètement, c’est une machine
+à états qui enveloppe le modèle avec trois niveaux d’intervention, et
+c’est cette architecture qui mérite le détour.</p>
+<p>Premier niveau, par tour de dialogue : validation syntaxique via
+<em>tree-sitter</em> (un analyseur de code) <strong>avant</strong> toute
+écriture de fichier, réparation des appels d’outils JSON malformés (y
+compris en allant repêcher un appel valide noyé dans le texte de
+raisonnement du modèle), coupe-circuits (<em>circuit breakers</em>) pour
+casser les boucles de re-tentatives, et escalade vers un modèle plus
+puissant en cas d’échec répété. Deuxième niveau, la gestion du contexte
+long : un « pliage de résumés structurés » (inspiré de MiMo-Code) qui
+fait des points de sauvegarde de la conversation avec des identifiants
+stables avant que la fenêtre de contexte ne sature, pour éviter que
+l’agent ne perde de vue son objectif au fil des re-résumés (<em>goal
+drift</em>). Troisième niveau, une mémoire entre sessions : un magasin
+de connaissances par projet dans SQLite avec recherche plein texte
+(FTS5), injection à deux étages (entrées « chaudes » dans le prompt
+système, index de raccourcis pour le reste) et élagage par décroissance
+de pertinence.</p>
+<p>Côté détails qui parlent à un ingénieur systèmes : ~8 Mo de RAM au
+repos contre ~300 Mo pour OpenCode, un binaire de ~30 Mo, et un système
+de greffons en Janet (un Lisp embarqué de 1 Mo) pour les points
+d’extension du cycle de vie — de l’extensibilité sans la lourdeur d’un
+protocole JSON-RPC. Utiliser SQLite comme mémoire d’agent plutôt que des
+fichiers markdown est un choix pragmatique qui passe mieux à
+l’échelle.</p>
+<p>⚠️ Putaclic : la thèse « les petits modèles cognent au-dessus de leur
+catégorie » repose entièrement sur des arguments d’architecture.
+<strong>Aucun</strong> benchmark comparatif (DeepSeek + Dirge contre
+Claude Code sur des tâches identiques) n’est fourni — la parité
+coût/performance reste affirmée, pas démontrée. <strong>En pratique
+:</strong> une bonne source d’idées pour qui veut bâtir des agents
+robustes en Rust : SQLite + FTS5 comme mémoire persistante,
+<em>tree-sitter</em> comme garde-fou avant écriture, coupe-circuits
+contre les boucles. Les patterns sont transférables même sans adopter
+l’outil.</p>
+<h3
+id="devtool-lore-epic-games-open-source-un-gestionnaire-de-versions-pour-gros-binaires">3.
+<code>devtool</code> Lore : Epic Games open-source un gestionnaire de
+versions pour gros binaires</h3>
+<p>Git gère mal les gros fichiers binaires, et le rustine habituelle
+(Git-LFS) impose un second système avec ses propres serveurs. Lore,
+publié par Epic Games sous licence MIT et écrit à 81,6 % en Rust,
+s’attaque au problème de front pour les dépôts de jeux où code et assets
+lourds cohabitent. C’est un système centralisé et adressé par contenu
+(<em>content-addressed</em>) : l’état du dépôt est représenté par des
+arbres de Merkle (une structure où chaque donnée est référencée par
+l’empreinte de son contenu) et une chaîne de révisions immuable.</p>
+<p>Quatre choix d’architecture portent la promesse. Le stockage par
+fragments (<em>chunked storage</em>) découpe les gros fichiers en
+morceaux réutilisables et indexés, ce qui déduplique automatiquement à
+travers l’historique et les branches. L’adressage par contenu renforce
+cette déduplication. L’hydratation à la demande fait que l’espace de
+travail ne télécharge que ce dont il a besoin, au lieu de rapatrier tout
+l’historique et tous les binaires d’emblée — c’est le point qui résout
+le vrai problème de passage à l’échelle de Git-LFS. Enfin, la chaîne de
+révisions est signée cryptographiquement (intégrité vérifiable,
+inviolable) et les branches sont légères, sans duplication de
+données.</p>
+<p>Face à Perforce (la référence propriétaire de l’industrie du jeu),
+Lore mise sur des standards ouverts tout en gardant les garanties de
+cohérence d’un modèle centralisé. Des SDK existent en JavaScript,
+Python, C# et Go. Réserve honnête : la documentation ne donne aucun
+chiffre de performance, donc impossible pour l’instant de juger le gain
+réel face à Perforce ou Git-LFS sur un gros dépôt. <strong>En pratique
+:</strong> au-delà du cas « jeux vidéo », les idées de moteur de
+stockage (adressage par contenu, déduplication par fragments,
+hydratation paresseuse) sont directement transposables à qui construit
+un magasin d’artefacts, un système de sauvegarde ou un pipeline d’assets
+volumineux en Rust/C++.</p>
+<h2 id="métier">🧭 Métier</h2>
+<ul>
+<li><code>métier</code> <strong>But yak shaving is fun</strong> · <a
+href="https://parksb.github.io/en/article/32.html">lien</a> — Une
+réflexion juste et nuancée sur le <em>yak shaving</em> : ces détours
+techniques de plus en plus lointains où l’on perd de vue l’objectif
+initial. Plutôt que de moraliser (« utilise les outils existants »),
+l’auteur reconnaît la valeur cognitive et créative de construire depuis
+zéro — avec l’exemple de Knuth créant langages, algorithmes et fontes
+pour composer un simple livre (TeX). Pour apprendre, le voyage
+tangentiel vaut souvent mieux que la destination.</li>
+</ul>
+<h2 id="ouverture">🪟 Ouverture</h2>
+<ul>
+<li><code>ouverture</code> <strong>Can gzip be a language
+model?</strong> · <a href="https://nathan.rs/posts/gzip-lm/">lien</a> —
+Compresser et prédire, c’est mathématiquement la même chose : alors
+pourquoi pas utiliser le bon vieux <code>gzip</code> comme modèle de
+langage ? L’astuce : une suite de texte « attendue » (qui fait écho à ce
+que gzip a déjà vu) se compresse en presque rien — on note donc les
+continuations candidates à leur taille compressée. Avec une recherche en
+faisceau (<em>beam search</em>) pour éviter le bruit, ça génère du
+faux-Shakespeare lisible, en Python pur, sans le moindre paramètre
+appris. Une curiosité élégante.</li>
+</ul>
+<h2 id="brèves">⚡ Brèves</h2>
+<ul>
+<li><code>infra</code> <strong>Cloudflare — Flue, des harnais d’agents
+sur Workers</strong> · <a
+href="https://blog.cloudflare.com/agents-platform-flue-sdk/">lien</a> —
+Cloudflare ouvre sa plateforme d’agents à davantage de harnais et
+frameworks, en commençant par Flue, exécutés directement sur
+Workers.</li>
+<li><code>IA</code> <strong>Eve (Vercel)</strong> · <a
+href="https://vercel.com/blog/introducing-eve">lien</a> — Framework
+d’agents open source avec exécution durable (<em>durable
+execution</em>), calcul en bac à sable et validation humaine dans la
+boucle. Côté infra agentique sérieuse, pas annonce de modèle.</li>
+<li><code>bdd</code> <strong>databow</strong> · <a
+href="https://github.com/columnar-tech/databow">lien</a> — Un outil en
+ligne de commande pour interroger n’importe quelle base compatible ADBC
+(l’interface standardisée d’accès aux bases en colonnes).</li>
+<li><code>devtool</code> <strong>Epiq</strong> · <a
+href="https://github.com/ljtn/epiq">lien</a> — Un gestionnaire de
+tickets entièrement stocké dans Git — vos issues vivent dans le dépôt,
+versionnées avec le code.</li>
+<li><code>bdd</code> <strong>DeltaDB (Zed)</strong> · <a
+href="https://zed.dev/deltadb">lien</a> — Une base de données qui permet
+de « rembobiner » jusqu’à n’importe quelle modification passée.</li>
+<li><code>culture</code> <strong>Image compression</strong> · <a
+href="https://www.makingsoftware.com/chapters/image-compression">lien</a>
+— Un chapitre clair sur les techniques de compression d’images, avec ou
+sans perte, et comment elles exploitent les limites de la perception
+visuelle humaine.</li>
+</ul>
+</body>
+</html>
