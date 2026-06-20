@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-06-20</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-06-20</h1>
+</header>
+<h1 id="tech-digest-vendredi-19-juin-2026">📨 Tech Digest — vendredi 19
+juin 2026</h1>
+<h2 id="en-bref-scan-30s">🎯 En bref (scan 30s)</h2>
+<ol type="1">
+<li><p><code>distribué</code> <strong>Alice est impatiente : pourquoi
+vos clients vivent une latence bien pire que vos métriques</strong> · ~6
+min / Marc Brooker · <a
+href="http://brooker.co.za/blog/2026/06/19/waiting.html">lien</a> Un
+utilisateur passe plus de temps à subir les requêtes lentes qu’à
+profiter des rapides : la lenteur qu’il <em>ressent</em> n’est donc pas
+la moyenne affichée sur votre tableau de bord, mais une valeur tirée
+vers le haut par la traîne. Votre métrique peut dire « 1 h » pendant que
+le client vit « 6 h » — les deux sont exacts.</p></li>
+<li><p><code>bdd</code> <strong>Une mémoire d’agent IA fiable et
+cloisonnée sur Elasticsearch</strong> · ~10 min / Elastic Search Labs ·
+<a
+href="https://www.elastic.co/search-labs/blog/agent-memory-elasticsearch">lien</a>
+Comment stocker la mémoire d’un agent (ce qu’il sait de chaque
+utilisateur) dans Elasticsearch sans que les données d’un client fuitent
+chez un autre, avec un retour mesuré de 89 % de pertinence. Un cas
+concret et chiffré de recherche hybride + cloisonnement multi-locataire,
+au-delà du marketing « RAG ».</p></li>
+<li><p><code>langage</code> <strong>« Je déteste les compilateurs » : la
+galère des builds reproductibles</strong> · ~7 min / Xe Iaso · <a
+href="https://xeiaso.net/notes/2026/anubis-wasm-vendor-binary/">lien</a>
+Obtenir un binaire <em>bit-pour-bit identique</em> à chaque compilation
+— pour qu’un utilisateur puisse vérifier ce qu’il télécharge — est bien
+plus dur qu’il n’y paraît : le compilateur lui-même introduit des
+variations. Récit précis des trois pièges rencontrés et de leurs
+contournements.</p></li>
+</ol>
+<h2 id="en-détail">📖 En détail</h2>
+<h3 id="distribué-alice-est-impatiente">1. <code>distribué</code> Alice
+est impatiente</h3>
+<p>Le billet part d’un paradoxe : votre supervision affiche une latence
+moyenne de 100 ms, mais Alice, votre utilisatrice, jurerait qu’elle
+attend une seconde à chaque fois. Les deux mesures sont justes. La
+raison s’appelle le <strong>paradoxe de l’inspection</strong>
+(<em>inspection paradox</em> — le même phénomène qui fait qu’à un arrêt
+de bus on tombe presque toujours sur un intervalle d’attente plus long
+que l’intervalle moyen entre deux bus). Un client cumule du temps
+d’attente <em>proportionnellement à la durée</em> de chaque requête : il
+passe mécaniquement beaucoup plus de temps à patienter sur les requêtes
+lentes que sur les rapides. La moyenne qu’il <em>vit</em> n’est donc pas
+la moyenne des requêtes, mais une moyenne pondérée par la durée —
+formellement <code>E[X] + Var(X)/E[X]</code>. Traduction : plus la
+variance de vos temps de réponse est grande, plus l’écart entre « ce que
+mesure le serveur » et « ce que ressent le client » explose. Une queue
+de distribution épaisse suffit à creuser un gouffre.</p>
+<p>L’exemple le plus parlant porte sur le temps de rétablissement après
+panne (MTTR). Prenez un service dont la médiane de rétablissement est de
+30 min et le p99 de 600 min : le MTTR « rapporté » tourne autour de 60
+min, mais la durée de panne <em>moyenne réellement subie par un
+client</em> est d’environ 360 min — six heures. Le chiffre que vous
+présentez en revue d’incident (« on s’est rétabli en une heure ») et le
+vécu client (« c’était mort toute l’après-midi ») divergent d’un facteur
+six, sans que personne ne mente.</p>
+<p>L’insight non-évident est dans la dernière nuance : pour la latence
+requête-par-requête, on peut parfois masquer la traîne par des nouvelles
+tentatives (<em>retries</em>) côté client. Pour une panne, ce camouflage
+est impossible — le client subit la durée entière, il n’y a rien à
+réessayer. C’est pourquoi les statistiques tronquées (moyennes élaguées,
+médianes) sont trompeuses ici : elles gomment précisément la
+<em>forme</em> de la distribution, qui est ce qui détermine l’impact
+réel. La formule suppose des distributions à longue traîne (type
+lognormale) ; les systèmes réels varient, mais la direction de l’effet,
+elle, est robuste. <strong>En pratique :</strong> raison de plus pour
+piloter sur le p99/p99.9 et la variance plutôt que sur la moyenne —
+pertinent pour tout backend temps réel ou service sous SLA, et pour la
+façon de présenter un post-mortem de panne honnêtement.</p>
+<h3 id="bdd-une-mémoire-dagent-ia-cloisonnée-sur-elasticsearch">2.
+<code>bdd</code> Une mémoire d’agent IA cloisonnée sur
+Elasticsearch</h3>
+<p>L’architecture découpe la mémoire en <strong>trois index</strong>
+calqués sur la psychologie cognitive, chacun avec son propre cycle de
+vie : <em>épisodique</em> (événements horodatés, à décroissance rapide),
+<em>sémantique</em> (faits stables sur l’utilisateur — appareils
+possédés, lieux), et <em>procédural</em> (playbooks de dépannage
+multi-étapes, avec compteurs de succès/échec). Cette séparation n’est
+pas cosmétique : l’épisodique s’écrit en continu et s’efface, le
+sémantique se cure et se remplace, le procédural accumule du retour
+d’expérience. Gérer trois durées de vie dans une seule structure aurait
+été un cauchemar.</p>
+<p>La récupération est un pipeline hybride en deux temps. D’abord une
+<strong>sur-récupération</strong> : on lance en parallèle une recherche
+lexicale classique (BM25, le scoring par mots-clés historique
+d’Elasticsearch) <em>et</em> une recherche vectorielle dense
+(plongements Jina v5, qui capturent le sens), puis on fusionne les deux
+classements par RRF (<em>reciprocal rank fusion</em> — une méthode qui
+combine deux listes ordonnées en une seule sans avoir à calibrer les
+scores entre elles), 80 candidats par voie. Ensuite un
+<strong>re-classement</strong> par <em>cross-encoder</em> (un modèle qui
+note chaque paire question-document conjointement, plus précis mais plus
+coûteux, d’où son emploi seulement sur la liste courte). Par-dessus se
+greffent une décroissance temporelle (courbe gaussienne, demi-vie de
+1825 jours) et un coup de pouce à l’usage
+(<code>1 + log10(1 + use_count) × poids</code>) — les souvenirs récents
+et souvent utiles remontent.</p>
+<p>Le cloisonnement entre clients (le point critique d’une mémoire
+multi-locataire) est traité côté serveur par <strong>Document-Level
+Security</strong> : chaque utilisateur reçoit une clé API dont le rôle
+embarque une requête qui ne laisse voir que ses propres documents ; le
+catalogue partagé se distingue par l’absence de champ
+<code>user_id</code>. Résultat mesuré : <strong>rappel@10 de 0,89 en
+moyenne</strong> sur 168 questions — c’est-à-dire que sur les 10
+documents remontés, 89 % des documents réellement pertinents sont
+présents (épisodique ~0,98, procédural 1,0, sémantique ~0,81, ce dernier
+pénalisé par les collisions entre entités proches). Et <strong>zéro
+fuite inter-client</strong> observée.</p>
+<p>Le détail d’ingénierie le plus instructif : la visibilité « dans le
+même tour » (écrire un souvenir puis devoir le relire à l’appel d’outil
+suivant) est réglée par un <code>refresh=True</code> à chaque écriture,
+qui force le rafraîchissement du <em>shard</em> avant la lecture. C’est
+un arbitrage assumé — on sacrifie du débit pour la correction, ce qui
+est acceptable dans un contexte conversationnel à faible volume, et
+malhonnête à généraliser à du gros débit. Le billet reste transparent
+sur ses limites (collisions sémantiques, pondération par succès « pas
+encore branchée », benchmark LoCoMo repoussé). <strong>En pratique
+:</strong> directement utile pour concevoir une couche mémoire/RAG
+cloisonnée multi-locataire ; et plus largement, la leçon « mettez le
+cloisonnement dans la config du cluster, pas dans la logique applicative
+» et « unifiez recherche, décroissance et ranking dans une seule requête
+» vaut pour tout usage d’Elasticsearch/OpenSearch.</p>
+<h3 id="langage-je-déteste-les-compilateurs">3. <code>langage</code> «
+Je déteste les compilateurs »</h3>
+<p>Le besoin de départ est précis : compiler <code>wasm2js</code> (un
+transpileur WebAssembly → JavaScript) de façon
+<strong>reproductible</strong>, c’est-à-dire produire un binaire
+octet-pour-octet identique à chaque build, pour qu’un utilisateur puisse
+vérifier que le binaire distribué correspond bien au code source.
+Surprise : à entrée identique, le compilateur ne rend pas toujours la
+même sortie. Le billet déroule trois sources de non-déterminisme, et
+c’est là tout son intérêt — du concret, pas une diatribe.</p>
+<p>Premier piège : <strong>clang appelle silencieusement
+<code>wasm-opt</code></strong> trouvé dans le <code>$PATH</code>. Une
+version différente de cet outil annexe = une sortie différente (ici, des
+échecs sur les instructions de gestion d’exceptions WASM). Correctif :
+passer <code>--no-wasm-opt</code> à l’édition de liens pour couper cet
+appel implicite. Deuxième piège, le plus subtil : la <strong>génération
+de code sensible aux adresses mémoire</strong>. LLVM ordonne les
+instructions des blocs <code>try_table</code> en fonction de valeurs de
+pointeurs brutes — donc de l’emplacement mémoire du processus — d’où ~29
+octets de variation d’un build à l’autre et des différences entre
+architectures. Correctifs : désactiver l’ASLR (<em>Address Space Layout
+Randomization</em>, la randomisation des adresses faite par l’OS pour la
+sécurité) via <code>setarch --addr-no-randomize</code>, et accepter de
+maintenir des sommes SHA256 <em>séparées par architecture</em> (x86_64
+vs arm64) plutôt que de viser une repro cross-archi illusoire. Troisième
+piège, l’évidence qui mord quand même : les macros
+<code>__DATE__</code>/<code>__TIME__</code>, qui injectent l’horodatage
+de compilation.</p>
+<p>La leçon pour un ingénieur systèmes : la reproductibilité ne se
+limite pas à figer source + options du compilateur. Il faut aussi
+contrôler les invocations d’outils <em>implicites</em>, les effets de la
+disposition mémoire, et l’ASLR — autant de variables qu’on n’imagine pas
+spontanément. ⚠️ Le titre « I Hate Compilers » survend (un peu) : ce
+n’est pas une charge de fond contre les compilateurs, mais un retour
+d’expérience ciblé sur la repro. Titre honnête : « pourquoi les builds
+reproductibles sont plus durs que prévu ». <strong>En pratique
+:</strong> pertinent pour qui distribue des binaires vérifiables (enjeu
+de chaîne d’approvisionnement / <em>supply chain</em>) ou debugue des
+écarts de build entre architectures en C/C++/Rust/WASM.</p>
+<h2 id="brèves">⚡ Brèves</h2>
+<ul>
+<li><code>distribué</code> <strong>Architecture en cellules pour des
+paiements résilients (American Express)</strong> · <a
+href="https://americanexpress.io/cell-based-architecture-for-resilient-payment-systems/">lien</a>
+— chaque « cellule » est un domaine de panne autonome (ses propres
+services + base de données) ; un routeur global interdit les appels
+cellule-à-cellule, et une transaction touchée est <em>redémarrée</em>
+dans une cellule saine (pas reprise), grâce à des identifiants
+idempotents. Pattern solide, mais zéro chiffre de performance et
+l’article admet que leurs vieux designs « précédaient le terme ».</li>
+<li><code>sécu</code> <strong>~10 000 dépôts GitHub piégés au cheval de
+Troie</strong> · <a
+href="https://orchidfiles.com/github-repositories-distributing-malware/">lien</a>
+— des clones de vrais dépôts (historique de commits préservé pour la
+crédibilité), avec commits supprimés/re-poussés en boucle pour passer
+sous les algorithmes de détection, et un lien vers une archive zip
+contenant le chargeur malveillant. ⚠️ Le « 10 000 » survend : c’est 25 %
+des 40 000 dépôts signalés, l’ampleur réelle reste non mesurée, et
+l’auteur n’a même pas analysé ce que fait l’exécutable. Rappel utile :
+GitHub ne scanne ni les archives ni les exécutables.</li>
+<li><code>distribué</code> <strong>The Outbox Pattern</strong> · <a
+href="https://www.jakeworth.com/tils/the-outbox-pattern/">lien</a> —
+piqûre de rappel courte sur le pattern <em>outbox</em> : écrire
+l’événement à publier dans la <em>même</em> transaction de base que le
+changement d’état métier, puis laisser un relais le publier ; on évite
+ainsi le cas « état committé mais événement perdu » en
+microservices.</li>
+<li><code>devtool</code> <strong>OAuth « zéro-friction » pour MCP (auth
+gérée par l’entreprise)</strong> · <a
+href="https://blog.modelcontextprotocol.io/posts/enterprise-managed-auth/">lien</a>
+— extension désormais stabilisée du protocole MCP permettant un SSO
+centralisé via le fournisseur d’identité de l’entreprise. À connaître si
+l’on déploie des serveurs MCP en contexte pro.</li>
+</ul>
+</body>
+</html>
