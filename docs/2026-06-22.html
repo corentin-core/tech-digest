@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-06-22</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-06-22</h1>
+</header>
+<h1 id="tech-digest-hebdo-1522-juin-2026">📨 Tech Digest [hebdo] — 15–22
+juin 2026</h1>
+<h2 id="en-bref-scan-30s">🎯 En bref (scan 30s)</h2>
+<ol type="1">
+<li><code>rust</code> <strong>zlib-rs débarque dans Firefox</strong> ·
+~8 min / Trifecta Tech · <a
+href="https://trifectatech.org/blog/zlib-rs-in-firefox/">lien</a> Une
+réécriture complète en Rust de zlib (la bibliothèque de compression gzip
+présente à peu près partout) est livrée dans Firefox 151. Plus rapide
+que l’original — et son contrôle des bornes a au passage attrapé un vrai
+bug <em>matériel</em> de processeur Intel.</li>
+<li><code>langage</code> <strong>Project Valhalla : dix ans de travail
+arrivent dans Java 28</strong> · ~10 min / JVM Weekly · <a
+href="https://www.jvm-weekly.com/p/project-valhalla-explained-how-a">lien</a>
+Java gagne (en préversion) les « value classes » : des objets sans
+identité que la JVM peut aplatir en mémoire pour supprimer allocations
+et sauts de pointeur. C’est le data-oriented design qui rejoint enfin la
+JVM.</li>
+<li><code>bdd</code> <strong>ClickHouse : de la recherche plein-texte
+qui marche sur S3</strong> · ~9 min / ClickHouse · <a
+href="https://clickhouse.com/blog/clickhouse-full-text-search-object-storage">lien</a>
+Sur du stockage objet, les petites lectures aléatoires coûtent cher.
+ClickHouse a refondu son index de recherche pour ne plus faire
+<em>que</em> des accès séquentiels — et l’astuce repose sur une
+observation toute simple de la distribution des mots.</li>
+<li><code>rust</code> <strong>Du SIMD « sûr » en Rust, jusque dans les
+entrailles</strong> · ~12 min / shnatsel · <a
+href="https://shnatsel.medium.com/safe-simd-in-rust-even-on-the-inside-c6f1ff381828">lien</a>
+Comment écrire du calcul vectoriel (une instruction qui traite plusieurs
+nombres d’un coup) sans parsemer le code de blocs <code>unsafe</code> :
+une astuce de typage concentre tout le risque en un seul endroit
+auditable une fois pour toutes.</li>
+</ol>
+<h2 id="en-détail">📖 En détail</h2>
+<h3 id="rust-zlib-rs-débarque-dans-firefox">1. <code>rust</code> zlib-rs
+débarque dans Firefox</h3>
+<p>zlib-rs réimplémente en Rust le codec <em>deflate</em>/gzip —
+l’algorithme de compression sans perte le plus omniprésent du logiciel
+(HTTP, fichiers <code>.gz</code>, formats d’archives…). Après deux ans
+de développement, il est intégré à Firefox 151 pour la décompression
+gzip. L’intégration n’a pas été triviale : les sorties bit-à-bit
+diffèrent légèrement selon les niveaux de compression, ce qui a obligé à
+réécrire des tests du navigateur qui vérifiaient des octets exacts, et
+les symboles ont dû être préfixés (<code>MOZ_Z_inflate</code>) pour
+éviter les collisions avec d’autres copies de zlib.</p>
+<p>Les chiffres, mesurés face au zlib d’origine (celui livré avec
+CPython) : ~5,7× plus rapide sur 1 Ko, et de l’ordre de <strong>20 à 32×
+plus rapide</strong> sur des blocs de 64 Ko à 10 Mo. Autrement dit, sur
+des charges réalistes, ce n’est pas un gain de quelques pourcents mais
+quasiment un ordre de grandeur. La nuance, essentielle : la comparaison
+se fait contre le zlib <em>historique non optimisé</em>. Sur aarch64
+(Apple Silicon), où il existe déjà des implémentations finement
+optimisées, l’écart se réduit nettement.</p>
+<p>L’histoire la plus intéressante est un bug <em>matériel</em>. Sur les
+processeurs Intel Raptor Lake, le codage de Huffman de zlib-rs plantait
+: LLVM émettait une instruction
+(<code>mov byte ptr [rsi + rdi + 1], ch</code>) que le CPU exécutait
+parfois mal, écrivant de mauvais bits de registre. Le contrôle des
+bornes de Rust a transformé ce qui aurait été une <strong>corruption de
+données silencieuse</strong> (en C) en une panique détectable. Le
+correctif a forcé une autre génération d’assembleur via un petit bloc
+<code>unsafe</code>. La leçon non-évidente : la sûreté mémoire n’a pas «
+corrigé » le bug matériel, mais elle l’a rendu visible au lieu de le
+laisser pourrir les données.</p>
+<p>⚠️ Le ton (« la vitesse est presque ridicule ») survend un peu : les
+~28× sont mesurés contre un zlib <em>non optimisé</em> ; face à zlib-ng
+(déjà optimisé) ou sur ARM, le gain est bien plus modeste. <strong>En
+pratique :</strong> un cas d’école pour qui évalue le remplacement d’une
+bibliothèque C critique (compression, parsing) par un équivalent Rust —
+gain de perf réel sur x86_64, et surtout robustesse face aux bugs de bas
+niveau.</p>
+<h3
+id="langage-project-valhalla-dix-ans-de-travail-arrivent-dans-java-28">2.
+<code>langage</code> Project Valhalla : dix ans de travail arrivent dans
+Java 28</h3>
+<p>Les <em>value classes</em> sont des objets <strong>sans
+identité</strong> : deux valeurs aux champs identiques sont considérées
+comme interchangeables, et non comme deux instances distinctes. On les
+déclare avec le mot-clé <code>value</code>. Le slogan du projet résume
+l’ambition : « ça s’écrit comme une classe, ça marche comme un
+<code>int</code> ». L’intérêt n’est pas syntaxique mais mémoire :
+libérée de l’obligation de distinguer chaque instance, la JVM peut
+ranger ces objets bien plus efficacement.</p>
+<p>Deux mécanismes concrets. La <strong>scalarisation</strong> : le
+compilateur à la volée (JIT) éclate la référence en ses champs et
+supprime l’indirection par pointeur — un <code>Color</code> devient
+trois octets (r, g, b) plus un drapeau pour le <code>null</code>. Et
+l’<strong>aplatissement du tas</strong> (<em>heap flattening</em>) : un
+tableau <code>Point[]</code> stocke les valeurs de façon contiguë, au
+lieu d’un tableau de pointeurs vers des objets éparpillés — ce qui
+élimine les en-têtes d’objet et le <em>pointer-chasing</em> (sauter de
+pointeur en pointeur en mémoire).</p>
+<p>Le vrai enjeu, c’est la <em>localité de cache</em>. Le processeur lit
+la mémoire par blocs (les « lignes de cache », typiquement 64 octets) :
+si les données sont denses et ordonnées, une seule lecture en ramène des
+dizaines d’utiles d’un coup, au lieu de provoquer un défaut de cache à
+chaque saut de pointeur. Pour du code qui brasse beaucoup de données,
+l’article parle de gains « en multiples, pas en pourcentages » — mais
+sans chiffre précis. Les limites sont nombreuses et structurantes :
+l’aplatissement est pour l’instant cantonné aux valeurs tenant sur ~64
+bits (opération atomique) ; le <code>null</code> reste autorisé (les
+types non-nullables viendront dans un futur JEP) ; et l’effacement de
+type (<em>type erasure</em>) défait l’aplatissement dans une
+<code>ArrayList&lt;Point&gt;</code> — il faudra attendre les
+<em>generics</em> spécialisés, prévus des années plus tard.</p>
+<p>⚠️ « Une décennie de travail arrive » est exact mais trompeur : ce
+n’est que la <strong>première tranche</strong> (JEP 401, en préversion,
+derrière <code>--enable-preview</code>). Le Valhalla complet — types
+non-null, generics spécialisés, encodages 128 bits — reste lointain.
+<strong>En pratique :</strong> utile pour qui optimise du code JVM
+orienté données (tableaux denses de petites valeurs). Conceptuellement,
+c’est exactement la même bataille contre le <em>pointer-chasing</em> que
+le data-oriented design qu’on pratique déjà en C++/Rust (tableaux de
+structs contigus plutôt que pointeurs dispersés).</p>
+<h3 id="bdd-clickhouse-de-la-recherche-plein-texte-qui-marche-sur-s3">3.
+<code>bdd</code> ClickHouse : de la recherche plein-texte qui marche sur
+S3</h3>
+<p>Le point de départ est une contrainte physique : sur du stockage
+objet (S3 et consorts), une petite lecture <em>aléatoire</em> coûte très
+cher en latence, alors que la bande passante, elle, est abondante —
+l’inverse exact d’un SSD local. Or un index plein-texte classique (un
+index inversé : « pour chaque mot, la liste des documents qui le
+contiennent ») multiplie justement les petites lectures dispersées.
+ClickHouse a donc refondu son index pour ne plus faire
+<strong>que</strong> des accès séquentiels.</p>
+<p>Trois composants. Des <strong>blocs de dictionnaire</strong> : les
+mots, triés alphabétiquement, sont regroupés par paquets de 512 et
+compressés par <em>front-coding</em> (on ne stocke que ce qui change
+d’un mot au suivant : longueur du préfixe commun + suffixe). Un
+<strong>index clairsemé</strong> gardé en mémoire : il associe le
+premier mot de chaque bloc à sa position sur le disque, ce qui permet de
+localiser le bon bloc par recherche binaire sans lire tout le
+dictionnaire. Et des <strong>listes d’occurrences</strong> à
+représentation adaptative selon la rareté du mot : un <em>Roaring
+Bitmap</em> (structure d’ensemble compressée) au-delà de 12 lignes, des
+entiers à longueur variable entre 7 et 12, et — le coup malin — les
+identifiants de lignes <strong>directement embarqués</strong> dans
+l’entrée du dictionnaire pour 6 lignes ou moins.</p>
+<p>Pourquoi ce dernier cas compte tant ? Parce que sur leurs jeux de
+données réels, <strong>90 à 95 % des mots n’apparaissent que dans 6
+lignes ou moins</strong>. Embarquer ces minuscules listes supprime donc
+une couche entière d’entrées-sorties pour l’écrasante majorité des mots.
+C’est l’insight transférable : comprendre la <em>distribution</em>
+réelle des données (ici l’asymétrie de cardinalité des mots) permet de
+supprimer de l’indirection là où ça compte vraiment. Côté chiffres, un
+seul <em>benchmark</em> est donné : sur 10 millions de lignes, une
+recherche de tags passe de 0,198 s sans index à 0,027 s avec, soit ≈
+<strong>7,3×</strong> — mais uniquement sur des tags, et l’article
+reconnaît honnêtement ses trous : pas de comparaison avec Elasticsearch
+(promise « plus tard »), négations (<code>!=</code>,
+<code>NOT LIKE</code>) non gérées, recherche de phrases absente, et les
+regex complexes retombent en scan complet.</p>
+<p><strong>En pratique :</strong> le principe vaut bien au-delà de
+ClickHouse — concevoir un index ou un format pour du stockage objet
+exige un design fondamentalement différent du SSD local (séquentiel
+d’abord, lectures aléatoires bannies). Pertinent pour quiconque bâtit du
+stockage ou un moteur de requêtes au-dessus de S3.</p>
+<h3 id="rust-du-simd-sûr-en-rust-jusque-dans-les-entrailles">4.
+<code>rust</code> Du SIMD « sûr » en Rust, jusque dans les
+entrailles</h3>
+<p>Le SIMD (<em>Single Instruction, Multiple Data</em> : une seule
+instruction qui traite huit nombres flottants d’un coup, par exemple)
+est la clé des noyaux de calcul rapides. En Rust, les intrinsèques SIMD
+sont marqués <code>unsafe</code>, pour une bonne raison : appeler une
+instruction AVX2 sur un processeur qui ne la possède pas est un
+comportement indéfini (plantage, ou pire). La pratique courante consiste
+à parsemer le code de blocs <code>unsafe</code> — difficiles à auditer
+et faciles à mal utiliser.</p>
+<p>L’astuce de l’article : des <strong>« jetons de capacité »
+CPU</strong>. Ce sont des types de taille nulle (ils n’occupent aucun
+octet à l’exécution) et <em>infalsifiables</em> : le seul moyen d’en
+obtenir un est d’appeler une fonction qui vérifie réellement, au
+démarrage, que le processeur supporte l’instruction visée. Posséder le
+jeton constitue donc une <em>preuve</em>, vérifiée par le système de
+types, que la fonctionnalité est disponible. Les types SIMD génériques
+(un <code>f32x8&lt;L: Level&gt;</code>, par exemple) embarquent ce jeton
+et implémentent les opérateurs ; dès lors, écrire <code>a + b</code> est
+<em>sûr</em> côté utilisateur, sans le moindre <code>unsafe</code>
+exposé. Tout le <code>unsafe</code> est concentré dans une unique macro,
+auditée une fois — la surface de revue passe de centaines de blocs
+éparpillés à un seul endroit (Rust suit désormais les
+<code>target_feature</code>, depuis la version 1.87).</p>
+<p>Le piège est dans la performance : <code>a + b</code> doit être
+appelé depuis une fonction annotée <code>#[inline(always)]</code> ou
+<code>#[target_feature]</code>, faute de quoi « les perfs s’effondrent »
+— c’est l’<em>inlining</em> qui évite au compilateur de réintroduire des
+vérifications coûteuses. C’est une discipline d’annotation facile à
+oublier, et l’article ne fournit aucun chiffre pour quantifier ni le
+gain ni la chute.</p>
+<p>⚠️ Le titre (« sûr, jusque dans les entrailles ») promet un confort
+total, mais la contrainte d’<em>inlining</em> — sans laquelle les
+performances tombent au plancher — n’est évoquée que tardivement, et
+l’absence de tout <em>benchmark</em> sur un sujet de performance reste
+une lacune. <strong>En pratique :</strong> pertinent pour qui écrit des
+noyaux vectorisés en Rust (traitement de signal, parsing haute
+performance, encodage/décodage) et cherche à contenir la dette
+<code>unsafe</code> sans sacrifier la vitesse.</p>
+<h2 id="métier">🧭 Métier</h2>
+<ul>
+<li><code>métier</code> <strong>Mettre fin à Fornjot</strong> · <a
+href="https://fornjot.app/blog/shutting-down-fornjot/">lien</a> — Hanno
+Braun arrête après ~6 ans son noyau de CAO (modélisation 3D) écrit en
+Rust, et en tire des leçons rares de lucidité. Avoir cherché le
+sponsoring trop tôt l’a piégé : « j’avais vendu un rêve » plutôt qu’un
+produit, d’où des années de tension entre attentes et réalité. Le
+tout-incrémental fut une impasse — il aurait fallu <em>prototyper
+vite</em> en parallèle, pas seulement améliorer lentement. Et sa pire
+erreur : les demi-mesures, à osciller entre engagement total et projet
+annexe au lieu de trancher. Une réflexion honnête sur le courage de
+décider, et sur l’abîme entre <em>énoncer</em> une erreur et
+<em>l’éviter</em> en pratique.</li>
+</ul>
+<h2 id="ouverture">🪟 Ouverture</h2>
+<ul>
+<li><code>ouverture</code> <strong>Mechanical Watch</strong> · <a
+href="https://ciechanow.ski/mechanical-watch/">lien</a> — Bartosz
+Ciechanowski explique, avec des animations interactives d’une clarté
+stupéfiante, comment fonctionne une montre mécanique : du ressort moteur
+à l’échappement qui découpe le temps en battements réguliers, en passant
+par le balancier et le rouage. Zéro électronique, juste de la mécanique
+de précision rendue limpide. À manipuler tranquillement — un des plus
+beaux objets pédagogiques du web.</li>
+</ul>
+<h2 id="brèves">⚡ Brèves</h2>
+<ul>
+<li><code>rust</code> <strong>Iroh 1.0</strong> · <a
+href="https://www.iroh.computer/blog/v1">lien</a> — La bibliothèque de
+réseau pair-à-pair en Rust (on « compose » une clé cryptographique au
+lieu d’une adresse IP, et la connexion se fait en direct malgré les
+pare-feux) atteint la 1.0, avec une garantie de stabilité du protocole
+réseau. ⚠️ Billet surtout marketing : zéro <em>benchmark</em> (latence,
+débit, taux de réussite des connexions), et les relais qu’on ne contrôle
+pas restent dans la boucle.</li>
+<li><code>rust</code> <strong>Pourquoi les CVE de sécurité mémoire
+diffèrent entre Rust et C/C++</strong> · <a
+href="https://kobzol.github.io/rust/2026/06/15/how-memory-safety-cves-differ-between-rust-and-c-cpp.html">lien</a>
+— Comparer les <em>nombres</em> de CVE des deux mondes induit en erreur,
+car ils mesurent des choses différentes : en C, on signale un
+<em>mauvais usage</em> précis d’une API ; en Rust, on signale qu’une API
+<em>sûre</em> puisse mener à un bug mémoire sans <code>unsafe</code>
+côté appelant — un critère bien plus strict. Pas un seul chiffre, mais
+un cadrage juste et nuancé sur la notion de « responsabilité
+structurelle ».</li>
+<li><code>sécu</code> <strong>De l’assembleur en ligne à sûreté mémoire
+(Fil-C)</strong> · <a href="https://fil-c.org/inlineasm">lien</a> —
+Fil-C (compilateur C/C++ à sûreté mémoire) sait désormais valider les
+blocs d’<code>asm</code> en ligne : il vérifie que les instructions ne
+touchent que les registres déclarés et fait paniquer à l’exécution
+sinon. Couvre ~400 instructions pré-AVX512 (crypto à temps constant,
+détection de fonctionnalités CPU). ⚠️ La revendication « premier au
+monde » est forte alors que l’assembleur qui accède à la mémoire reste
+hors champ et que la validation est seulement à l’exécution.</li>
+<li><code>langage</code> <strong>OCaml 5.5.0</strong> · <a
+href="https://discuss.ocaml.org/t/ocaml-5-5-0-released/18265">lien</a> —
+Nouvelle version du langage fonctionnel, qui poursuit la consolidation
+de son support du parallélisme et de la concurrence (runtime
+multicœur).</li>
+<li><code>bdd</code> <strong>Dix ans de ClickHouse en open
+source</strong> · <a
+href="https://clickhouse.com/blog/open-source-10">lien</a> —
+Rétrospective de la base analytique en colonnes : d’un projet interne de
+Yandex à un standard de l’OLAP haute performance. Lecture
+culture/écosystème pour qui s’intéresse aux moteurs de requêtes.</li>
+<li><code>distribué</code> <strong>Borg, Omega et Kubernetes
+(2016)</strong> · <a
+href="https://queue.acm.org/detail.cfm?id=2898444">lien</a> — Le
+classique de Google sur dix ans de leçons tirées de trois systèmes de
+gestion de conteneurs. Toujours la meilleure porte d’entrée pour
+comprendre <em>pourquoi</em> Kubernetes est conçu comme il l’est.</li>
+<li><code>IA</code> <strong>Faire tourner des modèles en local, c’est
+bon maintenant</strong> · <a
+href="https://vickiboykis.com/2026/06/15/running-local-models-is-good-now/">lien</a>
+— Retour d’expérience : modèles locaux servis via un point d’accès
+compatible OpenAI (LM Studio), bac à sable Docker, harnais d’agent
+par-dessus. L’architecture est solide et reproductible. ⚠️ Mais c’est du
+ressenti plus que des mesures : aucun chiffre de débit, de latence ni de
+coût face à une API — utile pour s’inspirer du montage, pas pour décider
+en production.</li>
+</ul>
+</body>
+</html>
