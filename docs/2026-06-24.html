@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-06-24</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-06-24</h1>
+</header>
+<h1 id="tech-digest-2324-juin-2026">📨 Tech Digest — 23–24 juin
+2026</h1>
+<h2 id="en-bref-scan-30s">🎯 En bref (scan 30s)</h2>
+<ol type="1">
+<li><p><code>systèmes</code> <strong>Cloudflare traque un bug de
+troncature dans hyper</strong> · ~12 min / Cloudflare · <a
+href="https://blog.cloudflare.com/hyper-bug/">lien</a> Des images de 15
+Mo arrivaient coupées à 219 Ko avec un code HTTP 200 « tout va bien ».
+Six semaines d’enquête pour remonter à quatre lignes oubliées dans la
+bibliothèque HTTP de Rust — une belle leçon sur les angles morts de
+l’observabilité.</p></li>
+<li><p><code>perf</code> <strong>4 octets de bourrage rendent
+l’effacement d’un tableau 49 % plus rapide</strong> · ~8 min /
+blog.andr2i · <a
+href="https://blog.andr2i.com/posts/2026-06-22-optimization-catalog-how-4-bytes-of-padding-make-array-clearing-49-faster">lien</a>
+Décaler une structure de 4 octets pour réaligner les données sur 8
+octets débloque une optimisation matérielle d’Intel. Spectaculaire sur
+le papier, mais le gain est très spécifique au processeur.</p></li>
+<li><p><code>perf</code> <strong>Auto-complétion à « 0 ms » sur 240
+millions de noms de domaine</strong> · ~10 min / ruurtjan.com · <a
+href="https://ruurtjan.com/articles/p99-0ms-autocomplete-for-240-million-domain-names">lien</a>
+Comment masquer la latence d’un backend en pré-chargeant les suggestions
+pendant que l’utilisateur appuie encore sur la touche. Un bel exercice
+de « budget de latence » mêlant trie en mémoire et index sur
+SSD.</p></li>
+</ol>
+<h2 id="en-détail">📖 En détail</h2>
+<h3 id="systèmes-cloudflare-traque-un-bug-de-troncature-dans-hyper">1.
+<code>systèmes</code> Cloudflare traque un bug de troncature dans
+hyper</h3>
+<p>Le symptôme : par intermittence, et seulement en production sur des
+images volumineuses, le binding Images de Cloudflare renvoyait une
+réponse tronquée — 219 Ko reçus là où on attendait 14,9 Mo — le tout
+avec un code HTTP 200 et une connexion qui se fermait proprement. Rien
+dans les journaux applicatifs ne signalait d’erreur : du point de vue du
+code, tout s’était bien passé. C’est le pire scénario de débogage : le
+système se croit en bonne santé alors qu’il perd des données.</p>
+<p>La cause racine se niche dans la boucle de répartition (« dispatch
+loop ») HTTP/1 de hyper, la bibliothèque HTTP de l’écosystème Rust. Une
+fois l’encodage terminé, hyper appelle <code>poll_flush()</code> pour
+pousser ses données tamponnées vers la socket, puis ferme la connexion.
+Problème : le résultat de ce flush était jeté avec un
+<code>let _ = self.poll_flush(cx)?</code>. Or ce résultat pouvait valoir
+<code>Poll::Pending</code> — « je n’ai pas fini de vider le tampon ».
+Concrètement : le premier <code>sendto()</code> écrit ~219 Ko, la socket
+sature, <code>poll_flush()</code> répond « en attente », ce signal est
+ignoré, la boucle conclut qu’elle n’a plus rien à faire et appelle
+<code>shutdown()</code> — laissant 14,8 Mo coincés dans le tampon
+interne. Une <em>race condition</em> (bug de synchronisation dépendant
+du minutage) latente depuis toujours, mais réveillée en décembre quand
+une ré-architecture a remplacé un service par des sockets Unix sur la
+même machine : le lecteur en aval est devenu assez rapide pour, parfois,
+saturer le tampon d’envoi et déclencher le défaut.</p>
+<p>La percée n’est pas venue des journaux applicatifs mais de
+<code>strace</code>, qui capture les appels système réels : il a montré
+le <code>shutdown()</code> survenant après une seule écriture partielle.
+Le correctif tient en deux lignes —
+<code>ready!(self.poll_flush(cx)?)</code> placé dans
+<code>poll_shutdown()</code> pour garantir que le flush se termine
+<em>avant</em> la fermeture, sans pour autant bloquer la boucle de
+répartition (ce qui aurait pénalisé les connexions persistantes en
+keepalive). L’article est honnête sur la vraie histoire : le bug en soi
+est banal, c’est la ré-architecture qui l’a rendu visible.</p>
+<p><strong>En pratique :</strong> rappel utile pour tout service réseau
+en Rust/C++ — quand l’observabilité applicative dit « tout va bien »
+mais que l’utilisateur constate une perte de données, la vérité est
+souvent sous la couche applicative : le traçage des appels système
+(<code>strace</code>) voit ce que les journaux masquent. Et un
+<code>let _ = …</code> qui jette un <code>Poll::Pending</code> est un
+piège classique de la programmation asynchrone.</p>
+<h3
+id="perf-4-octets-de-bourrage-rendent-leffacement-dun-tableau-49-plus-rapide">2.
+<code>perf</code> 4 octets de bourrage rendent l’effacement d’un tableau
+49 % plus rapide</h3>
+<p>L’observation : en ajoutant 4 octets de bourrage (« padding ») à une
+structure Go pour que le décalage devienne divisible par 8, l’effacement
+d’un tableau de ces structures passe de 18,94 Gio/s à 28,22 Gio/s sur un
+Intel i5-12500 — soit ~49 % plus rapide dans ce sens (ou ~33 % plus lent
+quand c’est mal aligné).</p>
+<p>Le mécanisme tient à une optimisation microarchitecturale d’Intel
+appelée ERMSB (<em>Enhanced REP MOVSB/STOSB</em>). Pour effacer la
+mémoire, Go émet l’instruction <code>REP STOSQ</code>, qui écrit par
+blocs de 8 octets. Quand les données sont mal alignées sur les
+frontières de 8 octets, certaines écritures chevauchent une frontière de
+<em>cache line</em> (la ligne de cache, le bloc de 64 octets que le
+processeur manipule d’un coup), ce qui casse le chemin rapide :
+l’optimisation ERMSB sait normalement écrire une ligne de cache entière
+<em>sans la lire d’abord</em> (elle évite le trafic de « lecture pour
+possession » — read-for-ownership), mais le désalignement l’en empêche.
+D’où l’effet « zèbre » observé : chaque multiple de 8 octets de bourrage
+retrouve le débit élevé.</p>
+<p>⚠️ Le « 49 % » est réel mais très étroit. Il est spécifique à Intel
+x86-64 disposant d’ERMSB : sur AMD Ryzen l’effet tombe à ~9 %, sur ARM
+il est imperceptible. Et l’auteur lui-même nuance : des « tags de
+génération » pourraient à terme supprimer ce goulet d’effacement,
+rendant la micro-optimisation caduque. Le titre vend un chiffre frappant
+en taisant qu’il dépend entièrement de la marque du processeur.</p>
+<p><strong>En pratique :</strong> intéressant pour qui écrit du code
+très chaud en Rust/C++/Go où l’on contrôle la disposition mémoire des
+structures — l’alignement n’affecte pas que les accès mais aussi le
+débit d’effacement en masse. À garder comme curiosité plus que comme
+règle : à mesurer sur la cible réelle, jamais à appliquer en aveugle (le
+gain s’évapore hors Intel).</p>
+<h3
+id="perf-auto-complétion-à-0-ms-sur-240-millions-de-noms-de-domaine">3.
+<code>perf</code> Auto-complétion à « 0 ms » sur 240 millions de noms de
+domaine</h3>
+<p>L’astérisque du titre est mérité, et c’est tout l’intérêt de
+l’article : le « 0 ms » ne vient pas (seulement) d’un backend
+ultra-rapide mais d’une ruse côté client. À chaque appui de touche
+(<code>keyDown</code>), le navigateur pré-charge les suggestions pour le
+caractère courant <em>plus</em> les 38 caractères possibles suivants ;
+le résultat s’affiche au relâchement (<code>keyUp</code>). Si la réponse
+de l’API arrive avant que la touche soit relâchée — une fenêtre
+d’environ 121 ms au 99ᵉ centile — la latence perçue est nulle. C’est du
+budget de latence appliqué à la cadence réelle de frappe d’un
+humain.</p>
+<p>Côté backend, l’architecture est hybride et instructive. La « tête »
+(le million de domaines les plus populaires, classement Tranco) tient
+dans un <em>trie</em> en mémoire (arbre de préfixes) stockant les 8
+meilleures suggestions pré-calculées par préfixe : coût de recherche
+proportionnel à la longueur de la requête seulement. La « queue » (les
+240 millions de domaines du CZDS) vit sur SSD via un index par blocs
+mappé en mémoire (« memory-mapped ») avec compression delta : une
+recherche binaire sur un répertoire de 27 Mo gardé en RAM, puis un
+balayage linéaire d’un bloc de 256 noms. Empreinte disque totale : 2,5
+Go. Comme les deux entrées sont bornées, on obtient un coût quasi
+constant en pratique.</p>
+<p>Les chiffres mesurés : l’API isolée tient p50 ~2 ms et p99 &lt;15 ms
+à 1 600 requêtes/s, avec ~2,5 Ko par requête après compression, validé
+par un test de charge à 720 000 requêtes simulées. La nuance honnête :
+de bout en bout (Cloudflare + nginx + API), le budget de 121 ms n’est
+tenu qu’en déploiement européen — au-delà, la distance réseau à elle
+seule dépasse la cible. Le réseau domine, pas le calcul.</p>
+<p><strong>En pratique :</strong> patron réutilisable pour toute
+recherche/auto-complétion à grande échelle en backend — pré-charger
+pendant les temps morts du client pour masquer la latence, et exploiter
+le fait qu’un espace de recherche borné permet des garanties de temps
+quasi constant via une architecture hybride mémoire chaude / SSD froid.
+Le découpage tête-en-RAM / queue-sur-SSD est transposable bien au-delà
+des noms de domaine.</p>
+<h2 id="métier">🧭 Métier</h2>
+<ul>
+<li><code>métier</code> <strong>Utiliser l’IA pour relire le code,
+surtout quand le diff est énorme</strong> · <a
+href="https://simianwords.bearblog.dev/you-should-use-ai-for-reviewing-code-especially-when-the-diff-is-huge/">lien</a>
+— L’idée qui fait réfléchir : déléguer à l’IA la vérification ligne à
+ligne et recentrer la revue humaine sur ce que ni l’auteur ni la machine
+ne possèdent — le contexte d’architecture, les conventions maison, les
+décisions de conception. La revue cesse d’être un contrôle qualité
+exhaustif pour devenir un mécanisme de <em>transfert de
+connaissances</em>. L’auteur réserve d’ailleurs honnêtement le cas des
+bases « sacrées » (embarqué) où la relecture humaine ligne à ligne reste
+reine.</li>
+</ul>
+<h2 id="ouverture">🪟 Ouverture</h2>
+<ul>
+<li><code>ouverture</code> <strong>Dix ans de conditions générales
+d’utilisation</strong> · <a
+href="https://henryach.com/blog/tsandcs/">lien</a> — Un développeur a
+noté chaque CGU acceptée pendant dix ans : 3 066 332 mots sur 821
+documents, soit près de 9 jours de lecture continue… ou « 3,53 min/jour
+» étalés sur la décennie, selon qu’on veut s’effrayer ou se rassurer.
+Analyse méticuleuse et drôle (ratio syllabes/mot, comparaison à la
+longueur des classiques de la littérature) de cette fiction polie selon
+laquelle nous lisons ce que nous acceptons.</li>
+</ul>
+<h2 id="brèves">⚡ Brèves</h2>
+<ul>
+<li><code>infra</code> <strong>In praise of memcached</strong> · <a
+href="https://jchri.st/blog/in-praise-of-memcached/">lien</a> —
+Plaidoyer pour la <em>philosophie</em> de memcached plus que pour
+l’outil : dégradation gracieuse, clustering côté client, zéro
+persistance. Sans chiffres ni comparaison chiffrée — l’argument réel
+vise la dérive d’usage de Redis (du cache vers le stockage persistant),
+pas ses mérites techniques.</li>
+<li><code>devtool</code> <strong>Deno Desktop</strong> · <a
+href="https://docs.deno.com/runtime/desktop/">lien</a> — Deno se dote
+d’un mode pour empaqueter des applications de bureau autonomes
+s’appuyant sur le runtime Deno et le rendu web. À surveiller comme
+alternative possible à Electron.</li>
+<li><code>sécu</code> <strong>Cloudflare et le post-quantique</strong> ·
+<a href="https://blog.cloudflare.com/post-quantum-eo-2026/">lien</a> —
+Surtout du réglementaire (un décret américain impose le chiffrement
+post-quantique aux agences fédérales d’ici 2030, l’authentification
+d’ici 2031), mais une donnée notable : plus des deux tiers du trafic
+navigateur vers Cloudflare est déjà protégé par les algorithmes
+post-quantiques standardisés par le NIST (ML-KEM, ML-DSA, SLH-DSA).</li>
+</ul>
+</body>
+</html>
