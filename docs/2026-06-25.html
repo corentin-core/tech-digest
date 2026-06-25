@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-06-25</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-06-25</h1>
+</header>
+<h1 id="tech-digest-2425-juin-2026">📨 Tech Digest — 24–25 juin
+2026</h1>
+<h2 id="en-bref-scan-30s">🎯 En bref (scan 30s)</h2>
+<ol type="1">
+<li><code>rust</code> <strong>Du SIMD « sûr » en Rust, jusque dans les
+tripes</strong> · ~15 min / shnatsel · <a
+href="https://shnatsel.medium.com/safe-simd-in-rust-even-on-the-inside-c6f1ff381828">lien</a>
+Comment écrire du calcul vectoriel (une instruction qui traite plusieurs
+données d’un coup) sans parsemer son code de blocs <code>unsafe</code> :
+on concentre tout le danger dans une seule abstraction relue une fois
+pour toutes.</li>
+<li><code>perf</code> <strong>Le décodeur PNG en Rust pur supplante le C
+dans Chromium et GNOME</strong> · ~10 min / image-rs · <a
+href="https://blog.image-rs.org/2026/06/18/png-adoption.html">lien</a>
+Le décodeur d’images PNG écrit en Rust est maintenant intégré à Chromium
+et GNOME en remplacement du C historique, et tourne ~1,9× plus vite que
+la référence libpng — sans bidouille bas niveau.</li>
+<li><code>distribué</code> <strong>iroh : du pair-à-pair fiable, même
+derrière les box</strong> · ~12 min / kerkour · <a
+href="https://kerkour.com/iroh-v1-p2p">lien</a> Une bibliothèque Rust
+qui ouvre des connexions directes entre deux machines n’importe où, même
+coincées derrière des routeurs. Ce n’est pas un remplaçant de WireGuard
+: c’est un « tuyau » sur lequel on bâtit son propre protocole.</li>
+</ol>
+<h2 id="en-détail">📖 En détail</h2>
+<h3 id="rust-du-simd-sûr-en-rust-jusque-dans-les-tripes">1.
+<code>rust</code> Du SIMD « sûr » en Rust, jusque dans les tripes</h3>
+<p>Le SIMD (<em>Single Instruction, Multiple Data</em> : une seule
+instruction CPU traite 8 ou 16 nombres simultanément) est le levier
+classique pour accélérer un calcul numérique chaud. En Rust comme en C,
+le problème est que les <em>intrinsics</em> (les fonctions qui exposent
+ces instructions) sont marquées <code>unsafe</code> : appeler une
+instruction AVX-512 sur un processeur qui ne la possède pas, c’est un
+crash. Résultat habituel : des centaines de petits blocs
+<code>unsafe</code> éparpillés, chacun une occasion de se tromper.</p>
+<p>La proposition de l’article est d’éliminer cette dispersion par un
+<em>jeton de capacité</em> (« feature token ») : un type sans contenu
+(taille zéro à l’exécution) qui <strong>prouve à la compilation</strong>
+qu’une instruction existe. On ne peut l’obtenir qu’en passant la
+détection au démarrage — c’est une preuve infalsifiable que le CPU sait
+faire l’opération. Une <strong>unique macro</strong> relie chaque jeton
+à l’annotation <code>#[target_feature]</code> correspondante et
+enveloppe l’appel à l’intrinsic. À partir de là, un type générique comme
+<code>f32x8&lt;L: Level&gt;</code> transporte le jeton à l’intérieur et
+expose des opérateurs (<code>+</code>, <code>*</code>…) qui ressemblent
+à du code sûr ordinaire. La surface à auditer passe ainsi de centaines
+de blocs à <strong>un seul</strong> : comme le dit l’auteur, les deux
+seules choses qu’on puisse encore casser sont « relier le jeton au
+mauvais <code>#[target_feature]</code> » ou « laisser appeler une
+<code>unsafe fn</code> depuis un contexte sûr ».</p>
+<p>La limite est honnête et structurelle : le coût d’un appel de
+fonction empêche d’« inliner » (fondre dans l’appelant) une opération
+aussi triviale que <code>a + b</code>, <strong>sauf</strong> si la
+fonction appelante porte elle aussi <code>#[target_feature]</code>. Il
+n’existe donc pas de « écris juste <code>a + b</code> et tout est rapide
+et sûr » — l’auteur reconnaît que la contrainte « semble assez
+fondamentale ». À noter aussi : <strong>zéro chiffre</strong> dans
+l’article, seulement un lien Godbolt pour inspecter l’assembleur à la
+main.</p>
+<p>⚠️ Le titre (« even on the inside », <em>même à l’intérieur</em>)
+survend un peu la sûreté totale : il reste un bloc <code>unsafe</code>,
+bien rangé, et il faut toujours annoter correctement les fonctions
+appelantes. L’avancée est réelle, mais ce n’est pas de la magie.
+<strong>En pratique :</strong> utile pour qui écrit des noyaux de calcul
+vectorisés en Rust (traitement du signal, image, séries numériques haute
+fréquence) et veut réduire drastiquement la surface <code>unsafe</code>
+à relire plutôt que la traquer partout.</p>
+<h3
+id="perf-le-décodeur-png-en-rust-pur-supplante-le-c-dans-chromium-et-gnome">2.
+<code>perf</code> Le décodeur PNG en Rust pur supplante le C dans
+Chromium et GNOME</h3>
+<p>Le décodeur <code>image-png</code> (Rust, sans <code>unsafe</code>
+bas niveau) a été adopté par <strong>Chromium</strong> (M139, août 2025)
+et <strong>GNOME</strong> (v49, sept. 2025) en remplacement du code C.
+Quatre optimisations expliquent la vitesse : le <em>défiltrage
+in-place</em> (on transforme les pixels sur place au lieu de copier d’un
+tampon à l’autre) ; la réduction de la taille des tampons internes pour
+que les données restent en <strong>cache CPU</strong> entre l’étape de
+décompression et celle de défiltrage (éviter les allers-retours en
+mémoire principale, bien plus lents) ; une meilleure gestion de
+l’entrelacement ; et des gains venus de l’écosystème
+(<code>simd_adler32</code>, <code>crc32fast</code> exploitant les
+instructions AVX-512 et NEON pour les sommes de contrôle).</p>
+<p>Les chiffres, sur un Ryzen 9 7950X et le corpus indépendant de 2848
+images du benchmark QOI : <strong>410,8 MP/s</strong> en moyenne (339,9
+en moyenne géométrique) contre <strong>218,5</strong> pour libpng (180,4
+en géométrique) — soit ~<strong>1,88×</strong> plus rapide en moyenne
+géométrique. Le choix de la moyenne géométrique, qui amortit les valeurs
+extrêmes, et d’un corpus large et tiers, rend la mesure crédible.</p>
+<p>Le bémol méthodologique compte : les implémentations C testées
+s’appuient sur <strong>zlib-ng</strong>, une variante optimisée mais
+rarement déployée en production — face au libpng standard réellement
+installé partout, l’écart serait <em>plus grand</em> que celui annoncé…
+mais le chiffre exact n’est pas isolé, et il n’y a <strong>aucun
+benchmark d’encodage</strong>. L’enseignement le plus utile dépasse le
+PNG : la sécurité mémoire ne se paie pas en performance ici. Les gains
+viennent de <strong>meilleurs choix algorithmiques</strong> (opérations
+en place, respect du cache) et non de bidouilles <code>unsafe</code>.
+D’ailleurs, l’adoption a été motivée autant par la sûreté et les
+fonctionnalités (le support APNG, absent de libpng en amont) que par la
+vitesse brute.</p>
+<p>⚠️ Le « toujours plus rapide / le plus rapide du monde » est réel
+mais étroit (1,88×) et la base de comparaison (zlib-ng) flatte le
+résultat selon le sens où on le lit. <strong>En pratique :</strong>
+pertinent pour qui choisit des briques de décodage media en Rust ou C++
+en contexte perf-critique, et comme munition concrète pour l’argument «
+Rust atteint la perf du C sans en payer le risque mémoire ».</p>
+<h3 id="distribué-iroh-du-pair-à-pair-fiable-même-derrière-les-box">3.
+<code>distribué</code> iroh : du pair-à-pair fiable, même derrière les
+box</h3>
+<p>iroh (bibliothèque Rust, v1.0 la semaine passée) résout un vieux
+casse-tête : faire communiquer directement deux machines quelconques sur
+Internet. La communication pair-à-pair sur IP exige UDP pour « percer »
+les NAT (la traduction d’adresses faite par les box et routeurs, qui
+cachent plusieurs machines derrière une seule IP publique). Mais UDP
+n’est pas fiable — il faut donc rebâtir un protocole par-dessus. L’idée
+d’iroh : s’appuyer sur <strong>QUIC</strong> (RFC 9000), qui fournit
+déjà un transport fiable et chiffré au-dessus d’UDP, et fournir
+l’infrastructure pour monter ces connexions QUIC en direct entre
+machines.</p>
+<p>Le perçage de NAT (<em>hole-punching</em>) ne réussit pas toujours ;
+iroh ajoute donc des <strong>relais</strong> qui aident à
+l’établissement de la connexion et, dans le pire cas, relaient le
+trafic. Particularité d’adressage : on ne se connecte pas à une adresse
+IP mais à une <strong>clé de signature Ed25519</strong> (une identité
+cryptographique) — le slogan du projet, « les IP cassent, compose des
+clés ». La machine est jointe par son identité, pas par sa position
+réseau. Comme le cœur est en Rust, le projet expose facilement des
+liaisons pour JavaScript, Python, Kotlin et Swift.</p>
+<p>Le cadrage de l’auteur est rafraîchissant d’honnêteté et désamorce le
+piège habituel : iroh <strong>n’est pas</strong> un remplaçant de
+WireGuard, ni de HTTPS, ni de BitTorrent. C’est « un tuyau bête et très
+fiable entre deux machines » — la couche transport pair-à-pair, sur
+laquelle on doit apporter sa propre logique applicative. Pas de chiffres
+de performance dans l’article, qui reste une présentation d’architecture
+et un démarrage rapide (l’exemple écho client/serveur tient en une
+page). <strong>En pratique :</strong> brique intéressante pour des
+applications distribuées ou temps réel qui veulent des liens directs
+entre nœuds (synchronisation, transfert de fichiers, collaboration) sans
+dépendre d’un serveur central — et en gardant un transport chiffré de
+bout en bout.</p>
+<h2 id="métier">🧭 Métier</h2>
+<ul>
+<li><code>métier</code> <strong>Réécrire le monde en Rust</strong> · <a
+href="https://bitfieldconsulting.com/posts/rewrite-in-rust">lien</a> —
+La thèse qui fait réfléchir : <strong>réparer la structure avant de
+changer l’implémentation</strong>. Plutôt que la réécriture « big-bang »
+(tout arrêter, tout refaire), l’auteur défend le patron du <em>figuier
+étrangleur</em> (remplacer le vieux système morceau par morceau en
+l’enserrant, jusqu’à ce qu’il disparaisse), et rappelle, à la suite de
+Martin Fowler, que l’organisation qui a produit le code doit souvent
+évoluer en même temps que lui. Il démonte au passage deux mythes : la
+réécriture instantanée et le sauvetage miracle par l’IA. Caveat à garder
+en tête : c’est le blog d’une société de formation Rust, donc un fond de
+plaidoyer.</li>
+</ul>
+<h2 id="brèves">⚡ Brèves</h2>
+<ul>
+<li><code>devtool</code> <strong>Accélérer le temps de recompilation de
+<code>#[sqlx::test]</code></strong> · <a
+href="https://kobzol.github.io/rust/2026/06/21/optimizing-sqlx-test-rebuild-time.html">lien</a>
+— Chaque test <code>#[sqlx::test]</code> réinjectait le texte complet
+des migrations de base de données dans le code généré : avec ~350 tests
+et 30 migrations, 32 Mio de code dupliqué et ~7,5 s de recompilation
+incrémentale. La parade : un <code>static MIGRATOR</code> partagé
+référencé via <code>#[sqlx::test(migrator = "…")]</code> → 6 Mio
+générés, ~5 s. Gain de 33 %, un piège utile à connaître plus qu’un
+correctif de fond (5 s, ça reste lent).</li>
+<li><code>langage</code> <strong>TypeScript 7.0 RC : le compilateur
+réécrit en Go</strong> · <a
+href="https://devblogs.microsoft.com/typescript/announcing-typescript-7-0-rc/">lien</a>
+— Le compilateur passe de TypeScript-compilé-en-JS à un binaire natif
+Go, avec parallélisme à mémoire partagée. Annoncé « souvent ~10× plus
+rapide » que la 6.0 — chiffre vague et conditionnel (« souvent »), sans
+benchmarks détaillés, mais la logique de typage est « structurellement
+identique » et testée sur des bases multi-millions de lignes. L’API
+programmatique stable n’arrive qu’en 7.1.</li>
+<li><code>devtool</code> <strong>hotpath-rs 0.18 : profiler du Rust
+asynchrone et concurrent</strong> · <a
+href="https://hotpath.rs/blog/profiling-async-rust">lien</a> — Nouvelle
+version d’un profileur ciblant les chemins chauds dans du code
+<code>async</code>/multi-tâches, terrain notoirement difficile à
+instrumenter proprement. À garder sous le coude pour qui chasse la
+latence dans des services Tokio.</li>
+<li><code>rust</code> <strong>Porter 300 000 lignes de C++/Perl en Rust,
+octet pour octet</strong> · <a
+href="https://medium.com/@vbasky/porting-200-000-lines-of-c-to-rust-building-a-byte-identical-mediainfo-replacement-8e9b587d469a">lien</a>
+— Récit d’une réimplémentation de MediaInfo visant une sortie
+<strong>identique au bit près</strong> à l’original, validée par double
+oracle. L’angle intéressant : la réécriture comme problème de conformité
+vérifiable, pas seulement de traduction de langage.</li>
+<li><code>rust</code> <strong>La Fondation Rust accueille OpenAI comme
+membre Platinum</strong> · <a
+href="https://rustfoundation.org/media/rust-foundation-welcomes-openai-as-platinum-member-announces-donation-to-rust-project/">lien</a>
+— Signal d’écosystème : un acteur IA majeur rejoint le plus haut palier
+de soutien à Rust, avec une donation au projet. À ranger côté
+santé/financement de l’écosystème plus que côté technique.</li>
+<li><code>devtool</code> <strong>Crate de la semaine :
+<code>cargo-rdme</code></strong> · <a
+href="https://github.com/orium/cargo-rdme">lien</a> — Génère le README
+d’une crate directement depuis les commentaires de documentation, pour
+garder doc et README synchronisés sans recopie manuelle.</li>
+</ul>
+</body>
+</html>
