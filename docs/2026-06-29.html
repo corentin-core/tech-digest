@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-06-29</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-06-29</h1>
+</header>
+<h1 id="tech-digest-hebdo-2329-juin-2026">📨 Tech Digest hebdo — 23–29
+juin 2026</h1>
+<p><em>Menu, pas liste de tâches — pioche, le non-lu n’est pas une
+dette. Budget total : ~1 h de lecture pure (+ ~50 min si tu fais le TP
+async en bonus).</em></p>
+<h2 id="le-pick-de-la-semaine">⭐ Le pick de la semaine</h2>
+<p><code>async</code> <strong>How we found a bug in the hyper HTTP
+library</strong> · Cloudflare · ~12 min · <a
+href="https://blog.cloudflare.com/hyper-bug/">lien</a> Une réponse
+tronquée sur les gros transferts : hyper marquait son écriture «
+terminée » dès que les octets entraient dans son tampon, puis fermait la
+socket avant d’avoir vraiment vidé le tampon — parce que le résultat de
+<code>poll_flush</code> était jeté avec un <code>let _</code>. Le récit
+de la traque est exemplaire : les logs et le <em>tracing</em> applicatif
+disaient « envoi OK », il a fallu descendre au <code>strace</code> pour
+voir qu’il n’y avait qu’une seule écriture (les en-têtes + un bout du
+corps) avant le <code>shutdown</code>. → <strong>Pour toi :</strong>
+double dose. C’est <em>le</em> résultat async avalé (<code>let _</code>
+sur un poll qui n’avait pas fini), et c’est exactement le réflexe « les
+logs disent OK mais l’aval voit autre chose → descends sous la couche
+appli (appels système) » — ici un changement de transport a introduit de
+la contre-pression (<em>backpressure</em>, l’aval ralentit l’amont) qui
+a révélé le bug latent.</p>
+<h2 id="à-lire">📚 À lire</h2>
+<ol type="1">
+<li><p><code>async</code> <strong>Profiling Async and Concurrent Rust :
+Channels and Lock Contention</strong> · hotpath.rs · ~11 min · <a
+href="https://hotpath.rs/blog/profiling-async-rust">lien</a> Comment
+instrumenter du Rust async pour voir ce que les profileurs classiques
+ratent : profondeur de file des canaux (Tokio/crossbeam/flume), latence
+des messages, et temps d’attente sur les verrous (en distinguant
+lecture/écriture). Concret, avec des chiffres et un seuil de saturation
+mesuré. ⚠️ La fin bascule en argumentaire pour leur service hébergé
+(liste d’attente) — le contenu technique tient debout tout seul, ignore
+le <em>pitch</em>. → <strong>Pour toi :</strong> pile la forme «
+profilage de bout en bout d’un service de fond » — acquisition → calcul
+→ publication — où le coût réel est dans la contention de verrous et la
+queue des canaux, pas dans une fonction isolée. À lire en p99/variance,
+pas en moyenne.</p></li>
+<li><p><code>devtool</code> <strong>Optimizing
+<code>#[sqlx::test]</code> rebuild time</strong> · kobzol · ~6 min · <a
+href="https://kobzol.github.io/rust/2026/06/21/optimizing-sqlx-test-rebuild-time.html">lien</a>
+Une macro qui ré-inlinait la liste des migrations dans <em>chaque</em>
+test : ~350 tests × 30 migrations → 32 Mio de code généré, et des
+rebuilds qui gonflent à chaque ajout. La correction (référencer une
+constante partagée) fait tomber le temps de 7,5 s à 5 s. La vraie leçon
+: mesurer le volume de code généré avec <code>cargo expand</code>. →
+<strong>Pour toi :</strong> réflexe transférable si tu écris des
+macros/du codegen — le code généré qui se duplique sur N sites est un
+coût de compilation invisible, mesurable avant de l’optimiser.</p></li>
+<li><p><code>craft</code> <strong>Introducing Test That!</strong> ·
+hovinen.me · ~12 min · <a
+href="https://hovinen.me/announcements/2026/06/24/introducing-test-that.html">lien</a>
+Une bibliothèque d’assertions Rust à base de <em>matchers</em>
+composables (<code>verify_that!(vec, each(gt(0)))</code>) avec des
+diagnostics d’échec précis (« l’élément #2 vaut -4, ≤ 0 »). Née d’un
+fork de GoogleTest Rust dont une version cassait les tests existants
+juste en ajoutant <code>Copy</code> à un struct — la discussion sur
+<em>pourquoi</em> ce genre de rupture est inacceptable vaut le détour. →
+<strong>Pour toi :</strong> craft de test pur — des assertions qui
+disent <em>quoi</em> a échoué plutôt que <em>que</em> ça a échoué, et
+une réflexion sur la stabilité d’API d’un outil dont d’autres
+dépendent.</p></li>
+<li><p><code>archi</code> <strong>Rewriting the world in Rust</strong> ·
+Bitfield Consulting · ~7 min · <a
+href="https://bitfieldconsulting.com/posts/rewrite-in-rust">lien</a> Une
+prise équilibrée, ni évangélisme ni mépris : la réécriture «
+stop-the-world » et la traduction massive par IA sont des mirages (taux
+de réussite &lt; 10 % sur les tâches de plus de 4 h citées) ; ce qui
+marche, c’est de <strong>corriger l’architecture d’abord, puis remplacer
+sous-système par sous-système</strong>. → <strong>Pour grandir
+:</strong> conforte le réflexe « archi avant implémentation » — ton
+vecteur de montée en altitude — appliqué au cas concret d’une migration
+progressive.</p></li>
+<li><p><code>async</code> <strong>Learn Rust Async/Await, Tokio, and TCP
+by Building an HTTP/1.1 Server</strong> · sheerluck.dev · ~50 min (TP) ·
+<a
+href="https://blog.sheerluck.dev/posts/learn-rust-async-await-by-building-an-http-server/">lien</a>
+TP guidé, niveau intermédiaire-avancé (suppose
+ownership/traits/lifetimes acquis) : le trait <code>Future</code>, le
+<em>polling</em>, réacteur vs exécuteur de Tokio, puis
+<code>spawn</code>/<code>join!</code>/<code>select!</code> pour
+coordonner. On construit un vrai parseur de requêtes et un serveur de
+fichiers. Honnête sur ses limites (pas de keep-alive, TLS ni arrêt
+propre). → <strong>Pour toi :</strong> <em>build-along</em> du week-end
+pour cimenter le modèle de tâches async —
+<code>select!</code>/annulation, cycle de vie — le même que tu manipules
+au quotidien côté asyncio. Le seul de la liste qui se <em>fait</em> plus
+qu’il ne se lit.</p></li>
+</ol>
+<h2 id="stretch-bonus-si-tu-as-le-temps">🚀 Stretch — <em>bonus, si tu
+as le temps</em></h2>
+<ul>
+<li><code>stretch</code> <strong>Ante : A New Way to Blend Borrow
+Checking and Reference Counting</strong> · verdagon.dev · ~10 min · <a
+href="https://verdagon.dev/blog/ante-blending-borrowing-rc">lien</a> —
+un langage systèmes qui tente de marier comptage de références et
+<em>borrow checking</em> sans les panics à l’exécution de
+<code>RefCell</code>. L’idée centrale : la conversion <em>uniq</em>
+temporaire (transformer brièvement une référence partagée en exclusive
+quand aucun alias n’est accessible dans la portée) et la « stabilité de
+forme » qui autorise plusieurs <code>&amp;mut</code> tant que la
+mutation n’invalide pas la structure. → <strong>Pour grandir :</strong>
+te tire vers la conception de modèles mémoire / théorie des langages —
+comprendre <em>pourquoi</em> Rust impose l’exclusivité globale, et ce
+qu’on gagne/perd à la rendre locale. Ambitieux et assumé, mais
+directement nourri par ton goût Rust.</li>
+</ul>
+<h2 id="métier-bonus">🧭 Métier — <em>bonus</em></h2>
+<ul>
+<li><code>métier</code> <strong>You Can’t Unit Test for Taste</strong> ·
+<a
+href="https://dev.karltryggvason.com/you-cant-unit-test-for-taste/">lien</a>
+— en construisant un système de points d’intérêt, l’auteur bute sur le
+fait qu’il n’y a <em>aucune vérité-terrain</em> : pas de test rouge/vert
+pour « est-ce intéressant ? ». Réflexion honnête sur ces décisions sans
+métrique objective où le jugement remplace l’assertion — et sur la place
+réelle (de support, pas centrale) qu’y tient l’IA.</li>
+</ul>
+<h2 id="écho-décosystème-scan-pas-lecture">🎁 Écho d’écosystème —
+<em>scan, pas lecture</em></h2>
+<ul>
+<li><code>écosystème</code> <strong>Le crate PNG de Rust accélère
+encore, adopté par GNOME et Chromium</strong> · <a
+href="https://blog.image-rs.org/2026/06/18/png-adoption.html">lien</a> —
+<em>pas actionnable pour toi, mais bonne nouvelle</em> : du Rust qui
+remplace du C dans des briques aussi installées que GNOME et Chromium,
+sur la perf en plus de la sûreté.</li>
+<li><code>écosystème</code> <strong>Ratatui 0.30.2</strong> · <a
+href="https://ratatui.rs/highlights/v0302/">lien</a> — nouvelle version
+de la bibliothèque de TUI en Rust. <em>Pas un must, mais si tu bricoles
+des outils CLI/TUI, c’est l’écosystème qui mûrit.</em></li>
+<li><code>écosystème</code> <strong>cargo-rdme</strong> (Crate of the
+Week) · <a href="https://github.com/orium/cargo-rdme">lien</a> — génère
+ton README à partir de la doc du crate. Petit <em>devtool</em> qui
+supprime une source de désynchro doc/README.</li>
+<li><code>écosystème</code> <strong>Bevy 0.19</strong> · <a
+href="https://bevy.org/news/bevy-0-19">lien</a> — nouvelle release du
+moteur de jeu ECS en Rust. <em>Pas ton terrain, mais la vitrine d’archi
+data-oriented la plus active de l’écosystème.</em></li>
+</ul>
+</body>
+</html>
