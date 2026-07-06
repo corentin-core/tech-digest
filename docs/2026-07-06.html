@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-07-06</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-07-06</h1>
+</header>
+<h1 id="tech-digest-hebdo-29-juin-6-juillet-2026">📨 Tech Digest hebdo —
+29 juin → 6 juillet 2026</h1>
+<p><em>Menu, pas liste de tâches — pioche, le non-lu n’est pas une
+dette. Budget cœur : ~60 min de lecture (les bonus en plus).</em></p>
+<h2 id="le-pick-de-la-semaine">⭐ Le pick de la semaine</h2>
+<p><code>async</code> <strong>Reasoning About Async Rust with State
+Machines</strong> · This Week in Rust (aibodh) · ~20 min · <a
+href="https://aibodh.com/posts/async-rust-chapter-2-what-async-fn-compiles-into/">lien</a>
+L’auteur reconstruit <strong>à la main</strong> la machine à états dans
+laquelle le compilateur transforme une <code>async fn</code> : chaque
+<code>.await</code> devient une frontière d’état, et on voit noir sur
+blanc quelles valeurs intermédiaires doivent être <em>stockées</em> pour
+survivre à la pause. Pédagogie par le code (chapitre 2 d’une série),
+diagrammes clairs, zéro survente — il assume juste de repousser
+<code>Pin</code> à plus tard. → <strong>Pour toi :</strong> c’est
+exactement le modèle mental qui manque quand une tâche async se comporte
+mal — comprendre <em>ce qui est tenu vivant à travers un await</em> rend
+évidents les bugs de cycle de vie (valeur crue larguée qui ne l’est pas,
+annulation au mauvais moment). Le socle avant de raisonner
+annulation/nettoyage.</p>
+<h2 id="à-lire">📚 À lire</h2>
+<p><em>Rangé par priorité décroissante — le pick ci-dessus n’est pas
+répété.</em></p>
+<ol type="1">
+<li><code>perf</code> <strong>High-performance Rust: Understanding and
+eliminating memory fragmentation</strong> · This Week in Rust (kerkour)
+· ~12 min · <a
+href="https://kerkour.com/rust-high-performance-memory-fragmentation-allocations">lien</a>
+Un service qui tourne longtemps voit sa mémoire grimper jusqu’à un
+plateau (~75 % de la RAM) et <em>ressemble</em> à une fuite — ce n’en
+est pas une : c’est la <strong>fragmentation du tas</strong>
+(l’allocateur laisse des trous inutilisables entre des milliers de
+petits objets). L’article montre le diagnostic, le correctif rapide
+(basculer sur jemalloc/mimalloc), puis la vraie cure : allouer moins
+avec <code>heapless</code>/<code>smallvec</code>/<code>bytes</code>, y
+compris sur cibles embarquées <code>no_std</code> à &lt;500 KB de RAM. →
+<strong>Pour toi :</strong> la double prise directe — un service de fond
+longue durée dont le RSS monte sans fuite réelle, <em>et</em> la
+contrainte mémoire embarquée. Le réflexe « ce n’est peut-être pas une
+fuite, c’est la fragmentation » vaut de l’or en profilage de bout en
+bout.</li>
+<li><code>rust</code> <strong>Hoisting Expressions</strong> · This Week
+in Rust (Yosh Wuyts) · ~7 min · <a
+href="https://blog.yoshuawuyts.com/hoisting-expressions">lien</a>
+Critique de conception d’une syntaxe Rust proposée
+(<code>move($expr)</code>, RFC 3968) qui exécute une expression
+<em>avant</em> le reste d’une closure, même si elle apparaît plus bas
+dans le code. Wuyts défend un point simple : cette évaluation
+non-séquentielle oblige le lecteur à balayer toute la closure pour
+savoir ce qui tourne en premier — un coût cognitif qui pèse plus lourd
+que le gain d’ergonomie. → <strong>Pour toi :</strong> le cas d’usage
+visé, c’est la capture propre dans les closures async — le genre de
+détail qui décide de comment une valeur est capturée (et donc tenue)
+dans une tâche.</li>
+<li><code>IA</code> <strong>Better Models: Worse Tools</strong> · Hacker
+News (Armin Ronacher) · ~9 min · <a
+href="https://lucumr.pocoo.org/2026/7/4/better-models-worse-tools/">lien</a>
+Observation concrète et reproductible : les modèles récents, pourtant
+plus capables, respectent <em>moins</em> bien un schéma d’outil
+inhabituel — ils inventent des champs (<code>oldText2</code>,
+<code>requireUnique</code>…). L’hypothèse : à force d’entraînement sur
+l’interface tolérante d’un harnais dominant, ils ont appris quelles
+erreurs <em>ce</em> harnais pardonne, au détriment de la fidélité au
+schéma. Pas de hype, du systémique observable. → <strong>Pour toi
+:</strong> utile pour bien te servir d’un agent de code et pour
+concevoir des interfaces d’outils — comprendre <em>pourquoi</em> un
+modèle dévie d’un schéma strict change la façon dont tu le
+contraints.</li>
+<li><code>craft</code> <strong>Work In Progress Rust</strong> · This
+Week in Rust (dureuill) · ~10 min · <a
+href="https://blog.dureuill.net/articles/wip/">lien</a> Un flux de
+travail assumé : coder d’abord le chemin heureux avec
+<code>unwrap()</code>/<code>todo!()</code>, rester concentré sur la
+logique, puis traiter systématiquement les cas d’erreur <em>avant</em>
+le merge — à condition que la CI transforme les avertissements en
+erreurs. Le crate <code>wip</code> formalise les marqueurs. Techniques
+connues, mais la philosophie du « brouillon discipliné » est bien posée.
+⚠️ Ton légèrement promotionnel autour du crate <code>wip</code> (au
+fond, du sucre autour de <code>#[deprecated]</code>) — l’intérêt est la
+méthode, pas l’outil. → <strong>Pour toi :</strong> applicable direct à
+ta bibliothèque Rust — poser l’invariant plus tard sans se mentir, avec
+un filet CI qui empêche le <code>todo!()</code> d’atteindre
+<code>main</code>.</li>
+</ol>
+<h2 id="stretch-bonus-si-tu-as-le-temps">🚀 Stretch — <em>bonus, si tu
+as le temps</em></h2>
+<ul>
+<li><code>stretch</code> <strong>Metastability in Recovery: Cascading
+Recovery with a Loop</strong> · Lobste.rs (Aleksey Charapko) · ~14 min ·
+<a
+href="https://charap.co/metastability-in-recovery-cascading-recovery-with-a-loop/">lien</a>
+Pourquoi un système ne <em>repart pas</em> une fois la panne initiale
+disparue : une action de récupération engendre du travail qui remonte en
+amont et s’auto-entretient (boucle de rétroaction), et « les pannes se
+propagent visiblement, les reprises silencieusement ». Fondamentaux
+distribués, pas de l’ops à grande échelle. → <strong>Pour grandir
+:</strong> c’est du raisonnement de boucle de rétroaction pur — les
+mêmes dynamiques d’amplification et de dépassement que dans une boucle
+de contrôle qui déborde. Ça t’ouvre vers les fondamentaux
+temps-réel/distribué en gardant le réflexe « lire la queue/variance, pas
+la moyenne ». Ambitieux mais transférable.</li>
+</ul>
+<h2 id="métier-bonus">🧭 Métier — <em>bonus</em></h2>
+<ul>
+<li><code>métier</code> <strong>Agentic coding notes</strong> · Hacker
+News (Dan Luu) · ~35 min · <a
+href="https://danluu.com/ai-coding/">lien</a> — Long, dense, chiffré, et
+sans anxiété de carrière : les agents brillent <em>encadrés</em>
+(surtout couplés au fuzzing/tests), pas en jugement autonome. Fait
+réfléchir à ce que « bien construire » veut dire quand on orchestre un
+agent plutôt qu’on code à la main. (Prévois le temps — c’est ~10 000
+mots.)</li>
+<li><code>métier</code> <strong>Synthesis is harder than
+analysis</strong> · Hacker News (Lorin Hochstein) · ~5 min · <a
+href="https://surfingcomplexity.blog/2026/07/03/synthesis-is-harder-than-analysis/">lien</a>
+— Découper un système (analyse) est plus facile que recomposer une
+compréhension globale (synthèse) — joli parallèle avec dérivée
+(algorithmique) vs intégrale (astuces au cas par cas). Explique
+<em>pourquoi</em> l’encapsulation marche et pourquoi un incident global
+reste si dur à saisir.</li>
+</ul>
+<h2 id="écho-décosystème-scan-pas-lecture">🎁 Écho d’écosystème —
+<em>scan, pas lecture</em></h2>
+<ul>
+<li><code>écosystème</code> <strong>Rust 1.96.1</strong> · <a
+href="https://blog.rust-lang.org/2026/06/30/Rust-1.96.1/">lien</a> —
+Correctif de point. <em>Pas actionnable, mais bon à savoir avant de
+bumper ton toolchain.</em></li>
+<li><code>écosystème</code> <strong>Slint 1.17</strong> · <a
+href="https://slint.dev/blog/slint-1.17-released">lien</a> — Nouvelle
+version du toolkit d’UI en Rust. <em>Pas ton terrain, mais l’écosystème
+GUI-Rust continue de mûrir.</em></li>
+<li><code>écosystème</code> <strong>Zig : toute la gestion de paquets
+déplacée du compilateur vers le build system</strong> · <a
+href="https://ziglang.org/devlog/2026/#2026-06-30">lien</a> — <em>Pas
+actionnable pour toi, mais une décision d’architecture intéressante :
+sortir le packaging du compilateur pour le mettre dans l’outillage de
+build.</em></li>
+</ul>
+</body>
+</html>
