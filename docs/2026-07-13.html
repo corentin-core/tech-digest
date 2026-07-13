@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-07-13</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-07-13</h1>
+</header>
+<h1 id="tech-digest-hebdo-7-13-juillet-2026">📨 Tech Digest hebdo — 7 –
+13 juillet 2026</h1>
+<p><em>Menu, pas liste de tâches — pioche, le non-lu n’est pas une
+dette. Budget total : ~95 min de lecture.</em></p>
+<h2 id="le-pick-de-la-semaine">⭐ Le pick de la semaine</h2>
+<p><code>rust</code> <strong>Rewriting Bun in Rust</strong> · Bun · ~25
+min · <a href="https://bun.com/blog/bun-in-rust">lien</a> Jarred Sumner
+explique pourquoi Bun (moteur et boîte à outils JavaScript) migre de Zig
+vers Rust : douze bugs de stabilité (accès après libération, double
+libération, fuites) nés du mélange entre valeurs gérées par
+ramasse-miettes et mémoire libérée à la main — que le <code>defer</code>
+de Zig ne suffisait pas à discipliner. Le billet est honnête sur les
+compromis (port mécanique d’abord, <code>unsafe</code> résiduel pour les
+dépendances C/C++) et chiffre les gains (~20 % de binaire en moins, 2-5
+% de perf). → <strong>Pour toi :</strong> c’est exactement la douleur du
+cycle de vie mal maîtrisé — nettoyage oublié avant la fin, ressource «
+crue libérée » — mais résolue en la faisant <strong>porter par le
+type</strong> (<code>Drop</code>) plutôt que par la discipline. Le cœur
+de ce qui te plaît en Rust, sur un vrai cas de production.</p>
+<h2 id="à-lire">📚 À lire</h2>
+<ol type="1">
+<li><p><code>rust</code> <strong>Closing a three-year-old issue using
+Rust arenas</strong> · giacomocavalieri.me · ~12 min · <a
+href="https://giacomocavalieri.me/writing/gleam-rust-arenas">lien</a> Un
+mainteneur de Gleam remplace les <code>Box</code> récursifs de son
+imprimeur de code (<em>pretty-printer</em>) par des références dans une
+<strong>arène</strong> (allocateur qui range tout dans un bloc et libère
+d’un coup) : formateur nettement plus rapide, ~10 % de pic mémoire en
+moins. Belle démonstration de refonte de structure de données guidée par
+les <em>lifetimes</em>. → <strong>Pour toi :</strong> de la conception
+mémoire concrète — quand une structure récursive coûte cher, changer la
+<em>propriété</em> des nœuds plutôt que micro-optimiser. Pile ta voie
+archi/design croisée avec Rust.</p></li>
+<li><p><code>rust</code> <strong>Typed MQTT topics for Rust
+(mqtt-typed-client)</strong> · holovskyi.github.io · ~8 min · <a
+href="https://holovskyi.github.io/blog/typed-mqtt-topics-for-rust/">lien</a>
+La bibliothèque transforme un motif de <em>topic</em> MQTT
+(<code>sensors/{location}/{sensor_id}/temperature</code>) en struct typé
+via macro procédurale : plus d’inversion de paramètres silencieuse, un
+désaccord de type devient une erreur de compilation, et le motif est
+défini à un seul endroit. Honnête sur ses limites (embarqué à budget
+d’allocation, <em>topics</em> vraiment dynamiques). → <strong>Pour toi
+:</strong> exactement ta forme pub/sub MQTT avec l’invariant porté par
+le type. Le genre de surface d’API transposable à une carte de registres
+ou un aller-retour de sérialisation pour tuer les bugs de câblage dès la
+compilation.</p></li>
+<li><p><code>craft</code> <strong>Two case studies of NaN</strong> ·
+sebsite.pw · ~5 min · <a
+href="https://sebsite.pw/w/20260709-nan.html">lien</a> Deux bugs réels
+dus au NaN (valeur flottante « pas un nombre ») :
+<code>[nan] == [nan]</code> vaut <code>True</code> en Python (la
+comparaison teste l’identité d’abord), et les boucles <code>for</code>
+numériques de Lua font n’importe quoi parce que <code>&lt;</code> et
+<code>&lt;=</code> sont mélangés selon l’étape. Leçon transférable : le
+code suppose partout qu’un objet est égal à lui-même — faux pour NaN, et
+le détail d’implémentation finit par fuir dans le comportement visible.
+→ <strong>Pour toi :</strong> piqûre de rappel sur la
+<em>correctness</em> — un cas spécial non traité explicitement se
+manifeste en aval, là où on ne l’attend pas.</p></li>
+<li><p><code>craft</code> <strong>Good Tools Are Invisible</strong> ·
+Ginger Bill · ~7 min · <a
+href="https://www.gingerbill.org/article/2026/07/10/good-tools-are-invisible/">lien</a>
+L’auteur du langage Odin défend l’idée qu’un bon outil s’efface : de
+bons réglages par défaut valent mieux qu’une configurabilité infinie, et
+le <em>sentiment</em> d’être productif (résoudre des puzzles dans son
+éditeur) n’est pas la productivité — le vrai test, c’est le temps au
+mur. ⚠️ La charge contre vim/emacs frôle l’homme de paille — prends
+l’argument, pas le règlement de comptes. → <strong>Pour toi :</strong>
+nourrit ton goût du <em>craft</em> et de l’outillage — le jugement de
+conception, pas l’outil pour l’outil.</p></li>
+<li><p><code>IA</code> <strong>Claude Code sends 33k tokens before
+reading the prompt; OpenCode sends 7k</strong> · systima.ai · ~17 min ·
+<a
+href="https://systima.ai/blog/claude-code-vs-opencode-token-overhead">lien</a>
+Mesure au niveau de l’API (un proxy qui journalise, avec chaîne de
+hachage pour l’auditabilité) du « coût fixe » — prompt système, schémas
+d’outils — envoyé <em>avant</em> ta requête, entre deux agents de code.
+⚠️ Le titre survend : le 4,7× ne vaut que pour la 1re requête avant mise
+en cache, tombe à ~3,3× sur Fable 5, et le cache en absorbe une bonne
+partie ; le vrai sujet, ce sont les sessions multi-tours et la
+réécriture du préfixe. → <strong>Pour toi :</strong> méthodo de
+profilage de bout en bout — mesurer à la vraie frontière (l’API) plutôt
+que croire les logs applicatifs. Ta forme « descendre d’une couche quand
+l’aval voit autre chose ».</p></li>
+<li><p><code>rust</code> <strong>Work In Progress Rust</strong> ·
+blog.dureuill.net · ~10 min · <a
+href="https://blog.dureuill.net/articles/wip/">lien</a> Un ingénieur de
+Meilisearch propose une petite crate <code>wip</code> (macros
+<code>wip!</code>, <code>unwrap_wip</code>, <code>fixme!</code>) : coder
+la logique d’abord en émettant des <em>avertissements</em> au lieu de
+bloquer sur la gestion d’erreur, puis nettoyer avant de fusionner (CI en
+<code>-D warnings</code>). ⚠️ Rien de révolutionnaire — on diffère la
+gestion d’erreur depuis toujours — mais l’outillage est propre et bien
+pensé. → <strong>Pour toi :</strong> pratique quand tu prototypes une
+tâche async et veux itérer sur le flux avant de durcir l’annulation et
+le nettoyage.</p></li>
+</ol>
+<h2 id="stretch-bonus-si-tu-as-le-temps">🚀 Stretch — <em>bonus, si tu
+as le temps</em></h2>
+<ul>
+<li><code>distribué</code> <strong>Introducing Meerkat: an experiment in
+global consensus</strong> · Cloudflare · ~12 min · <a
+href="https://blog.cloudflare.com/meerkat-introduction/">lien</a> —
+Cloudflare présente Meerkat, un service de consensus (mettre tous les
+nœuds d’accord sur la même séquence d’opérations) bâti sur l’algorithme
+QuePaxa : pas de leader obligatoire, les propositions concurrentes «
+interfèrent de façon constructive » au lieu de se battre, le tout conçu
+pour des réseaux hostiles. ⚠️ Le « ~10× de débit vs Raft » ne vaut que
+sous conditions adverses (tiré du papier QuePaxa), pas en général —
+l’article le dit. → <strong>Pour grandir :</strong> le
+<em>raisonnement</em> distribué fondamental (pourquoi les timeouts
+d’élection de leader cassent à l’échelle mondiale, ce qu’est la
+linéarisabilité) — un cran au-dessus, dans ta direction moteur / temps
+réel / distribué. Ambitieux mais lisible.</li>
+</ul>
+<h2 id="métier-bonus">🧭 Métier — <em>bonus</em></h2>
+<ul>
+<li><code>métier</code> <strong>Ownership</strong> · Thorsten Ball · <a
+href="https://registerspill.thorstenball.com/p/ownership">lien</a> — Ce
+que veut dire « posséder » un problème de bout en bout : de « on a un
+souci » à « on n’y repense plus » — définition du vrai problème, cas
+limites, tests, déploiement vérifié, communication aux bonnes personnes.
+Une checklist mentale concrète, née d’un message Slack, sans laïus
+motivationnel. Fait réfléchir à la rigueur qu’on met (ou pas) à
+<em>finir</em> vraiment les choses.</li>
+</ul>
+<h2 id="écho-décosystème-scan-pas-lecture">🎁 Écho d’écosystème —
+<em>scan, pas lecture</em></h2>
+<ul>
+<li><code>écosystème</code> <strong>Rust 1.97.0</strong> · <a
+href="https://blog.rust-lang.org/2026/07/09/Rust-1.97.0/">lien</a> —
+<em>mangling</em> v0 par défaut (symboles plus lisibles au débogage),
+contrôle des avertissements via Cargo
+(<code>CARGO_BUILD_WARNINGS</code>) sans invalider le cache, sortie de
+l’éditeur de liens visible par défaut. Pas actionnable tout de suite,
+mais du quotidien qui se polit.</li>
+<li><code>écosystème</code> <strong>copper-rs 1.0.0</strong> · <a
+href="https://www.copper-robotics.com/whats-new/copper-rs-v100">lien</a>
+— le framework Rust d’orchestration robotique temps réel passe en 1.0.
+Pas actionnable pour toi, mais bonne nouvelle : du temps réel sérieux
+qui s’écrit en Rust.</li>
+<li><code>écosystème</code> <strong>Cpp2Rust : traduction automatique
+C++ → Rust sûr</strong> · <a
+href="https://github.com/Cpp2Rust/cpp2rust">lien</a> — un outil qui
+tente de convertir du C++ en Rust sûr. Pas actionnable (et à prendre
+avec des pincettes), mais un signal intéressant de la direction du vent
+entre tes deux langages.</li>
+</ul>
+</body>
+</html>
