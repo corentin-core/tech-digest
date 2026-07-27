@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-07-27</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-07-27</h1>
+</header>
+<h1 id="tech-digest-hebdo-2127-juillet-2026">📨 Tech Digest hebdo —
+21–27 juillet 2026</h1>
+<p><em>Menu, pas liste de tâches — pioche, le non-lu n’est pas une
+dette. Budget total : ~65 min de lecture.</em></p>
+<h2 id="le-pick-de-la-semaine">⭐ Le pick de la semaine</h2>
+<p><code>async</code> <strong>Tokio Gives Progress, Not Ordering:
+Scheduling 1M Tasks</strong> · pranitha.dev · ~9 min · <a
+href="https://pranitha.dev/posts/tokio-gives-progress-not-ordering/">lien</a>
+Un service qui éclate ~1M de tâches courtes croyait que « soumises tôt =
+démarrées tôt » ; les logs montrent des tâches des premiers événements
+réveillées bien plus tard. L’auteur descend dans l’ordonnanceur Tokio
+(une file locale de 256 par worker, une file globale, vol de tâches
+entre workers) pour expliquer pourquoi la file d’attente réordonne tout
+— c’est concret, pas théorique. → <strong>Pour toi :</strong> c’est
+exactement le piège « le débit tient, mais la queue de latence ment ».
+Ta vraie question n’est jamais la moyenne mais la tâche qui dérive loin
+de son ordre de soumission — à lire en p99, pas en moyenne, comme un
+cycle qui déborde ponctuellement.</p>
+<h2 id="à-lire">📚 À lire</h2>
+<ol type="1">
+<li><p><code>rust</code> <strong>Hardening Rust Code For
+Production</strong> · corrode.dev · ~13 min · <a
+href="https://corrode.dev/blog/hardening-rust/">lien</a> Check-list
+concrète pour durcir un binaire Rust en prod : comportement des
+<code>panic</code> (dérouler vs. abandonner), hook de panique pour
+l’observabilité, arrêt propre, sondes
+<em>liveness</em>/<em>readiness</em> (vivant vs. prêt à servir), et
+nettoyage des secrets dans les messages d’erreur. Des exemples réels,
+pas du remplissage. → <strong>Pour toi :</strong> un service de fond
+longue durée (acquisition → calcul → publication) vit ou meurt sur ces
+détails — arrêt propre des tâches, et surtout scrubbing des secrets
+avant qu’ils ne fuitent dans une archive de diagnostic.</p></li>
+<li><p><code>rust</code> <strong>Capture Clauses as Effects</strong> ·
+yoshuawuyts (blog) · ~13 min · <a
+href="https://blog.yoshuawuyts.com/capture-clauses-as-effects">lien</a>
+Proposition de langage pour rendre la capture de variables dans les
+closures moins pénible : au lieu d’empiler dix
+<code>let x = foo.x.clone();</code> avant un <code>spawn</code>, un
+<code>with own(...)</code> déclarerait la capture comme un effet.
+Exploratoire et honnête sur ses zones d’ombre, mais c’est du
+Rust-langage au meilleur niveau. → <strong>Pour toi :</strong> la danse
+« je clone tout ce dont la tâche a besoin juste avant de la lancer » est
+ton quotidien async ; ça montre comment on peut faire porter cette
+intention par le langage plutôt que par la discipline manuelle.</p></li>
+<li><p><code>rust</code> <strong>Two Bugs I Only Found Running My Rust
+Daemon Against Real Infrastructure</strong> · dev.to · ~4 min · <a
+href="https://dev.to/scripthpp/two-bugs-i-only-found-by-running-my-rust-sync-daemon-against-real-infrastructure-4278">lien</a>
+Deux bugs qui ne sortent qu’au contact du réel : (1) l’en-tête
+d’autorisation silencieusement supprimé par <code>reqwest</code> sur une
+redirection HTTP→HTTPS ; (2) un code HTTP 200 pris pour preuve de succès
+alors que le traitement est asynchrone côté serveur — le résultat réel
+n’arrive jamais. Court et net. → <strong>Pour toi :</strong> le bug n°2,
+c’est ta forme « état cru terminé qui ne l’est pas » — un résultat async
+avalé, le OK renvoyé avant que l’aval ait vraiment fini. Le réflexe : ne
+jamais confondre « la requête est partie » et « l’opération a abouti
+».</p></li>
+<li><p><code>devtool</code> <strong>Delightful Integration Tests in
+Rust</strong> · rust-magic-patterns · ~9 min · <a
+href="https://github.com/alexpusch/rust-magic-patterns/blob/master/delightful-integration-tests/Readme.md">lien</a>
+Pattern propre pour des tests d’intégration isolés :
+<code>testcontainers</code> lance un vrai conteneur (Postgres,
+RabbitMQ…) par test, et le trait <code>Drop</code> de Rust nettoie tout
+à la fin du scope — chaque test a son environnement neuf, sans fichier
+docker-compose externe, dans le flux <code>cargo test</code> habituel. →
+<strong>Pour toi :</strong> la même idée vaut pour tester des pilotes
+pilotés par config contre un faux équipement (un serveur Modbus/TCP
+jetable) : isolation par test, montée en condition attendue, nettoyage
+garanti par le RAII.</p></li>
+<li><p><code>c++</code> <strong>The Perils of Parsing Type Inference
+Declarations in C</strong> · sebsite.pw · ~6 min · <a
+href="https://sebsite.pw/w/20260725-auto.html">lien</a>
+<code>auto</code> peut être soit une classe de stockage, soit un
+tenant-lieu de type selon le contexte — et quand un <code>typedef</code>
+de même nom traîne dans un scope englobant, GCC et Clang ne parsent pas
+pareil. Une plongée courte dans une ambiguïté grammaticale bien réelle.
+→ <strong>Pour toi :</strong> tu écris du C++17/20 truffé
+d’<code>auto</code> ; ça rappelle que l’inférence de type n’est pas
+gratuite pour le compilateur, et pourquoi deux compilateurs peuvent
+diverger sur du code « évident ».</p></li>
+</ol>
+<h2 id="stretch-bonus-si-tu-as-le-temps">🚀 Stretch — <em>bonus, si tu
+as le temps</em></h2>
+<ul>
+<li><code>stretch</code> <strong>Maybe We Should Revisit
+Microkernels</strong> · notes.hella.cheap · ~5 min · <a
+href="https://notes.hella.cheap/maybe-we-should-revisit-microkernels.html">lien</a>
+— L’argument : les microkernels étaient trop lents dans les années 90 à
+cause des changements de contexte, mais l’IOMMU (unité de traduction
+d’adresses matérielle) et la mémoire partagée permettent aujourd’hui de
+les éliminer du chemin nominal (files circulaires + compare-and-swap
+atomique pour l’IPC). Argumenté par l’ingénierie, pas l’idéologie. →
+<strong>Pour grandir :</strong> court mais dense, ça t’ouvre vers
+l’archi systèmes sous contrainte — séparer les responsabilités sans
+payer la latence, exactement le raisonnement que demande le temps réel.
+Ambitieux si les entrailles noyau te sont peu familières, mais c’est la
+bonne direction.</li>
+</ul>
+<h2 id="métier-bonus">🧭 Métier — <em>bonus</em></h2>
+<ul>
+<li><code>métier</code> <strong>Nothing Works and Everyone Is
+Euphoric</strong> · ptrchm.com · <a
+href="https://ptrchm.com/posts/nothing-works-and-everyone-is-euphoric/">lien</a>
+— Pourquoi le logiciel se dégrade malgré de meilleurs outils ? Pas une
+limite technique, un problème d’incitations : la stabilité ne « passe
+pas bien en présentation », donc on récompense la vélocité des
+fonctionnalités plutôt que la solidité. Réflexion posée sur le
+<em>craft</em> (pas de l’anxiété IA), qui finit sur une note optimiste :
+l’écart qualité est une opportunité pour qui choisit de bien
+construire.</li>
+</ul>
+<h2 id="écho-décosystème-scan-pas-lecture">🎁 Écho d’écosystème —
+<em>scan, pas lecture</em></h2>
+<ul>
+<li><code>écosystème</code> <strong>Syn 3.0.0</strong> · <a
+href="https://github.com/dtolnay/syn/releases/tag/3.0.0">lien</a> —
+Version majeure de la brique de parsing qui sous-tend la quasi-totalité
+des proc-macros Rust. <em>Pas actionnable aujourd’hui, mais bonne
+nouvelle : tout l’écosystème macro en profite.</em></li>
+<li><code>écosystème</code> <strong>Rust 1.97.1</strong> · <a
+href="https://blog.rust-lang.org/2026/07/16/Rust-1.97.1/">lien</a> —
+Release correctif de la 1.97. <em>Rien à faire sinon mettre à jour ta
+toolchain.</em></li>
+<li><code>écosystème</code> <strong>RustRover 2026.2</strong> · <a
+href="https://blog.jetbrains.com/rust/2026/07/22/whats-new-in-rustrover-2026-2/">lien</a>
+— Nouvelle version de l’IDE Rust de JetBrains. <em>Pour toi si tu sors
+parfois de l’éditeur de terminal.</em></li>
+</ul>
+</body>
+</html>
