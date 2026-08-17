@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-08-17</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-08-17</h1>
+</header>
+<h1 id="tech-digest-hebdo-10-17-août-2026">📨 Tech Digest hebdo — 10 →
+17 août 2026</h1>
+<p><em>Menu, pas liste de tâches — pioche, le non-lu n’est pas une
+dette. Budget total : ~2 h 40 de lecture.</em></p>
+<h2 id="le-pick-de-la-semaine">⭐ Le pick de la semaine</h2>
+<p><code>archi</code> <strong>A chip-agnostic architecture for
+bare-metal embedded Rust</strong> · aaronqian.com · ~30 min · <a
+href="https://aaronqian.com/log/2026-08-01-chip-agnostic-architecture-bare-metal-rust/">lien</a>
+Comment structurer un <em>vrai</em> firmware embarqué en Rust — pas le
+énième « blinky » — : un cœur agnostique du chip, des jointures définies
+par des traits que la couche du dessous implémente, et une simulation à
+événements discrets qui a attrapé une douzaine de bugs avant d’atteindre
+la puce. Rare, parce que presque tout le contenu embarqué s’arrête à
+l’exemple jouet. → <strong>Pour toi :</strong> c’est ta forme de travail
+à la lettre — boucle de contrôle à cadence fixe, budgets en
+microsecondes, carte de registres (leur « control table »), pilotes
+commandés par la couche du dessus. Bonus : la logique compile et se
+teste sur desktop, sans matériel. Et c’est un cran de montée côté design
+de systèmes.</p>
+<h2 id="à-lire">📚 À lire</h2>
+<ol type="1">
+<li><p><code>rust</code> <strong>Typed Conversations: Make Illegal Agent
+Dialogues Unrepresentable</strong> · dmitrii.app · ~40 min · <a
+href="https://dmitrii.app/typed-conversations-make-illegal-agent-dialogues-unrepresentable/">lien</a>
+Encoder l’<em>ordre</em> d’un dialogue (agent/LLM) dans le type-système
+pour que les séquences illégales ne compilent tout simplement pas : un
+contrat de 56 lignes génère les types Rust (transitions qui consomment
+la session par <em>move</em>), des classes Dart et des schémas JSON,
+tous synchronisés. Rejouer un tour devient impossible — pas juste «
+invalide ». ⚠️ Le « unrepresentable » du titre tient pour Rust (move
+semantics), plus faiblement pour Dart/schémas — l’article le corrige
+honnêtement dès sa section limites. → <strong>Pour toi :</strong>
+l’esprit « invariant porté par le type » appliqué à un cycle de vie
+async — la tâche qu’on croit finie et qu’on relance, le résultat avalé.
+C’est le terrain de ta bibliothèque de gestion d’état.</p></li>
+<li><p><code>craft</code> <strong>Tracking down the 16-year-old
+WAL-reset SQLite bug</strong> · Tailscale · ~9 min · <a
+href="https://tailscale.com/blog/sqlite-wal-reset-bug">lien</a> Enquête
+sur 19 corruptions de base en six mois, dues à une course rare dans le
+<em>checkpoint</em> WAL de SQLite (le moment où le journal d’écriture
+est recopié dans la base). Les théories standards tombent une à une ; la
+clé fut de descendre sous la couche appli avec un <em>shim</em> sur le
+système de fichiers virtuel de SQLite, qui a révélé la course invisible
+aux couches hautes. ⚠️ Le « bug de 16 ans » survend un peu : il ne les
+touchait qu’à cause d’un usage non-standard du checkpoint. →
+<strong>Pour toi :</strong> le pattern « les logs disent OK mais l’aval
+voit autre chose » — descendre sous la couche appli (ici le VFS, chez
+toi les appels système) quand la version haute te ment.</p></li>
+<li><p><code>devtool</code> <strong>A Vision for Cargo</strong> ·
+epage.github.io · ~20 min · <a
+href="https://epage.github.io/blog/2026/08/cargo-vision/">lien</a> Le
+manifeste d’un mainteneur de Cargo sur les chantiers de fond —
+résolution de dépendances, perf de build, commandes « plomberie »
+exposées, modernisation async du code — et une trentaine d’initiatives
+concrètes. Vue stratégique d’un outil que tu touches tous les jours. →
+<strong>Pour toi :</strong> si tu gères des <em>pins</em> de dépendances
+liées et de la CI, les points d’audit (sur <code>unsafe</code>, sur les
+proc-macros) et le <em>caching</em> de build parlent directement à ton
+outillage.</p></li>
+<li><p><code>rust</code> <strong>Protecting the Rust standard library
+from accidental breakage</strong> · predr.ag · ~9 min · <a
+href="https://predr.ag/blog/protecting-the-rust-stdlib-from-breakage/">lien</a>
+Comment la stdlib Rust utilise désormais
+<code>cargo-semver-checks</code> pour attraper <em>automatiquement</em>
+les ruptures d’API involontaires (retrait d’items stables, perte
+d’auto-traits, déstabilisation) au lieu de compter sur la relecture
+humaine. Astuce maligne : traiter l’instable comme du
+<code>#[doc(hidden)]</code> pour réutiliser les règles existantes sans
+en réécrire des centaines. → <strong>Pour toi :</strong> quand tu fais
+évoluer une bibliothèque Rust, c’est l’outil qui te dit si tu casses tes
+appelants sans t’en apercevoir — la correctness portée par
+l’outillage.</p></li>
+<li><p><code>perf</code> <strong>Profiling Rust: The Complete Guide —
+From SQL Queries to CPU Sampling</strong> · hotpath.rs · ~37 min · <a
+href="https://hotpath.rs/blog/profiling-rust-guide">lien</a> Une méthodo
+de profilage par couches, ordonnée par retour sur investissement :
+requêtes et appels réseau d’abord, puis I/O, contention de verrous,
+files de canaux, allocations, et <em>enfin</em> l’échantillonnage CPU.
+Elle s’appuie sur des chiffres déterministes (nombre de requêtes, octets
+alloués) plutôt que sur du wall-clock bruité. ⚠️ C’est aussi la vitrine
+du profileur commercial hotpath-rs (appels à l’action vers le service
+payant « Diff ») — la méthode reste bonne indépendamment de l’outil. →
+<strong>Pour toi :</strong> le raisonnement « profiler de bout en bout,
+dans le bon ordre » pour un service long (acquisition → calcul →
+publication), et lire la contention et les files plutôt qu’une fonction
+isolée.</p></li>
+</ol>
+<h2 id="stretch-bonus-si-tu-as-le-temps">🚀 Stretch — <em>bonus, si tu
+as le temps</em></h2>
+<ul>
+<li><code>stretch</code> <strong>Compression is prediction</strong> ·
+ngrok · ~10 min · <a
+href="https://ngrok.com/blog/compression-is-prediction">lien</a> —
+Compresser et prédire, c’est le même problème : mieux tu prédis le
+prochain symbole, moins tu écris de bits (l’entropie). L’article
+démontre concrètement le codage arithmétique, Huffman et RLE, puis relie
+ça au fonctionnement d’un LLM. ⚠️ Survend un peu l’équivalence pratique
+(un LLM pour compresser du HTTP est « comiquement démesuré ») — l’auteur
+le reconnaît. → <strong>Pour grandir :</strong> penser en distributions
+et en −log₂(proba) plutôt qu’en moyennes, c’est le même muscle que lire
+une latence en p99/variance. Un cran au-dessus, vers les
+fondamentaux.</li>
+</ul>
+<h2 id="métier-bonus">🧭 Métier — <em>bonus</em></h2>
+<ul>
+<li><code>métier</code> <strong>I thought I was building a C
+replacement. I was wrong</strong> · <a
+href="https://c3-lang.org/blog/i_thought_i_was_building_a_c_replacement/">lien</a>
+— L’auteur de C3 réalise qu’il s’est trompé de positionnement : «
+remplaçant de C » mélange le C d’autrefois (les applications) et le C
+d’aujourd’hui (systèmes, embarqué). Réflexion honnête sur le
+<em>scope</em> d’un langage, et sur pourquoi le « tout-méthode » crée un
+verrouillage architectural qui gêne le refactoring. 6 min de vraie
+sagesse de conception.</li>
+</ul>
+<h2 id="écho-décosystème-scan-pas-lecture">🎁 Écho d’écosystème —
+<em>scan, pas lecture</em></h2>
+<ul>
+<li><code>écosystème</code> <strong>OxiSH — serveur SSH en Rust</strong>
+· <a href="https://github.com/djc/oxish">lien</a> — Un serveur SSH écrit
+en Rust, par l’auteur de rustls. Pas actionnable pour toi, mais un joli
+signe de maturité de l’écosystème réseau Rust.</li>
+<li><code>écosystème</code> <strong>Call for testing : restricting trait
+implementability and field mutability</strong> · <a
+href="https://blog.rust-lang.org/inside-rust/2026/08/10/call-for-testing-impl-and-mut-restrictions/">lien</a>
+— Appel à tester une évolution du langage : sceller l’implémentabilité
+d’un trait et la mutabilité d’un champ. Bonne nouvelle — encore plus de
+contrôle sur les invariants portés par les types.</li>
+<li><code>écosystème</code> <strong>Bevy’s Sixth Birthday</strong> · <a
+href="https://bevy.org/news/bevys-sixth-birthday/">lien</a> — Le moteur
+de jeu ECS en Rust fête ses six ans. Pas ton domaine, mais une belle
+vitrine de ce que Rust rend possible quand perf et ergonomie doivent
+coexister.</li>
+</ul>
+</body>
+</html>
