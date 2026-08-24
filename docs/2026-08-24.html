@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-08-24</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-08-24</h1>
+</header>
+<h1 id="tech-digest-hebdo-1724-août-2026">📨 Tech Digest hebdo — 17–24
+août 2026</h1>
+<p><em>Menu, pas liste de tâches — pioche, le non-lu n’est pas une
+dette. Budget total : ~65 min de lecture.</em></p>
+<h2 id="le-pick-de-la-semaine">⭐ Le pick de la semaine</h2>
+<p><code>craft</code> <strong>The Lint That Would Have Caught It Is Off
+by Default</strong> · ai2rules.dev · ~5 min · <a
+href="https://ai2rules.dev/blog/the-lint-that-was-off-by-default/">lien</a>
+Un <code>let _ = writeln!(...)</code> avale silencieusement une erreur
+d’écriture : le fichier de marquage n’est jamais écrit, et un garde-fou
+de sécurité (empêcher un agent d’aller sur le réseau après avoir lu des
+données non fiables) tombe grand ouvert. 254 tests au vert,
+<code>clippy -D warnings</code> propre, zéro <code>unsafe</code> — et
+pourtant le trou est là, parce que le lint qui l’attrape n’est pas
+activé par défaut. → <strong>Pour toi :</strong> c’est exactement la
+forme du résultat avalé — un retour <code>#[must_use]</code> jeté par un
+<code>let _ =</code>, une erreur d’I/O qu’on croit impossible et qui
+arrive. Le genre de bug qui passe tous tes tests parce que le chemin
+d’échec n’est jamais exercé.</p>
+<h2 id="à-lire">📚 À lire</h2>
+<ol type="1">
+<li><p><code>perf</code> <strong>Le débat : « plus de raison que le
+logiciel soit lent » vs la réponse</strong> · danluu / typesanitizer ·
+~25 min (les deux) · <a href="https://danluu.com/perf-opt/">danluu</a> ·
+<a
+href="https://typesanitizer.com/blog/performance-issues.html">réponse</a>
+danluu argue que les agents IA font s’effondrer le coût de
+l’optimisation (exemples concrets sur ripgrep, moteurs de regex) :
+optimiser au workload précis devient à la portée de tous. La réponse
+démonte l’économie de l’argument : la tolérance à la lenteur remonte dès
+qu’on gagne une feature, écrire l’optim ≠ la shipper et la maintenir
+sans régression, et la priorité du travail de perf ne change pas. ⚠️ Le
+titre de danluu est volontairement provocateur ; l’article est mesuré et
+reconnaît que les agents calent sur les problèmes ouverts. Lis les deux,
+pas juste le premier. → <strong>Pour toi :</strong> le cœur du
+contre-argument, c’est le coût de production et de non-régression — ce
+qui compte quand tu profiles un service de bout en bout (acquisition →
+calcul → publication), pas juste le chiffre de micro-bench
+isolé.</p></li>
+<li><p><code>rust</code> <strong>Four levels of in-place
+initialization</strong> · yoshuawuyts · ~9 min · <a
+href="https://blog.yoshuawuyts.com/four-levels-of-in-place-initialization/">lien</a>
+Quatre niveaux pour initialiser une valeur <em>sur place</em> en Rust —
+du <code>MaybeUninit</code>/pointeur brut (flexible mais
+<code>unsafe</code>) aux références <code>&amp;own</code>, aux fonctions
+d’emplacement, jusqu’à l’élimination de move par le compilateur.
+Pourquoi : éviter la copie de gros types et permettre les types
+<em>address-sensitive</em> (auto-référentiels) qu’on ne peut pas
+déplacer. Avancé, mais très clair. → <strong>Pour toi :</strong> les
+types auto-référentiels, c’est le fond du pinning et du cycle de vie
+d’une tâche async — comprendre l’init sur place éclaire pourquoi un
+<code>Future</code> ne se déplace pas comme une valeur
+ordinaire.</p></li>
+<li><p><code>rust</code> <strong>La crate malveillante
+<code>arrayref</code> (245 M de téléchargements)</strong> · safedep.io ·
+~5 min · <a
+href="https://safedep.io/arrayref-proc-macro1-rust-build-time-malware/">lien</a>
+<code>arrayref</code> 0.3.10 tire une dépendance
+<code>proc-macro1</code> (typosquat de <code>proc-macro2</code>) dont le
+<em>build script</em> télécharge et exécute un binaire — adresse cachée
+en base64, vérif TLS bypassée, détaché du process de build pour
+survivre. L’attaquant a <em>yanké</em> les versions saines pour pousser
+vers la version piégée. → <strong>Pour toi :</strong> une lib TLS dans
+un parseur de tokens = signal d’alarme. La leçon vise direct ta gestion
+multi-paquets : scruter les <em>build scripts</em> des dépendances
+transitives, se méfier du yank qui force une montée de version, pinner
+sciemment.</p></li>
+<li><p><code>devtool</code> <strong>Protecting the Rust stdlib from
+accidental breakage</strong> · predr.ag · ~9 min · <a
+href="https://predr.ag/blog/protecting-the-rust-stdlib-from-breakage/">lien</a>
+La stdlib Rust a cassé des API stables par accident plusieurs fois — les
+humains n’attrapent pas ça de façon fiable en revue. La solution :
+<code>cargo-semver-checks</code> en CI, avec une astuce propre pour
+traiter les API instables comme non-publiques et éviter les faux
+positifs. → <strong>Pour toi :</strong> de la casse d’API silencieuse à
+travers des paquets liés, c’est ta CI et tes pins multi-paquets. Une
+porte automatique en CI plutôt qu’un œil humain qui finit toujours par
+laisser passer.</p></li>
+<li><p><code>langage</code> <strong>What Zig felt like, coming from
+Rust</strong> · besok.github.io · ~13 min · <a
+href="https://besok.github.io/posts/what-zig-felt-like-coming-from-rust/">lien</a>
+Comparaison réfléchie (même projet réimplémenté dans les deux) : Zig
+pousse vers la mutation en place et les allocateurs explicites partout,
+là où Rust s’appuie sur l’immutabilité et le <code>Drop</code>
+automatique. L’auteur catalogue quatre familles de bugs mémoire que le
+<code>TestAllocator</code> de Zig attrape à l’exécution — et que Rust
+interdit à la compilation. → <strong>Pour toi :</strong> un bon miroir
+pour voir <em>ce que le type-système Rust t’offre gratuitement</em>
+(init/deinit portés par la discipline vs par le compilateur) — utile
+quand tu poses un invariant dans le type.</p></li>
+</ol>
+<h2 id="stretch-bonus-si-tu-as-le-temps">🚀 Stretch — <em>bonus, si tu
+as le temps</em></h2>
+<ul>
+<li><code>stretch</code> <strong>RSoC 2026 : EEVDF for Redox</strong> ·
+redox-os.org · ~15 min · <a
+href="https://www.redox-os.org/news/rsoc-eevdf/">lien</a> — le nouvel
+ordonnanceur de Redox OS (en Rust), expliqué via une analogie de bar :
+le <em>lag</em> (ce qu’un process a reçu vs ce qu’il méritait), le temps
+éligible, et la <em>deadline</em> = temps éligible + attente/poids.
+Chiffres annoncés sur leur avant/après DWRR (fairness, temps de
+changement de contexte), donc à lire comme un gain maison, pas
+universel. → <strong>Pour grandir :</strong> c’est du temps-réel
+fondamental — partage proportionnel, équité, deadlines. Le raisonnement
+exact (lire une distribution, pas une moyenne ; qui passe avant qui et
+pourquoi) qui te tire vers ta zone moteur/temps-réel. Ambitieux : le
+formalisme du papier de 1995 est dense, mais l’analogie porte.</li>
+</ul>
+<h2 id="métier-bonus">🧭 Métier — <em>bonus</em></h2>
+<ul>
+<li><code>métier</code> <strong>The Pit of Success — an interview with
+Rico Mariani</strong> · YouTube · <a
+href="https://youtu.be/48Rig6v-xYU">lien</a> — entretien avec
+l’ingénieur qui a popularisé le « pit of success » (concevoir l’API pour
+que le chemin correct soit le plus facile, et le mauvais usage
+difficile). Une bonne heure pour réfléchir au jugement de conception :
+rendre le bon comportement le comportement par défaut — exactement le
+fond du pick de la semaine, vu depuis l’autre bout.</li>
+</ul>
+<h2 id="écho-décosystème-scan-pas-lecture">🎁 Écho d’écosystème —
+<em>scan, pas lecture</em></h2>
+<ul>
+<li><code>écosystème</code> <strong>RFC 4000 : Owning references
+(<code>&amp;own T</code>)</strong> · <a
+href="https://github.com/rust-lang/rfcs/pull/4000">lien</a> —
+proposition d’un nouveau type de référence propriétaire. <em>Pas
+actionnable pour toi, mais</em> c’est la brique langage qui rendrait
+ergonomique l’init sur place de l’article #2 — à suivre.</li>
+<li><code>écosystème</code> <strong>Enabling the next-generation trait
+solver on nightly</strong> · <a
+href="https://blog.rust-lang.org/2026/08/21/enabling-next-solver-on-nightly/">lien</a>
+— le nouveau moteur de résolution de traits arrive sur nightly. <em>Pas
+actionnable</em>, mais un jalon qui améliore correctness et messages
+d’erreur à terme.</li>
+<li><code>écosystème</code> <strong>OxiSH : un serveur SSH
+memory-safe</strong> · <a
+href="https://dirkjan.ochtman.nl/writing/2026/08/13/announcing-oxish.html">lien</a>
+— un serveur SSH réécrit en Rust. <em>Pas actionnable</em>, mais bon
+signe de plus pour le Rust là où la sûreté mémoire compte vraiment.</li>
+</ul>
+</body>
+</html>
