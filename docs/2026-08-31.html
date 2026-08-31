@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-08-31</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-08-31</h1>
+</header>
+<h1 id="tech-digest-hebdo-2431-août-2026">📨 Tech Digest hebdo — 24–31
+août 2026</h1>
+<p><em>Menu, pas liste de tâches — pioche, le non-lu n’est pas une
+dette. Budget total : ~60 min de lecture (⭐ + À lire).</em></p>
+<h2 id="le-pick-de-la-semaine">⭐ Le pick de la semaine</h2>
+<p><code>async</code> <code>rust</code> <strong>To Async or Not to
+Async: Building a Rust MCP Server for rust-analyzer</strong> ·
+developerlife.com · ~12 min · <a
+href="https://developerlife.com/2026/08/22/to-async-or-not-to-async-rust-mcp-server/">lien</a>
+Une démonstration concrète de <em>quand ne pas</em> sortir Tokio : pour
+un pont local 1:1 sur des pipes stdin/stdout, trois threads OS battent
+l’async — démarrage instantané, traces lisibles, arrêt déterministe.
+L’auteur montre au passage que <code>tokio::io::stdin()</code> relance
+de toute façon des threads bloquants en interne. → <strong>Pour toi
+:</strong> c’est exactement la question du cycle de vie des tâches async
+— quand async apporte vraiment quelque chose (multiplexage 1:N) et quand
+il n’ajoute que des tâches mal nettoyées et des processus orphelins.
+L’arrêt déterministe <em>vs</em> la tâche annulée avant la fin, c’est ta
+semaine.</p>
+<h2 id="à-lire">📚 À lire</h2>
+<ol type="1">
+<li><p><code>async</code> <strong>WebSockets vs SSE : c’est une question
+d’ordre et de correction</strong> · dashbit · ~10 min · <a
+href="https://dashbit.co/blog/websockets-vs-sse">lien</a> José Valim
+montre que le vrai critère entre WebSockets et SSE n’est ni la latence
+ni la taille des messages, mais l’ordre d’arrivée : dès que plusieurs
+flux mettent à jour le même élément, SSE+Fetch crée des courses (race
+conditions) qui laissent voir un état périmé. → <strong>Pour toi
+:</strong> l’ordre causal entre une action et la mise à jour qu’elle
+déclenche, c’est le cœur d’un pub/sub. Un flux retenu MQTT, ou un
+aller-retour où le résultat async revient dans le désordre, te pose
+exactement la même question.</p></li>
+<li><p><code>distribué</code> <strong>Omnipresent availability risks in
+cloud software</strong> · surfingcomplexity · ~9 min · <a
+href="https://surfingcomplexity.blog/2026/08/29/omnipresent-availability-risks-in-cloud-software/">lien</a>
+Lorin Hochstein range les pannes qui reviennent toujours — saturation,
+réseau/DNS, sécurité qui bloque un accès légitime (certificat expiré) —
+et défend qu’on ne les élimine pas, on s’y prépare. Le fil rouge :
+chaque sous-système de fiabilité ajoute de la complexité, donc de
+nouveaux modes de panne. → <strong>Pour grandir :</strong> un
+raisonnement d’archi qui se transfère hors du cloud. « La complexité
+qu’on ajoute pour se protéger crée ses propres pannes » vaut pour tout
+système — un bon cran vers penser la fiabilité au niveau
+conception.</p></li>
+<li><p><code>python</code> <strong>When str.lower() is a security
+vulnerability in Python</strong> · sethmlarson · ~7 min · <a
+href="https://sethmlarson.dev/when-str-lower-is-a-security-vulnerability">lien</a>
+<code>str.lower()</code> utilise la version d’Unicode de ton
+interpréteur, alors que certaines normalisations (IDNA 2003 /
+StringPrep) exigent les règles d’Unicode 3.2 — le décalage fait qu’un
+même nom de domaine s’encode différemment, ouvrant la porte à
+l’usurpation. ⚠️ « vulnérabilité de sécurité » survend un peu : l’impact
+réel se limite aux noms de domaine internationalisés, et la correction
+tient en une exception. → <strong>Pour toi :</strong> piège de
+normalisation / conversion de types côté Python — la même vigilance
+qu’un aller-retour de sérialisation où une conversion silencieuse change
+la donnée sous tes pieds.</p></li>
+<li><p><code>rust</code> <code>langage</code> <strong>Rust Function
+Overloading — Call for Experimentation</strong> · Rust blog · ~8 min ·
+<a
+href="https://blog.rust-lang.org/inside-rust/2026/08/19/overloading-experiment/">lien</a>
+Le projet Rust expérimente la surcharge de fonctions (même nom,
+signatures différentes), d’abord pour appeler des bibliothèques C++ sans
+emballer les arguments dans un tuple. L’approche réutilise le système de
+traits via un attribut instable <code>#[rustc_splat]</code>. ⚠️ Encore
+très préliminaire — la section « shiny future » montre une syntaxe qui
+peut ne jamais arriver. → <strong>Pour toi :</strong> la cible première,
+c’est le FFI vers C++ — pile ton terrain d’interop Rust/C++. Et c’est un
+bel exemple de comment Rust fait porter une nouvelle ergonomie par le
+système de traits plutôt que par une règle ad hoc.</p></li>
+<li><p><code>perf</code> <code>craft</code> <strong>There’s no reason
+for software to be slow anymore</strong> · danluu · ~15 min · <a
+href="https://danluu.com/perf-opt/">lien</a> Dan Luu soutient que le
+coût d’optimiser s’est effondré : des chantiers autrefois réservés à des
+spécialistes (JIT, moteur de regex, IA de jeu) deviennent abordables,
+donc « lent par défaut » n’a plus d’excuse. Le propos porte sur
+l’économie de l’optimisation plus que sur la méthode. ⚠️ Le titre
+survend : l’argument réel est conditionnel (« plus de raison d’être lent
+<em>si</em> tu peux t’appuyer sur un agent »), pas une abolition des
+contraintes de perf. → <strong>Pour toi :</strong> remet à l’ordre du
+jour le profilage de bout en bout d’un service de fond — les
+optimisations autrefois trop chères pour être rentables le sont
+moins.</p></li>
+</ol>
+<h2 id="stretch-bonus-si-tu-as-le-temps">🚀 Stretch — <em>bonus, si tu
+as le temps</em></h2>
+<ul>
+<li><code>stretch</code> <strong>Zero-Cost ‘Tagless Final’ in Rust with
+GADT-style Enums</strong> · inferara · ~18 min · <a
+href="https://inferara.com/blog/rust-tagless-final-gadt/">lien</a>
+Comment construire un mini-langage (DSL) embarqué en Rust où un arbre
+d’expressions se compile en pures instructions arithmétiques — zéro
+dispatch dynamique, zéro tag runtime — en utilisant le type
+<code>!</code> pour désactiver à la compilation les variantes d’enum
+impossibles. → <strong>Pour grandir :</strong> pousse à fond «
+l’invariant porté par le type » jusqu’à l’effacement total de
+l’abstraction à la compilation. Ambitieux (programmation au niveau des
+types), mais c’est la direction pure de ce que tu aimes dans Rust.</li>
+</ul>
+<h2 id="métier-bonus">🧭 Métier — <em>bonus</em></h2>
+<ul>
+<li><code>métier</code> <strong>How Complex Systems Fail</strong> · <a
+href="https://how.complexsystems.fail/">lien</a> — les 18 thèses de
+Richard Cook sur pourquoi les systèmes complexes tombent : jamais une
+cause unique, toujours plusieurs défenses qui cèdent ensemble. Un
+classique qui recadre comment penser fiabilité et post-mortem — bon
+compagnon de l’article de Hochstein ci-dessus.</li>
+<li><code>métier</code> <strong>Stop Using Conventional Commits</strong>
+· <a
+href="https://sumnerevans.com/posts/software-engineering/stop-using-conventional-commits/">lien</a>
+— plaide pour préfixer un commit par son périmètre (le <em>où</em>)
+plutôt que par son type (<code>feat</code>/<code>fix</code>), parce que
+le périmètre communique mieux l’intention. Une bonne dispute sur ce
+qu’un message de commit doit vraiment porter.</li>
+</ul>
+<h2 id="écho-décosystème-scan-pas-lecture">🎁 Écho d’écosystème —
+<em>scan, pas lecture</em></h2>
+<ul>
+<li><code>écosystème</code> <strong>Enabling the next-generation trait
+solver on nightly</strong> · <a
+href="https://blog.rust-lang.org/2026/08/21/enabling-next-solver-on-nightly/">lien</a>
+— le nouveau résolveur de traits arrive sur nightly. <em>Pas actionnable
+tout de suite, mais bonne nouvelle : moins de bugs de type et meilleure
+inférence à terme.</em></li>
+<li><code>écosystème</code> <strong>Announcing our first Maintainers in
+Residence</strong> · <a
+href="https://blog.rust-lang.org/2026/08/26/announcing-our-first-maintainers-in-residence/">lien</a>
+— Rust finance ses premiers mainteneurs rémunérés. <em>Pas actionnable,
+mais bon signe pour la santé du projet.</em></li>
+<li><code>écosystème</code> <strong>Supply chain attack on
+arrayref</strong> · <a
+href="https://blog.rust-lang.org/2026/08/20/supply-chain-attack-on-arrayref/">lien</a>
+— une crate populaire compromise. <em>Rappel que l’écosystème n’est pas
+immunisé — garde un œil sur tes dépendances.</em></li>
+</ul>
+</body>
+</html>
