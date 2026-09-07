@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-09-07</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-09-07</h1>
+</header>
+<h1 id="tech-digest-hebdo-31-août-7-sept.-2026">📨 Tech Digest hebdo —
+31 août → 7 sept. 2026</h1>
+<p><em>Menu, pas liste de tâches — pioche, le non-lu n’est pas une
+dette. Budget total : ~50 min de lecture (+ un podcast de 52 min en
+stretch).</em></p>
+<h2 id="le-pick-de-la-semaine">⭐ Le pick de la semaine</h2>
+<p><code>rust</code> <strong>How we safety-certified the world’s first
+Rust implementation — and why we went bare metal</strong> · Sonair · ~8
+min · <a
+href="https://www.sonair.com/journal/how-we-safety-certified-the-worlds-first-rust-implementation">lien</a>
+Retour d’expérience d’un capteur ultrason industriel certifié sûreté
+fonctionnelle (IEC 61508 SIL2) écrit 100 % en Rust, sans OS, sur un TI
+Sitara. Ils expliquent pourquoi le bare-metal simplifiait la
+certification, comment ils ont qualifié le compilateur (Ferrocene) et ne
+certifié que le sous-ensemble de <code>libcore</code> réellement utilisé
+— « une fonction non certifiée n’existe pas ». ⚠️ « why we went bare
+metal » survend un peu : le bare-metal n’a rien d’inédit, la vraie
+histoire c’est que les contraintes de certif l’ont <em>imposé</em>. →
+<strong>Pour toi :</strong> c’est ta trajectoire condensée — Rust qui
+porte la sûreté dans le type (leur config de broches est vérifiée à la
+compilation), <code>no_std</code> sur cible contrainte, et la preuve
+qu’une bibliothèque Rust à surface <code>unsafe</code> maîtrisée passe
+une certification. Le honnête sur les galères (pas d’écosystème TI,
+crates à patcher) vaut autant que le succès.</p>
+<h2 id="à-lire">📚 À lire</h2>
+<ol type="1">
+<li><p><code>async</code> <strong>Pinning Down Rust’s Pin</strong> ·
+gmcgoldr · ~13 min · <a
+href="https://gmcgoldr.github.io/2026/08/27/pin-in-rust.html">lien</a>
+Reconstruit <code>Pin</code> à partir de zéro pour montrer
+<em>pourquoi</em> il existe : une <code>Future</code> contient des
+pointeurs vers son propre état à travers les <code>.await</code>, donc
+la déplacer en mémoire casserait tout. Pédagogique, avec un
+type-problème puis la solution — pas une page de référence sèche. →
+<strong>Pour toi :</strong> <code>Pin</code> est exactement la mécanique
+qui protège une tâche async d’un déplacement après un
+<code>.await</code> — la couche sous asyncio/tokio que tu manipules sans
+la voir. Comprendre ça, c’est comprendre pourquoi un <code>Future</code>
+mal nettoyé se comporte comme il se comporte.</p></li>
+<li><p><code>async</code> <strong>Rust concurrency vs Go concurrency :
+stackless vs stackful coroutines</strong> · kerkour · ~8 min · <a
+href="https://kerkour.com/rust-vs-go-concurrency">lien</a> Compare les
+deux modèles : Go donne des coroutines <em>avec pile</em> (goroutines, 2
+Kio mini chacune, FFI C coûteuse), Rust des coroutines <em>sans
+pile</em> (les <code>.await</code> compilés en machines à états).
+Explique clairement le coût du modèle Rust : coloration de fonctions
+(une fonction <code>sync</code> ne peut pas appeler une
+<code>async</code>) et fragmentation des runtimes. → <strong>Pour toi
+:</strong> « ne bloque pas l’event loop » et la coloration de fonctions,
+c’est ton quotidien asyncio — l’article te donne le <em>pourquoi</em>
+structurel derrière la règle, et le vocabulaire pour raisonner quand tu
+touches au peu de Rust async.</p></li>
+<li><p><code>rust</code> <strong>Visualizing Rust’s Vtables: How dyn
+Trait Works in Memory</strong> · Sofia Belen · ~14 min · <a
+href="https://sofiabelen.github.io/projects/visualizing-rusts-vtables-how-dyn-trait-works-in-memory/">lien</a>
+Inspecte la vraie disposition mémoire du dispatch dynamique en Rust (via
+<code>unsafe</code>/<code>transmute</code>), avec des exemples
+exécutables. Idée-clé : Rust découple la stratégie de dispatch du type —
+le choix se fait au <em>site d’appel</em> (<code>&amp;dyn Trait</code>),
+pas dans l’objet. → <strong>Pour toi :</strong> le pont naturel avec ton
+C++17/20, où le pointeur de vtable vit <em>dans</em> l’objet. Voir les
+deux modèles côte à côte solidifie le modèle mental « statique par
+défaut, dynamique seulement quand je le demande ».</p></li>
+<li><p><code>devtool</code> <strong>How I made Rustdoc 33% faster in one
+week</strong> · Noah Lev · ~9 min · <a
+href="https://noahlev.org/blog/2026/08/27/making-rustdoc-faster/">lien</a>
+Quatre optimisations ciblées sur <code>rustdoc</code>, trouvées au
+flamegraph : filtrer <em>avant</em> de construire plutôt qu’après,
+sauter les passes inutiles. Le « 33 % » est honnête (25 % de temps en
+moins = ×1,33 plus rapide), mesuré sur de vraies crates. → <strong>Pour
+toi :</strong> la démarche transfère direct à ton profilage de bout en
+bout (acquisition → calcul → publication) : flamegraph pour localiser, «
+filtre d’abord », et oser supprimer du code « effrayant » pour tester
+une hypothèse plutôt que de le supposer nécessaire.</p></li>
+</ol>
+<h2 id="stretch-bonus-si-tu-as-le-temps">🚀 Stretch — <em>bonus, si tu
+as le temps</em></h2>
+<ul>
+<li><code>perf</code> <strong>Performance Engineering on Hard
+Mode</strong> · Signals and Threads (Jane Street) · ~52 min d’écoute
+(transcript dispo) · <a
+href="https://signalsandthreads.com/performance-engineering-on-hard-mode/">lien</a>
+Andrew Hunter (ex-tcmalloc chez Google) oppose l’optimisation à
+l’échelle (débit) à celle du temps-réel (latence) : pourquoi les
+profileurs par échantillonnage ratent une latence qui compte, quand
+passer au <em>tracing</em>, et comment la théorie des files d’attente
+gouverne la queue de distribution. → <strong>Pour grandir :</strong> ça
+t’ouvre exactement ta voie perf « moteur » — lire la perf en
+p99/variance plutôt qu’en moyenne, et choisir le traçage quand la queue
+se cache derrière une moyenne rassurante. Ambitieux et dense, mais c’est
+le raisonnement que tu veux acquérir.</li>
+</ul>
+<h2 id="métier-bonus">🧭 Métier — <em>bonus</em></h2>
+<ul>
+<li><code>métier</code> <strong>The Revolt of the Reader</strong> ·
+Bryan Cantrill · <a
+href="https://bcantrill.dtrace.org/2026/09/05/the-revolt-of-the-reader/">lien</a>
+— ~5 min. L’écriture générée par LLM romprait le contrat implicite entre
+auteur et lecteur : le lecteur détecte les tics, décroche, finit par
+fuir l’auteur. Le point de <em>craft</em> : écrire est un effort de
+pensée qu’on ne peut pas déléguer sans perdre ce qu’on avait à dire — le
+LLM est un bon éditeur, pas un bon auteur. Se transpose à la doc et au
+code qu’on signe.</li>
+</ul>
+<h2 id="écho-décosystème-scan-pas-lecture">🎁 Écho d’écosystème —
+<em>scan, pas lecture</em></h2>
+<ul>
+<li><code>écosystème</code> <strong>Stabilisation du « never type »
+(<code>!</code>) en FCP</strong> · <a
+href="https://github.com/rust-lang/rust/issues/161925">lien</a> —
+<em>Pas actionnable tout de suite, mais</em> un vieux trou du système de
+types se referme : <code>!</code> (le type qui n’a aucune valeur)
+devient enfin stable.</li>
+<li><code>écosystème</code> <strong>Wasmi 2.0 — Engineering the Fastest
+Wasm Interpreters</strong> · <a
+href="https://wasmi-labs.github.io/blog/posts/wasmi-v2.0/">lien</a> —
+<em>Bonne nouvelle Rust :</em> un interpréteur WebAssembly en Rust se
+hisse au sommet en perf, avec un article sur les choix d’ingénierie
+derrière.</li>
+<li><code>écosystème</code> <strong>How the Rust Std Library
+Verification Contest Scaled Past Manual Proof Engineering</strong> · <a
+href="https://rustfoundation.org/media/how-the-rust-standard-library-verification-contest-scaled-past-manual-proof-engineering/">lien</a>
+— <em>Pour ton appétit correctness :</em> la vérification formelle de la
+lib standard passe à l’échelle au-delà de la preuve manuelle.</li>
+</ul>
+</body>
+</html>
