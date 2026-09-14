@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-09-14</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-09-14</h1>
+</header>
+<h1 id="tech-digest-hebdo-814-septembre-2026">📨 Tech Digest hebdo —
+8–14 septembre 2026</h1>
+<p><em>Menu, pas liste de tâches — pioche, le non-lu n’est pas une
+dette. Budget cœur : ~60 min de lecture (+ stretch et métier en
+bonus).</em></p>
+<h2 id="le-pick-de-la-semaine">⭐ Le pick de la semaine</h2>
+<p><code>async</code> <strong>A Design Space Exploration of
+Async/Await</strong> · Brown CS · ~12 min · <a
+href="https://cel.cs.brown.edu/blog/design-space-async-await/">lien</a>
+Le même petit programme async donne <strong>quatre sorties
+différentes</strong> selon le langage : les auteurs isolent neuf choix
+de conception cachés (évaluation paresseuse ou immédiate, durée de vie
+d’une tâche, tâche non attendue annulée ou menée à terme, propagation
+d’exception, sémantique d’annulation) et montrent, semantique formelle à
+l’appui, pourquoi Swift affiche « AC » là où Trio affiche « ABC ». →
+<strong>Pour toi :</strong> c’est la carte exacte des pièges que tu
+rencontres — une tâche async annulée avant son nettoyage, un résultat
+async avalé, un « c’est fini » qui ne l’est pas. Lire ces neuf
+dimensions te donne le vocabulaire pour raisonner ces bugs au lieu de
+les subir.</p>
+<h2 id="à-lire">📚 À lire</h2>
+<ol type="1">
+<li><p><code>rust</code> <strong>Rust : quand « vide » n’est pas «
+bottom »</strong> · ettolrach · ~13 min · <a
+href="https://ettolrach.com/blog/rust_when_empty_isnt_bottom.html">lien</a>
+Pourquoi le type <code>never</code> (<code>!</code>) de Rust est un type
+<em>vide</em> (inhabité, converti explicitement) et non un type
+<em>bottom</em> (qui se glisse partout par sous-typage, comme en Scala)
+— et ce que ça change concrètement quand <code>!</code> est imbriqué
+dans une signature. → <strong>Pour toi :</strong> pile dans l’esprit «
+faire porter l’invariant par le type ». Comprendre la différence, c’est
+mieux modéliser les états impossibles dans ta bibliothèque
+Rust.</p></li>
+<li><p><code>craft</code> <strong>Shopify revient au natif (Swift +
+Kotlin), quitte React Native</strong> · Shopify Engineering · ~9 min ·
+<a href="https://shopify.engineering/back-to-native">lien</a> Un vrai
+post de décision d’architecture, sans hype : le partage de code
+multiplateforme valait le coup en 2020, mais les agents de code ont
+rendu la duplication moins chère, donc l’avantage bascule vers le natif
+(plus près de l’OS, boucles de retour plus rapides). Ils détaillent leur
+méthode de reconstruction par points de contrôle. → <strong>Pour toi
+:</strong> un cas d’école pour ta voie archi/design — comment on
+ré-évalue honnêtement un tradeoff de conception à gros enjeu quand la
+donnée de base a changé.</p></li>
+<li><p><code>rust</code> <strong>Microcontrollers with good support for
+Rust</strong> · kerkour · ~8 min · <a
+href="https://kerkour.com/rust-microcontrollers">lien</a> Panorama
+concret des MCU/SoC (STM32, RP2350, ESP32-C6, nRF52840…) classés par
+usage, avec un parti pris clair : en 2026, embarqué = Rust +
+<strong>Embassy</strong> (runtime async qui remplace un RTOS), et éviter
+les cibles à toolchain custom (ESP32-S3/XTensa). → <strong>Pour toi
+:</strong> un cran vers le bare-metal temps réel, avec le même modèle
+async que tu connais mais sans OS dessous — de quoi voir ta voie
+moteur/embarqué depuis l’angle Rust.</p></li>
+<li><p><code>c++</code> <strong>A quick overview of atomics in
+C</strong> · Daniel Lemire · ~11 min · <a
+href="https://lemire.me/blog/2026/09/09/a-quick-overview-of-atomics-in-c/">lien</a>
+Intro claire au modèle mémoire : relaxed, acquire/release,
+ordonnancement total, illustrés sur un exemple de copie-sur-écriture. La
+formule à retenir : <em>release = « si tu me vois, tu vois tout ce qui
+me précède »</em>. → <strong>Pour toi :</strong> les fondamentaux de
+concurrence qui manquent souvent quand on passe du Python async au
+C++17/20 — le raisonnement acquire/release se transfère
+directement.</p></li>
+<li><p><code>devtool</code> <strong>Optimizing a single Rust Clippy lint
+by 3133X</strong> · goose.love · ~5 min · <a
+href="https://blog.goose.love/posts/making-a-clippy-lint-faster-by-3133x/">lien</a>
+Un lint qui verrouillait l’interner de symboles et rebouclait à chaque
+expression : réécrit pré-expansion (&lt; 200 lignes), il passe de ~25 %
+du temps de Clippy à négligeable. Le vrai propos est la discipline de
+mainteneur : rendre le mauvais code dur à écrire. ⚠️ Le « 3133X » est le
+gain isolé du lint sur son cas pathologique (et un clin d’œil au pseudo
+de l’auteur), pas un Clippy 3133× plus rapide — le gain réel ressenti
+est le ~25 % rogné. → <strong>Pour toi :</strong> bonne méthodo de
+profilage à copier — remonter d’un temps global à <em>la</em> fonction
+qui bouffe le quart du budget, puis prouver le gain avec un banc de
+mesure.</p></li>
+</ol>
+<h2 id="stretch-bonus-si-tu-as-le-temps">🚀 Stretch — <em>bonus, si tu
+as le temps</em></h2>
+<ul>
+<li><code>stretch</code> <strong>How CHERIoT Provides Strong and Usable
+Isolation Without an MMU</strong> · ACM Queue · ~25 min · <a
+href="https://queue.acm.org/doi/10.1145/3831361">lien</a> — Une ISA
+RISC-V + RTOS co-conçus (Microsoft Research) où la sûreté mémoire
+spatiale et temporelle est portée par le matériel via des
+<em>capabilities</em> (pointeur enrichi de bornes et permissions, non
+falsifiable), avec &lt; 10 % de surcoût silicium. On partage des objets
+en passant des pointeurs, sans MMU ni sérialisation. → <strong>Pour
+grandir :</strong> ambitieux mais dans ta direction cible — mémoire sûre
+depuis l’assembleur, compartiments à moindre privilège, contraintes
+embarquées. Ça ouvre la question « et si la sûreté était garantie par le
+socle, pas par la discipline du dev ? ».</li>
+</ul>
+<h2 id="métier-bonus">🧭 Métier — <em>bonus</em></h2>
+<ul>
+<li><code>métier</code> <strong>Fuck it, make it anyway</strong> · Joel
+Otter · <a
+href="https://www.joelotter.com/posts/2026/09/make-it-anyway/">lien</a>
+— Part d’un malaise face à l’IA générative pour arriver à un choix
+assumé : continuer à construire à la dure (ici, un moteur de jeu maison
+en C++) parce que le <em>faire</em> est la récompense, pas parce que
+c’est efficace. Une réflexion honnête sur la motivation à fabriquer, qui
+dépasse le simple coup de gueule.</li>
+</ul>
+<h2 id="écho-décosystème-scan-pas-lecture">🎁 Écho d’écosystème —
+<em>scan, pas lecture</em></h2>
+<ul>
+<li><code>écosystème</code> <strong>Rust est langage tier-1 chez
+Microsoft</strong> · Rust Foundation · <a
+href="https://rustfoundation.org/media/guest-post-rust-is-tier-1-language-at-microsoft/">lien</a>
+— <em>Pas actionnable pour toi, mais bonne nouvelle :</em> un des plus
+gros éditeurs met Rust au même rang que ses langages historiques.</li>
+<li><code>écosystème</code> <strong>Stabilizing Rust’s never
+type</strong> · LWN · <a
+href="https://lwn.net/SubscriberLink/1091015/5009546caa744c57/">lien</a>
+— <em>Pas actionnable tout de suite, mais</em> le type <code>!</code>
+(celui du pick #1) avance enfin vers la stabilisation après des années
+de blocage.</li>
+<li><code>écosystème</code> <strong>Rust/C++ Interop Initiative — point
+d’étape sept. 2026</strong> · Rust Foundation · <a
+href="https://rustfoundation.org/media/rust-cpp-interop-initiative-progress-update/">lien</a>
+— <em>Bonne nouvelle pour ton mélange C++/Rust :</em> l’interop
+officielle progresse, de quoi surveiller pour faire cohabiter les deux
+sans FFI artisanale.</li>
+</ul>
+</body>
+</html>
