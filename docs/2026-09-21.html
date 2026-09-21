@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-09-21</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-09-21</h1>
+</header>
+<h1 id="tech-digest-hebdo-1521-septembre-2026">📨 Tech Digest hebdo —
+15–21 septembre 2026</h1>
+<p><em>Menu, pas liste de tâches — pioche, le non-lu n’est pas une
+dette. Budget total : ~80 min de lecture.</em></p>
+<h2 id="le-pick-de-la-semaine">⭐ Le pick de la semaine</h2>
+<p><code>async</code> <strong>A visual guide to Rust async</strong> ·
+akesson.io · ~10 min · <a
+href="https://akesson.io/a-visual-guide-to-rust-async/">lien</a>
+Décortique <code>async</code>/<code>await</code> en machine à états : le
+désucrage de <code>#[tokio::main]</code>, <code>async fn</code> et
+<code>.await</code> en 16 étapes, avec des diagrammes de polling et de
+waker. Pédagogique et honnête (pseudocode assumé, pas de magie). →
+<strong>Pour toi :</strong> l’async est ton pain quotidien ; voir
+<code>.await</code> comme un « signet qui reprend » et non une opération
+de file éclaire directement les pièges de cycle de vie des tâches —
+annulation, résultat avalé.</p>
+<h2 id="à-lire">📚 À lire</h2>
+<ol type="1">
+<li><p><code>async</code> <code>perf</code> <strong>Principles for fast
+Tokio applications</strong> · dial9-rs · ~14 min · <a
+href="https://dial9-rs.github.io/blog/principles-for-fast-tokio-applications/">lien</a>
+Six principes concrets pour du Tokio rapide : mesurer la latence
+d’ordonnancement d’abord, isoler les tâches bloquantes du runtime,
+préférer canaux/acteurs aux mutex, borner le parallélisme par sémaphore.
+Exemples réels (pipelining Redis, connexions S3). ⚠️ « Principes »
+survend un peu : l’article répète « ça dépend de la charge » — ce sont
+des heuristiques contextuelles, pas des règles universelles. →
+<strong>Pour toi :</strong> c’est la forme d’une boucle pilotée par un
+budget de temps de cycle — lire la queue (p99/variance) plutôt que la
+moyenne, et repérer la tâche async qui bloque tout le runtime.</p></li>
+<li><p><code>rust</code> <strong>Operators of death: checked arithmetic
+in Rust</strong> · Bitfield · ~10 min · <a
+href="https://bitfieldconsulting.com/posts/operators-of-death">lien</a>
+Quand et comment gérer le dépassement d’entier en Rust :
+<code>checked_</code>, <code>wrapping_</code>, <code>saturating_</code>,
+<code>strict_add</code>, avec un tableau « lequel choisir quand » et
+l’exemple d’une machine médicale. Progression pédagogique du bit unique
+au <code>u8</code>. → <strong>Pour toi :</strong> sur cible Linux
+contrainte, un compteur ou une valeur capteur qui déborde en silence est
+un bug de contrôle — la sémantique d’overflow devient un choix de
+conception, pas un détail.</p></li>
+<li><p><code>rust</code> <strong>Developing provably correct Rust code
+with Verus</strong> · Amazon Science · ~7 min · <a
+href="https://www.amazon.science/blog/developing-provably-correct-rust-code-with-verus">lien</a>
+Verus vérifie mathématiquement du Rust contre une spec (préconditions
+<code>requires</code> / postconditions <code>ensures</code> écrites en
+syntaxe Rust), pour <em>toutes</em> les entrées et non quelques cas de
+test — y compris du <code>unsafe</code> et des invariants de verrou.
+Boucle de feedback sous la seconde. → <strong>Pour toi :</strong>
+prolonge l’esprit « invariant porté par le type » — ici l’invariant est
+<em>prouvé</em>, pas seulement encodé. Belle ouverture pour une
+bibliothèque Rust de gestion d’état où la correctness prime.</p></li>
+<li><p><code>devtool</code> <code>rust</code> <strong>Why building a
+Rust LSP is hard</strong> · Rust Glancer · ~13 min · <a
+href="https://rust-glancer.github.io/blog/why-lsp-is-hard/">lien</a> Les
+vrais défis d’un serveur de langage : répondre sur du code incomplet et
+faux pendant la frappe, exécuter des requêtes en parallèle tout en
+annulant le travail en vol dès que le code change, gérer un système de
+fichiers virtuel synchronisé. Compare rust-analyzer et Rust Glancer. →
+<strong>Pour toi :</strong> le cœur, c’est l’annulation de travail async
+en vol et l’état « cru à jour » qui ne l’est plus — exactement la forme
+d’une tâche mal nettoyée ou d’un résultat async avalé.</p></li>
+<li><p><code>rust</code> <code>c++</code> <strong>CO3: Toward the
+Optimal FFI</strong> · mversic · ~9 min · <a
+href="https://mversic.github.io/co3/">lien</a> Une bibliothèque de
+macros qui fait passer génériques et types Rust natifs à travers la
+frontière FFI : écrire du Rust pur puis l’exporter, sans restructurer.
+Testée, avec un cas réel (rs-odbc). ⚠️ L’auteur digresse sur la
+singularité IA et cite Blake ; le titre « optimal FFI » et l’emballage
+gonflent la portée réelle — c’est une lib de macros solide, pas une
+révolution. → <strong>Pour toi :</strong> l’interop C/C++ ↔︎ Rust est ta
+zone (services C++17/20 + lib Rust) — une autre approche que le
+<code>bindgen</code> habituel pour franchir la frontière sans tout
+réécrire.</p></li>
+</ol>
+<h2 id="stretch-bonus-si-tu-as-le-temps">🚀 Stretch — <em>bonus, si tu
+as le temps</em></h2>
+<ul>
+<li><code>stretch</code> <code>distribué</code> <strong>How Notion
+handles concurrent editing with CRDTs</strong> · Notion · ~9 min · <a
+href="https://www.notion.com/blog/how-notion-handles-concurrent-editing-with-crdts">lien</a>
+Comment Notion gère l’édition concurrente avec des CRDT (structures qui
+fusionnent sans conflit) : tableau répliqué à IDs stables, tombstones
+(marqueurs de suppression), horloges de Lamport, Peritext pour le texte
+riche — et les compromis stockage vs complexité de lecture. →
+<strong>Pour grandir :</strong> le raisonnement sur la fusion
+déterministe d’opérations concurrentes (IDs stables, horloges logiques)
+t’ouvre vers le design distribué fondamental — un cran au-dessus,
+honnêtement ambitieux si tu n’as jamais touché aux CRDT.</li>
+</ul>
+<h2 id="métier-bonus">🧭 Métier — <em>bonus</em></h2>
+<ul>
+<li><code>métier</code> <strong>How to Write with an LLM</strong> ·
+Thomas Ptacek · <a
+href="https://sockpuppet.org/blog/2026/09/17/how-to-write-with-an-llm/">lien</a>
+— Deux règles strictes : refuser tout mot suggéré par le modèle, ignorer
+ses compliments — et ne s’en servir que pour repérer les défauts
+mécaniques (voix passive, répétitions, remplissage). Une réflexion nette
+et sceptique sur comment garder sa propre voix quand l’outil pousse vers
+la prose « titre de magazine ».</li>
+<li><code>craft</code> <strong>Small programming tricks matter</strong>
+· will-keleher · <a
+href="https://will-keleher.com/posts/small-programming-tricks-matter/">lien</a>
+— Une collection de petits gestes (<code>fzf</code>/<code>atuin</code>,
+<code>EXPLAIN ANALYZE</code>, pickaxe git, globbing, autocomplétion zsh)
+portée par une thèse : une part surprenante de la productivité vient de
+ces petites pépites de savoir, pas des grands concepts.</li>
+</ul>
+<h2 id="écho-décosystème-scan-pas-lecture">🎁 Écho d’écosystème —
+<em>scan, pas lecture</em></h2>
+<ul>
+<li><code>écosystème</code> <strong>Nvidia : programmation GPU native en
+Rust</strong> · <a
+href="https://developer.nvidia.com/blog/introducing-cuda-rust-two-tracks-for-writing-gpu-kernels/">lien</a>
+— Nvidia met son ingénierie derrière deux voies pour écrire des kernels
+GPU en Rust natif (SIMT <code>cuda-oxide</code>, Tile
+<code>cutile-rs</code>) compilés en PTX. <em>Pas actionnable pour toi
+(GPU, encore early-stage), mais</em> un signal fort que Rust devient
+sérieux là où régnait le C++.</li>
+<li><code>écosystème</code> <strong>L’API <code>Allocator</code> avance
+vers la stabilisation</strong> · <a
+href="https://github.com/rust-lang/rust/pull/156882">lien</a> — Les
+allocateurs personnalisés en Rust entrent en période de commentaire
+final. <em>Pas actionnable tout de suite, mais</em> bonne nouvelle pour
+l’embarqué contraint.</li>
+<li><code>écosystème</code> <strong>Attaques ciblées sur des Rustaceans
+en vue</strong> · <a
+href="https://blog.rust-lang.org/2026/09/17/targeted-attacks/">lien</a>
+— Avis de sécurité : de fausses visios (faux recruteurs/projets) ciblent
+des mainteneurs pour compromettre leurs comptes et publier du malware
+sur crates.io. Active la 2FA, méfie-toi des visios non sollicitées.</li>
+</ul>
+</body>
+</html>
