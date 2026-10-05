@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-10-05</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-10-05</h1>
+</header>
+<h1 id="tech-digest-hebdo-29-sept.-5-oct.-2026">📨 Tech Digest hebdo —
+29 sept. → 5 oct. 2026</h1>
+<p><em>Menu, pas liste de tâches — pioche, le non-lu n’est pas une
+dette. Budget total : ~85 min de lecture.</em></p>
+<h2 id="le-pick-de-la-semaine">⭐ Le pick de la semaine</h2>
+<p><code>rust</code> <strong>Deser : repenser la sérialisation en
+Rust</strong> · lucumr (Armin Ronacher) · ~14 min · <a
+href="https://lucumr.pocoo.org/2026/9/29/deser/">lien</a> Ronacher
+expose trois limites de fond de serde (perte de précision au buffering,
+adaptateurs non composables, récursion sur la pile qui ouvre un déni de
+service) et propose une architecture inversée : le format émet des
+événements vers des « puits » sur le tas, ce qui rend la désérialisation
+suspendable et sans débordement de pile. → <strong>Pour toi :</strong>
+c’est pile ta forme de problème — aller-retour de sérialisation,
+conversions de types, trames parfois reçues en morceaux. Le modèle «
+suspendable » parle directement à un parseur qui doit reprendre là où
+une trame s’est arrêtée.</p>
+<h2 id="à-lire">📚 À lire</h2>
+<ol type="1">
+<li><p><code>rust</code> <strong>Rusty thoughts on “Parse, don’t
+validate”</strong> · Eli Bendersky · ~6 min · <a
+href="https://eli.thegreenplace.net/2026/rusty-thoughts-on-parse-dont-validate/">lien</a>
+Plutôt que vérifier une condition et espérer qu’on s’en souvienne plus
+loin, on fabrique un type qui encode l’invariant
+(<code>NonEmpty&lt;T&gt;</code>, <code>AbsPathBuf</code>,
+<code>NonZero</code>) : une fois la donnée transformée, le compilateur
+garantit la propriété pour toujours. Court, net, exemples tirés de
+rust-analyzer. → <strong>Pour toi :</strong> l’esprit même de ta
+bibliothèque Rust — faire porter l’invariant par le type au lieu de
+revalider partout.</p></li>
+<li><p><code>langage</code> <strong>We Have Named Arguments at
+Home</strong> · corrode.dev · ~10 min · <a
+href="https://corrode.dev/blog/named-arguments-at-home/">lien</a> Rust
+n’a pas d’arguments nommés ; l’article montre qu’on n’en a pas besoin :
+struct de paramètres, <code>Option</code>/<code>Default</code>, traits,
+enums couvrent chaque cas, avec documentation et vérification de typo en
+prime. Défense soignée du design par contraintes plutôt que par ajout de
+syntaxe. → <strong>Pour toi :</strong> du design d’API au quotidien —
+l’arbitrage struct/enum/trait contre une rustine syntaxique, exactement
+ce qu’on tranche en dessinant une surface propre.</p></li>
+<li><p><code>rust</code> <strong>Rust Reborrowing, Aliasing, and Mutable
+References</strong> · developerlife.com · ~18 min · <a
+href="https://developerlife.com/2026/09/25/rust-reborrowing/">lien</a>
+Explique proprement le reborrow (le compilateur insère
+<code>&amp;mut *ref</code> pour créer un emprunt enfant temporaire), les
+lifetimes non lexicales, et la frontière entre délégation séquentielle
+valide et aliasing concurrent interdit. Analogies physiques, diagrammes,
+correction des idées fausses courantes. → <strong>Pour toi :</strong> si
+tu apprends Rust activement, ça clarifie le moment exact où un
+<code>&amp;mut</code> est « mis en pause » puis rendu — une source
+classique de bagarre avec le borrow-checker.</p></li>
+<li><p><code>archi</code> <strong>Domain–Flow–Effects (DFE) : une
+architecture pensée pour Rust</strong> · codigolinea.com · ~18 min · <a
+href="https://codigolinea.com/domain-flow-effects-dfe-arquitectura-rust/">lien</a>
+Après 20 ans d’OOP, l’auteur raconte pourquoi plaquer Clean/Hexagonal
+sur Rust crée de la complexité inutile, et propose trois couches :
+Domain (règles pures), Flow (coordination), Effects (I/O). Couplage
+explicite assumé, abstraction seulement quand elle paie. <em>(En
+espagnol, code en Rust — lisible.)</em> → <strong>Pour grandir
+:</strong> ça t’ouvre vers l’archi de systèmes — structurer la
+complexité d’un service sans couches qui se battent avec le
+langage.</p></li>
+<li><p><code>craft</code> <strong>Git 3.0’s upcoming SHA-256 default
+will be a costly mistake</strong> · gitbutler (Scott Chacon) · ~17 min ·
+<a href="https://blog.gitbutler.com/git-3-sha-256">lien</a> Chacon
+soutient que basculer le hash par défaut de Git vers SHA-256 coûte cher
+(outillage cassé, écosystème scindé en dépôts incompatibles) pour un
+gain quasi nul, puisque la confiance vient de « d’où tu tires », pas de
+la force du hash. Propose une alternative : un en-tête SHA-256 optionnel
+sans remplacer le stockage. ⚠️ Le titre dramatise : « train wreck »
+suppose le résultat plus qu’il ne le démontre — le vrai sujet est le
+coût de coordination, pas une catastrophe inévitable. → <strong>Pour toi
+:</strong> un raisonnement coût/bénéfice de migration d’un format pivot
+— transférable à tout changement qui casse l’aval.</p></li>
+<li><p><code>devtool</code> <strong>Rust’s derive often implies
+inline</strong> · yossarian.net · ~4 min · <a
+href="https://yossarian.net/til/post/rust-s-derive-often-implies-inline/">lien</a>
+<code>#[derive(...)]</code> pose des <code>#[inline]</code> sur le code
+généré (p. ex. <code>Debug</code>) ; sur des types d’erreur profondément
+imbriqués, le compilateur inline sans limite et gonfle le binaire. uv a
+gagné ~160 Ko avec un <code>#[inline(never)]</code> ciblé. →
+<strong>Pour toi :</strong> sur cible Linux contrainte, 160 Ko en moins
+pour une annotation — le genre de détail qui compte quand l’espace est
+compté.</p></li>
+</ol>
+<h2 id="stretch-bonus-si-tu-as-le-temps">🚀 Stretch — <em>bonus, si tu
+as le temps</em></h2>
+<ul>
+<li><code>stretch</code> <strong>Green Threads from Scratch</strong> ·
+dzania.github.io · ~14 min · <a
+href="https://dzania.github.io/green-threads-from-scratch/">lien</a> —
+construit un runtime de threads verts en ~1000 lignes de Rust :
+allocation de pile via <code>mmap</code>, commutation de contexte en
+assembleur ARM64, modèle M:N, ordonnanceur à vol de tâches. Honnête sur
+ses limites (« pas prêt pour la prod »). → <strong>Pour grandir
+:</strong> descendre sous asyncio/tokio pour voir comment un runtime
+ordonnance et commute les tâches — ça éclaire le cycle de vie des tâches
+async que tu manipules au-dessus. Ambitieux (assembleur), mais ça tire
+vers le moteur.</li>
+</ul>
+<h2 id="métier-bonus">🧭 Métier — <em>bonus</em></h2>
+<ul>
+<li><code>métier</code> <strong>We’re going to need default hard budget
+caps on pretty much everything</strong> · Simon Willison · <a
+href="https://simonwillison.net/2026/Oct/3/default-hard-budget-caps/">lien</a>
+— plaidoyer pour des plafonds de dépense <em>durs</em> (couper le
+service plutôt qu’alerter) à l’ère des agents qui appellent des API
+payantes sans friction. AWS et Google Cloud viennent d’en ajouter.
+Réflexion posée sur un défaut de conception sûr — préférer une erreur à
+une facture surprise.</li>
+</ul>
+<h2 id="écho-décosystème-scan-pas-lecture">🎁 Écho d’écosystème —
+<em>scan, pas lecture</em></h2>
+<ul>
+<li><code>écosystème</code> <strong>Rust for CPython (Python Language
+Summit 2026)</strong> · <a
+href="https://blog.python.org/2026/09/language-summit-2026-rust-for-cpython/">lien</a>
+— <em>Pas actionnable tout de suite, mais bonne nouvelle :</em> CPython
+commence à intégrer Rust (module <code>zlib</code> via
+<code>zlib-rs</code> en 3.16), ce qui pourrait accélérer chaque
+<code>pip install</code>. Rust pas requis avant 3.18+.</li>
+<li><code>écosystème</code> <strong>How to speed up the Rust compiler in
+September 2026</strong> · nnethercote · <a
+href="https://nnethercote.github.io/2026/09/30/how-to-speed-up-the-rust-compiler-in-september-2026.html">lien</a>
+— <em>Bonne nouvelle :</em> ~30 % gagnés sur une analyse de flot de
+données, PGO activé pour Clippy. Le compilateur continue de maigrir,
+tour après tour.</li>
+<li><code>écosystème</code> <strong>ying-profiler</strong> (Crate of the
+Week) · <a href="https://github.com/velvia/ying-profiler">lien</a> —
+profileur mémoire natif par échantillonnage pour Rust. À garder sous le
+coude le jour où un service de fond fuit doucement.</li>
+</ul>
+</body>
+</html>
