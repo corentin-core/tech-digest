@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-10-13</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-10-13</h1>
+</header>
+<h1 id="tech-digest-hebdo-6-au-13-octobre-2026">📨 Tech Digest hebdo — 6
+au 13 octobre 2026</h1>
+<p><em>Menu, pas liste de tâches — pioche, le non-lu n’est pas une
+dette. Budget total : ~65 min de lecture.</em></p>
+<h2 id="le-pick-de-la-semaine">⭐ Le pick de la semaine</h2>
+<p><code>rust</code> <strong>Beyond the &amp;</strong> · LWN · ~8 min ·
+<a
+href="https://lwn.net/SubscriberLink/1096028/7524dbcae1be7205/">lien</a>
+Le compilateur Rust veut apprendre à tes pointeurs maison (un
+<code>MutexGuard</code>, par ex.) à se comporter comme de vraies
+références : nouveaux traits (<code>BorrowPlace</code>,
+<code>ProjectPlace</code>) pour projeter un champ ou emprunter
+partiellement une struct sans déréférencer/reborrow à la main. C’est le
+borrow checker qui s’ouvre, raconté clairement par LWN. → <strong>Pour
+toi :</strong> c’est « l’invariant porté par le type » appliqué au
+borrow checker lui-même. Toucher un champ derrière un garde de verrou
+sans gymnastique manuelle, c’est exactement le genre d’ergonomie que tu
+croises dès qu’un état partagé passe par un <code>Mutex</code>.</p>
+<h2 id="à-lire">📚 À lire</h2>
+<ol type="1">
+<li><p><code>rust</code> <code>async</code> <strong>The Performance Cost
+of RwLock in Our Read-Heavy Workload</strong> · pranitha.dev · ~6 min ·
+<a href="https://pranitha.dev/posts/rwlock-vs-lockfree/">lien</a> Sur
+une charge très lue, un pointeur atomique (crossbeam) bat un
+<code>RwLock</code> d’un large facteur. La vraie leçon : le coût ne
+vient pas du mécanisme mais de la <strong>fréquence</strong> de
+verrouillage — ici 16 384 prises de verrou par parcours, contre un seul
+« épinglage » pour tout le bloc. ⚠️ Le « 14× » est réel mais
+conditionnel : il naît d’un verrou pris par élément, pas d’un
+<code>RwLock</code> lent en soi. L’auteur le dit franchement. →
+<strong>Pour toi :</strong> la forme exacte d’un état partagé lu à
+chaque tour de boucle — avant de changer de mécanisme, regarde <em>à
+quelle fréquence</em> tu verrouilles.</p></li>
+<li><p><code>rust</code> <strong>The Missing Piece in Rust Error
+Handling</strong> · mcmah309 · ~6 min · <a
+href="https://mcmah309.github.io/posts/the-missing-piece-in-rust-error-handling/">lien</a>
+Entre l’enum d’erreur précis (verbeux) et le type fourre-tout (qui cache
+les cas), l’auteur propose des <strong>unions d’erreurs</strong> qui
+composent sans conversions manuelles — et dont la signature
+<em>rétrécit</em> à mesure que tu gères les cas (via la crate
+<code>eros</code>). → <strong>Pour toi :</strong> pensé pour une
+bibliothèque Rust où tu veux que le type dise exactement ce qui peut
+échouer, et plus seulement « ça a raté ».</p></li>
+<li><p><code>perf</code> <code>craft</code> <strong>Lies, damned lies,
+and Rust in the TechEmpower Benchmarks</strong> · Sylvain Kerkour · ~8
+min · <a href="https://kerkour.com/rust-techempower-benchmarks">lien</a>
+Rust trône en tête des benchmarks de frameworks web — mais Kerkour
+démonte le code et montre ce qui est <em>vraiment</em> mesuré (templates
+compilés, raccourcis) avant de crier au miracle. Un cours pratique sur
+comment lire un benchmark sans se faire avoir. → <strong>Pour toi
+:</strong> méthode de scepticisme perf transférable — démonter ce qui
+est mesuré avant de croire le chiffre de tête de gondole, le même
+réflexe que lire une distribution plutôt qu’une moyenne.</p></li>
+<li><p><code>IA</code> <strong>We built our own cloud agents
+runtime</strong> · PostHog · ~7 min · <a
+href="https://posthog.com/blog/cloud-agents-runtime">lien</a> Les vraies
+décisions d’infra pour faire tourner des agents : workflows Temporal
+pour survivre aux déploiements, reprise depuis un instantané en plein
+run, et un filtre LLM <strong>doublé d’un blocage réseau
+déterministe</strong> en dessous. ⚠️ Quelques sections virent au
+placement produit — lis pour les tradeoffs d’infra, pas pour le pitch. →
+<strong>Pour toi :</strong> reprendre un run depuis un instantané, c’est
+du cycle de vie de tâche async bien géré ; et « le modèle dit OK » ne
+suffit jamais sans une barrière déterministe sous la couche
+appli.</p></li>
+<li><p><code>perf</code> <code>devtool</code> <strong>On-demand
+profiling with flamegraphs for Workers</strong> · Cloudflare · ~8 min ·
+<a
+href="https://blog.cloudflare.com/workers-on-demand-profiling/">lien</a>
+Échantillonner un service en production <strong>sans l’arrêter</strong>,
+puis lire le flamegraph pour voir ce que les métriques agrégées ratent
+(un arbre parcouru en récursif, des appels dupliqués). L’implémentation
+est très Cloudflare, la méthode ne l’est pas. → <strong>Pour toi
+:</strong> profilage de bout en bout d’un service de fond longue durée —
+le flamegraph montre le dépassement que la moyenne masque.</p></li>
+</ol>
+<h2 id="stretch-bonus-si-tu-as-le-temps">🚀 Stretch — <em>bonus, si tu
+as le temps</em></h2>
+<ul>
+<li><code>stretch</code> <code>distribué</code> <strong>Consistency is
+not a localized property</strong> · n-the-loop · ~3 min · <a
+href="https://n-the-loop.com/blog/consistency-is-not-a-localized-property/">lien</a>
+— Court mais dense : une garantie forte (exactly-once de Kafka) ne vit
+pas dans un composant, elle se tient <strong>de bout en bout</strong> —
+et quelqu’un doit en porter la vue globale. → <strong>Pour grandir
+:</strong> une porte d’entrée vers le raisonnement distribué
+fondamental, ta zone cible. Ambitieux par l’idée, pas par la
+longueur.</li>
+</ul>
+<h2 id="métier-bonus">🧭 Métier — <em>bonus</em></h2>
+<ul>
+<li><code>craft</code> <strong>How to Read Code</strong> · <a
+href="https://www.seangoedecke.com/how-to-read-code/">lien</a> — Lire du
+code en plusieurs passes ciblées (structure, puis un fil précis, puis le
+détail) plutôt que de haut en bas comme un livre. Argumente bien
+<em>pourquoi</em> le code se lit mal en linéaire. Utile à chaque plongée
+dans une base inconnue.</li>
+<li><code>métier</code> <strong>The Slow Formation of Durable
+Software</strong> · <a
+href="https://newsletter.dancohen.org/archive/the-slow-formation-of-durable-software/">lien</a>
+— Via l’histoire de Zotero : le logiciel qui dure naît d’années de
+dialogue et d’itération, pas d’une implémentation éclair. « On ne savait
+pas ce qu’on voulait, donc on n’aurait pas pu écrire de prompt cohérent.
+» Une réflexion posée sur le temps long du bon logiciel.</li>
+</ul>
+<h2 id="écho-décosystème-scan-pas-lecture">🎁 Écho d’écosystème —
+<em>scan, pas lecture</em></h2>
+<ul>
+<li><code>écosystème</code> <strong>Rust 1.99.0</strong> · <a
+href="https://blog.rust-lang.org/2026/10/01/Rust-1.99.0/">lien</a> —
+<em>Pas actionnable tout de suite, mais bon à savoir : nouvelle version
+stable (<code>CStr::display</code> stabilisé, entre autres).</em></li>
+<li><code>écosystème</code> <strong>mold 3.0.0</strong> · <a
+href="https://github.com/rui314/mold/releases/tag/v3.0.0">lien</a> —
+<em>Le linker rapide passe un cap majeur — bonne nouvelle pour tes temps
+de build.</em></li>
+<li><code>écosystème</code> <strong>Deno rejoint Cloudflare</strong> ·
+<a href="https://deno.com/blog/cloudflare">lien</a> — <em>Pas
+actionnable pour toi, mais signal d’écosystème : l’équipe Deno rejoint
+Cloudflare, Deploy ferme dans 6 mois, JSR continue.</em></li>
+</ul>
+</body>
+</html>
