@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-10-19</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-10-19</h1>
+</header>
+<h1 id="tech-digest-hebdo-1419-octobre-2026">📨 Tech Digest hebdo —
+14–19 octobre 2026</h1>
+<p><em>Menu, pas liste de tâches — pioche, le non-lu n’est pas une
+dette. Budget total : ~80 min de lecture.</em></p>
+<h2 id="le-pick-de-la-semaine">⭐ Le pick de la semaine</h2>
+<p><code>archi</code> <strong>Redesigning Source Control at
+Anthropic</strong> · Anthropic Engineering · ~18 min · <a
+href="https://www.anthropic.com/engineering/redesigning-source-control">lien</a>
+Anthropic a remplacé Git par un système maison (Scion) parce que le
+débit de merges a explosé ; l’article détaille le modèle de données
+(journal d’écritures + blobs adressés par contenu), trois étages de
+cache et le calcul séparé des données dérivées (blame, historique).
+C’est un vrai cours de design de systèmes, diagrammes à l’appui, utile
+même sans jamais atteindre cette échelle. → <strong>Pour toi :</strong>
+le cœur, c’est de la <strong>modélisation de données</strong> et des
+choix d’architecture (invalidation de cache, séparation données brutes /
+données dérivées) — exactement ta voie de montée en altitude vers le
+design de systèmes.</p>
+<h2 id="à-lire">📚 À lire</h2>
+<ol type="1">
+<li><p><code>rust</code> <strong>A New Way to Think About Borrow
+Checking (In Reverse)</strong> · verdagon.dev · ~15 min · <a
+href="https://verdagon.dev/blog/reverse-borrow-checking">lien</a> Un
+vérificateur d’emprunts (borrow checker) qui parcourt les fonctions
+<strong>à l’envers</strong> : il repère d’abord où une variable est
+utilisée pour la dernière fois, puis vérifie sa déclaration — ce qui
+simplifie le traitement des boucles. Plongée technique soignée dans les
+entrailles d’un compilateur. ⚠️ Le titre survend un peu : c’est une
+astuce d’implémentation astucieuse, pas une révolution du concept. →
+<strong>Pour toi :</strong> du type-système et de l’ownership pris par
+en dessous — l’esprit Rust que tu travailles, raconté côté
+compilateur.</p></li>
+<li><p><code>async</code> <strong>Visualizing crossbeam Epoch Based
+Reclamation</strong> · sofiabelen.github.io · ~12 min · <a
+href="https://sofiabelen.github.io/projects/visualizing-crossbeam-epoch-based-reclamation/">lien</a>
+Comment libérer la mémoire dans une structure sans verrou (lock-free)
+sans détruire un nœud qu’un autre fil lit encore : le <em>epoch-based
+reclamation</em> diffère la destruction jusqu’à ce que plus personne ne
+regarde. Très visuel, avec du code exécutable qui montre le moment exact
+où chaque nœud tombe. → <strong>Pour toi :</strong> c’est la forme d’un
+<strong>cycle de vie mal géré</strong> — « je crois cet objet libérable,
+mais un lecteur async n’a pas fini ». Le raisonnement transfère direct à
+la concurrence.</p></li>
+<li><p><code>rust</code> <strong>How Signal and WhatsApp deploy Rust to
+billions of devices</strong> · kerkour.com · ~10 min · <a
+href="https://kerkour.com/rust-ios-android-signal-whatsapp">lien</a>
+Analyse d’architecture : un <strong>cœur Rust commun</strong> compilé
+pour iOS et Android, avec de fines couches d’adaptation (wrappers) par
+plateforme. L’intérêt : une seule base pour les algos complexes, donc
+parité de comportement et correctness garanties des deux côtés, plus la
+sécurité mémoire face aux vieilles bibliothèques C. → <strong>Pour toi
+:</strong> le modèle exact d’une <strong>bibliothèque Rust</strong> qui
+porte l’invariant et expose une surface réduite — ta pratique
+d’apprentissage, vue à l’échelle du milliard d’appareils.</p></li>
+<li><p><code>perf</code> <strong>How to Profile Rust Performance using
+Grafana and Prometheus</strong> · hotpath.rs · ~10 min · <a
+href="https://hotpath.rs/blog/rust-performance-grafana">lien</a> Une
+méthode d’<strong>observabilité en couches</strong> pour un service Rust
+: exposer par étape les requêtes, la latence, les allocations, la
+contention de verrous et les métriques des fils Tokio, avec les requêtes
+PromQL prêtes à copier. L’angle est « quelles couches comptent vraiment
+», pas le micro-benchmark. → <strong>Pour toi :</strong> du
+<strong>profilage de bout en bout</strong> d’un service de fond — traces
+par étape, lecture en distribution plutôt qu’en moyenne. La méthode se
+transpose hors du web.</p></li>
+<li><p><code>craft</code> <strong>What today’s software owes to Bronze
+Age clocks</strong> · PlanetScale · ~8 min · <a
+href="https://planetscale.com/blog/leaky-buckets-in-software-explained">lien</a>
+L’algorithme du <strong>seau percé</strong> (leaky bucket) pour
+contrôler l’admission de travail : un seau qui se vide à débit constant,
+et on n’accepte une tâche que s’il reste de la place. Raconté depuis les
+horloges à eau de l’âge du bronze — pédagogie mémorable, formule simple,
+principe qui se réutilise partout. → <strong>Pour toi :</strong> un
+principe de <strong>cadence et de budget</strong> — accepter du travail
+au rythme que le système tient, pas plus vite. La même logique qu’une
+boucle dont le temps de cycle ne doit pas déborder.</p></li>
+<li><p><code>rust</code> <strong>11-year-old unsoundness bugs found in
+the borrow checker</strong> · rust-lang/rust#164250 · ~5 min · <a
+href="https://github.com/rust-lang/rust/issues/164250">lien</a> Un trou
+de correction vieux de 11 ans : via l’affectation d’un champ covariant,
+on peut glisser une référence trop courte dans un champ qui attend
+<code>'static</code>. Curiosité instructive sur les limites réelles du
+type-système. ⚠️ C’est une <em>issue</em> de suivi, pas un article :
+classé P-high et non P-critical, car il faut un <code>Drop</code>
+malveillant pour l’exploiter — aucun dégât mémoire réel connu. Ne
+t’attends pas à un récit, juste au fil de discussion.</p></li>
+</ol>
+<h2 id="métier-bonus">🧭 Métier — <em>bonus</em></h2>
+<ul>
+<li><code>métier</code> <strong>What agents mean for Rust (and vice
+versa)</strong> · <a
+href="https://smallcultfollowing.com/babysteps/blog/2026/10/14/agentic-dev-and-rust/">lien</a>
+— Niko Matsakis argumente dans les deux sens : un type-système fort sert
+de garde-fou au code écrit par un agent (« si ça compile, c’est ~correct
+»), et inversement le langage pourrait tolérer plus de verbosité
+explicite puisque l’humain relit plutôt qu’il n’écrit. Réflexion nuancée
+sur les trois piliers — conception, construction, optimisation — et sur
+la frontière qui se déplace vers le <em>design</em>.</li>
+</ul>
+<h2 id="écho-décosystème-scan-pas-lecture">🎁 Écho d’écosystème —
+<em>scan, pas lecture</em></h2>
+<ul>
+<li><code>écosystème</code> <strong>Rust 1.99.1</strong> · <a
+href="https://blog.rust-lang.org/2026/10/15/Rust-1.99.1/">lien</a> —
+<em>Pas actionnable, mais bonne nouvelle :</em> release correctrice
+fraîche du langage.</li>
+<li><code>écosystème</code> <strong>Bevy 0.20</strong> · <a
+href="https://bevy.org/news/bevy-0-20/">lien</a> — <em>Pas actionnable
+pour toi, mais</em> le moteur de jeu en Rust continue d’avancer —
+vitrine de l’ergonomie du langage sur du code temps réel.</li>
+<li><code>écosystème</code> <strong>Crate de la semaine :
+hotcode</strong> · <a
+href="https://github.com/alordash/hotcode">lien</a> — rechargement à
+chaud (hot-reload) de fonctions Rust au runtime. Curiosité
+outillage.</li>
+</ul>
+</body>
+</html>
