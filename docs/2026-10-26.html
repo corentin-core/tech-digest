@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-10-26</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-10-26</h1>
+</header>
+<h1 id="tech-digest-hebdo-2026-octobre-2026">📨 Tech Digest hebdo —
+20–26 octobre 2026</h1>
+<p><em>Menu, pas liste de tâches — pioche, le non-lu n’est pas une
+dette. Budget total : ~77 min de lecture (+ ~55 min de bonus).</em></p>
+<h2 id="le-pick-de-la-semaine">⭐ Le pick de la semaine</h2>
+<p><code>rust</code> <strong>Encoding TCP in Rust’s Type System, Part 1:
+A Sequence Number Is Not a <code>u32</code></strong> · noahkawaguchi.com
+· ~25 min · <a
+href="https://noahkawaguchi.com/blog/typenet-post-1/">lien</a> Un numéro
+de séquence TCP tient sur 32 bits, mais ce n’est pas un entier ordinaire
+: il « tourne » en boucle, et un point sur ce cercle n’est pas la même
+chose qu’un écart entre deux points. L’auteur raffine son modèle en cinq
+étapes, du simple <code>u32</code> jusqu’à des types distincts pour les
+positions, les écarts et chaque sens du flux, avec du code exécutable à
+chaque étape. Il reste honnête sur les limites : une soustraction
+absurde compile encore, et il renonce à <code>PartialOrd</code> parce
+que la comparaison circulaire n’est pas transitive. → <strong>Pour toi
+:</strong> c’est exactement l’esprit « l’invariant porté par le type »
+de ta bibliothèque Rust. La même démarche s’applique à une valeur brute
+de carte de registres qui n’a pas le même sens selon le registre lu.</p>
+<h2 id="à-lire">📚 À lire</h2>
+<ol type="1">
+<li><p><code>async</code> <strong>Why tellus message handlers are
+synchronous</strong> · heikoseeberger.de · ~8 min · <a
+href="https://heikoseeberger.de/2026-10-18-why-sync-handlers/">lien</a>
+L’auteur d’une bibliothèque d’acteurs en Rust explique pourquoi il
+interdit <code>async</code> dans les gestionnaires de messages. Un
+<code>await</code> au milieu d’un traitement laisse un autre message
+s’intercaler : une vérification de solde peut ainsi passer deux fois. Il
+propose plutôt de traiter l’attente comme un état explicite et de
+recevoir les réponses comme des messages ordinaires. ⚠️ Le billet
+promeut la bibliothèque de l’auteur. Ses chiffres de vitesse face aux
+concurrents ne viennent pas que de ce choix de design, et il le
+reconnaît. → <strong>Pour toi :</strong> c’est le piège de tout code
+asyncio entre « je vérifie » et « j’agis ». Le moindre
+<code>await</code> entre les deux ouvre la porte à un autre traitement,
+et l’état que tu croyais acquis ne l’est plus.</p></li>
+<li><p><code>async</code> <strong>RFC : un contrat strict pour
+<code>Future</code> qui interdit le « snoozing »</strong> ·
+rust-lang/rfcs#4019 · ~15 min · <a
+href="https://github.com/rust-lang/rfcs/pull/4019">lien</a> Le «
+snoozing », c’est laisser en plan une future (une tâche async pas encore
+terminée) qui a demandé à être réveillée, pendant qu’on exécute autre
+chose. Résultat possible : un interblocage silencieux, ce qu’Oxide avait
+baptisé <em>futurelock</em>. La RFC propose d’écrire noir sur blanc
+qu’on doit toujours revenir interroger une future qui l’a demandé. Une
+RFC compagne (#4020) ajoute un outil pour respecter ce contrat dans les
+itérateurs async. ⚠️ C’est une discussion de RFC, pas un article : lis
+le texte rendu, puis survole les échanges. Un mainteneur de Tokio
+approuve, et Ralf Jung conteste une partie de la formulation. →
+<strong>Pour toi :</strong> c’est le cycle de vie des tâches async vu
+par en dessous. Une tâche « en attente » que plus personne ne fait
+avancer ressemble à une tâche finie, alors qu’elle bloque tout.</p></li>
+<li><p><code>temps-réel</code> <strong>I forced a speech model onto the
+GPU for months. The CPU was faster.</strong> · altunenes.github.io · ~7
+min · <a href="https://altunenes.github.io/posts/reuse/">lien</a> Un
+débruiteur audio en flux traite une trame de 20 ms à la fois : la
+version Rust sur CPU tient en 8 ms par trame, contre 17 ms sur GPU. Sur
+de si petits morceaux, le coût fixe de chaque passage (lancer le calcul,
+rapatrier le résultat) écrase le calcul lui-même. Et un flux en direct
+interdit de regrouper les trames futures, ce qui est justement le point
+fort d’un GPU. → <strong>Pour toi :</strong> c’est la logique d’une
+boucle à période fixe. Ce qui compte, c’est le coût par cycle face au
+budget, pas le débit brut. Sa méthode est de mesurer par trame et de
+faire varier la charge pour isoler le coût fixe.</p></li>
+<li><p><code>c++</code> <strong>Attention people who think UB is
+fine</strong> · blog.habets.se · ~5 min · <a
+href="https://blog.habets.se/2026/10/Attention-people-who-think-UB-is-fine.html">lien</a>
+Démonstration courte que le comportement indéfini (UB : du code dont la
+norme C++ ne garantit rien) ne se limite pas à un plantage. Après
+l’écriture d’un registre <code>volatile</code> suivie d’un
+<code>std::unreachable()</code>, GCC en <code>-O1</code> génère l’appel
+d’une fonction que le programme n’appelle jamais. ⚠️ Le ton est
+polémique, et chaque exemple ne vaut que pour un compilateur avec des
+options précises. Le fond, lui, est solide. → <strong>Pour toi
+:</strong> l’exemple est un registre de périphérique en C++ embarqué,
+donc ton terrain. C’est un bon rappel de ce que l’optimiseur se permet
+dès qu’on lui promet l’impossible.</p></li>
+<li><p><code>distribué</code> <strong>Animations for System Builders:
+Metastability and Lost Writes</strong> · Marc Brooker · ~4 min · <a
+href="https://brooker.co.za/blog/2026/10/23/animations.html">lien</a>
+Des animations tirées de traces réelles montrent deux pannes. Dans la
+première, un pic de charge déclenche un état qui s’auto-entretient après
+la fin du pic (la <em>métastabilité</em>), ici à cause de nouvelles
+tentatives en rafale. Dans la seconde, un cluster Raft perd des
+écritures parce qu’un seul disque prétend avoir tout écrit
+(<code>fsync</code>) alors que c’est faux. → <strong>Pour toi :</strong>
+la métastabilité, c’est la boucle qui déborde une fois, accumule du
+retard et ne s’en remet jamais seule. Quatre minutes pour en avoir une
+image mentale nette.</p></li>
+<li><p><code>archi</code> <strong>The generic circular dependency
+problem</strong> · jayfreestone.com · ~13 min · <a
+href="https://www.jayfreestone.com/writing/the-generic-circular-dependency-problem/">lien</a>
+Un module générique (notifications, journalisation) finit toujours par
+importer les types et la logique de ses clients, et les dépendances
+deviennent circulaires. L’article distingue le couplage par les types,
+plutôt bénin, du couplage par la logique, bien plus grave. Il propose
+des remèdes concrets : un adaptateur, des clients qui ne déclarent que
+les champs utiles, un enregistrement par greffons (<em>plugins</em>). →
+<strong>Pour toi :</strong> les exemples sont en TypeScript, mais la
+leçon vaut pour tout code modulaire. C’est ta voie vers le design de
+systèmes : garder les flèches de dépendance dans un seul sens.</p></li>
+</ol>
+<h2 id="stretch-bonus-si-tu-as-le-temps">🚀 Stretch — <em>bonus, si tu
+as le temps</em></h2>
+<ul>
+<li><code>stretch</code> <strong>Safe self-referential data structures
+in kernel Rust</strong> · LWN · ~20 min · <a
+href="https://lwn.net/SubscriberLink/1099224/54c55e87a0828522/">lien</a>
+— Une structure dont un champ emprunte un autre champ de la même
+structure, Rust sait mal l’exprimer, et les pilotes du noyau finissent
+en <code>unsafe</code>. Gary Guo propose de traiter les noms de champs
+comme des durées de vie pour que le compilateur vérifie tout, de la
+construction à la destruction. → <strong>Pour grandir :</strong> c’est
+dense. L’article suppose de connaître la variance (comment les durées de
+vie se substituent entre elles), <code>Pin</code> et les bornes de
+traits d’ordre supérieur. Mais c’est l’état de l’art pour réduire la
+surface <code>unsafe</code> par le type, avec un vrai trou de correction
+trouvé en chemin.</li>
+</ul>
+<h2 id="métier-bonus">🧭 Métier — <em>bonus</em></h2>
+<ul>
+<li><code>métier</code> <strong>We should be more ambitious with the
+software we build</strong> · Dan Luu · ~28 min · <a
+href="https://danluu.com/ambitious/">lien</a> — Dan Luu soutient qu’avec
+les outils de code actuels, des projets autrefois trop chers deviennent
+abordables : réécrire Postgres en Rust (ce qui a déjà fait remonter de
+vrais bugs de Postgres), forker ripgrep, écrire son propre moteur
+d’expressions régulières. L’intérêt tient à l’annexe, où Yossi Kreinin
+prédit l’échec de la plupart de ces projets, puis à la réponse sur les
+dispositifs qui se vérifient eux-mêmes. Long et plein de digressions,
+mais c’est une vraie réflexion sur comment on construit.</li>
+<li><code>métier</code> <strong>Software is slow because of bad design,
+not slow languages</strong> · Sean Goedecke · ~8 min · <a
+href="https://www.seangoedecke.com/software-is-slow-because-of-bad-design-not-slow-languages/">lien</a>
+— Selon l’auteur, la lenteur vient presque toujours de l’architecture
+(requêtes en cascade, travail inutile, appels en série) plutôt que du
+langage. Une réécriture en C ne gagne donc presque rien sur un programme
+qui attend ses entrées-sorties. ⚠️ C’est vu depuis des applis web, et le
+ratio « 20 programmes limités par les entrées-sorties pour 1 limité par
+le calcul » est une estimation au doigt mouillé, qu’il assume.</li>
+</ul>
+<h2 id="écho-décosystème-scan-pas-lecture">🎁 Écho d’écosystème —
+<em>scan, pas lecture</em></h2>
+<ul>
+<li><code>écosystème</code> <strong>Le nouveau solveur de traits passe
+par défaut</strong> · <a
+href="https://github.com/rust-lang/rust/pull/164209">lien</a> — Le
+solveur de traits (la partie du compilateur qui résout les contraintes
+de traits) de nouvelle génération sera activé par défaut à partir de
+Rust 1.101. <em>Pas actionnable pour toi, mais</em> c’est un chantier de
+plusieurs années qui ouvre la porte à des fonctions du type-système
+longtemps bloquées.</li>
+<li><code>écosystème</code> <strong>tsrs : TypeScript porté en
+Rust</strong> · <a
+href="https://blog.cloudflare.com/typescript-rust-port/">lien</a> —
+Cloudflare, VoidZero et l’équipe TypeScript portent le compilateur en
+Rust, avec de gros gains de vitesse et de mémoire dans les premières
+mesures. <em>Pas actionnable pour toi, mais</em> c’est une adoption
+majeure de plus.</li>
+<li><code>écosystème</code> <strong>Google Rust Style Guide</strong> ·
+<a href="https://google.github.io/styleguide/rustguide.html">lien</a> —
+Le guide de style Rust de Google : ownership, erreurs, conception d’API,
+<code>unsafe</code>. <em>Pas une lecture, mais</em> une référence à
+feuilleter quand tu hésites sur une convention.</li>
+</ul>
+</body>
+</html>
