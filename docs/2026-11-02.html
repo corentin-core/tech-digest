@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-11-02</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-11-02</h1>
+</header>
+<h1 id="tech-digest-hebdo-27-octobre-2-novembre-2026">📨 Tech Digest
+hebdo — 27 octobre – 2 novembre 2026</h1>
+<p><em>Menu, pas liste de tâches : pioche, le non-lu n’est pas une
+dette.</em> <em>Budget total : ~65 min de lecture (+ ~85 min de
+bonus).</em></p>
+<h2 id="le-pick-de-la-semaine">⭐ Le pick de la semaine</h2>
+<p><code>async</code> <strong>The Future Trait Has A Missing
+State</strong> · Yoshua Wuyts · ~7 min · <a
+href="https://blog.yoshuawuyts.com/the-future-trait-has-a-missing-state">lien</a>
+Le trait <code>Future</code> de Rust ne sait dire que « prêt » ou « pas
+encore ». Une fois la valeur rendue, rien ne dit à l’appelant que la
+tâche est finie pour de bon. Wuyts montre comment les contournements
+actuels (<code>Fuse</code>, <code>MaybeDone</code>) peuvent laisser un
+appelant attendre un réveil qui ne viendra jamais, et propose un
+troisième état <code>Done</code>. ⚠️ Le titre annonce <em>un</em> état
+manquant, mais l’auteur en explore plusieurs et reconnaît que les
+preuves ne suffisent pas encore pour changer <code>Future</code>. C’est
+une piste de réflexion, pas une RFC. → <strong>Pour toi :</strong> c’est
+exactement la forme « état cru terminé qui ne l’est pas » en async, vue
+depuis le contrat du langage. Tu y verras pourquoi ce bug est si facile
+à écrire.</p>
+<h2 id="à-lire">📚 À lire</h2>
+<ol type="1">
+<li><p><code>rust</code> <strong>Finding panics with Call Graph
+Analyzer</strong> · Tweede Golf · ~10 min · <a
+href="https://tweedegolf.nl/en/blog/242/finding-panics-with-call-graph-analyzer/">lien</a>
+Tweede Golf publie un outil libre qui parcourt le graphe d’appels d’un
+binaire Rust compilé et liste les fonctions qui peuvent réellement
+paniquer. Il suit aussi les traits dynamiques et les blocs async. Les
+auteurs sont francs sur les limites, et admettent que supprimer
+<em>tous</em> les panics n’est pas réaliste. ⚠️ L’outil est jeune : il
+exige une version nightly figée de rustc et donne des faux positifs, car
+il analyse le code avant que le compilateur n’élimine le code mort. →
+<strong>Pour toi :</strong> dans une bibliothèque Rust appelée depuis
+une boucle de contrôle, un panic arrête la boucle. Savoir <em>quels</em>
+chemins peuvent paniquer réduit la surface de risque, comme on réduit la
+surface <code>unsafe</code>.</p></li>
+<li><p><code>craft</code> <strong>Python and Postgres Don’t Agree on
+What “CET” Means</strong> · Mergify · ~9 min · <a
+href="https://mergify.com/blog/python-postgres-disagree-on-cet">lien</a>
+L’API Python acceptait un fuseau horaire que Postgres refusait, et les
+deux systèmes convertissaient quatre noms de fuseaux avec une heure
+d’écart l’été. L’équipe a corrigé avec une liste fermée de valeurs que
+les deux systèmes acceptent, plus un test de parité en CI qui compare
+leurs conversions. → <strong>Pour toi :</strong> c’est la forme «
+réconciliation de configuration » : un système valide une valeur, un
+autre l’interprète. La leçon se transpose telle quelle à un réglage qui
+traverse deux composants : valider l’intersection, puis tester
+l’accord.</p></li>
+<li><p><code>rust</code> <strong>tar-codec: a fast and secure tar parser
+for the Rust ecosystem</strong> · Astral · ~10 min · <a
+href="https://astral.sh/blog/tar-codec">lien</a> Astral a réécrit son
+lecteur d’archives tar parce que l’ancien était trop tolérant. Deux
+outils pouvaient lire un contenu différent dans la même archive. Le
+nouveau lecteur est découpé en couches et rejette délibérément toute
+entrée ambiguë plutôt que de deviner. ⚠️ « Fast » veut dire environ 2×
+plus rapide que leur ancienne bibliothèque, et les auteurs nuancent
+eux-mêmes le « secure ». → <strong>Pour toi :</strong> c’est le même
+problème qu’une trame de protocole partielle crue complète. Astral
+défend le parti pris « strict par défaut », qui refuse l’entrée douteuse
+au lieu de la réparer en silence.</p></li>
+<li><p><code>rust</code> <strong>Guidelines for panics in kernel
+code</strong> · LWN · ~6 min · <a
+href="https://lwn.net/SubscriberLink/1100873/0934a9a322c6df4c/">lien</a>
+LWN rend compte d’une discussion entre développeurs Rust du noyau Linux
+sur la gestion des erreurs. Les options vont du code qui ne peut pas
+échouer jusqu’au panic en dernier recours, en passant par « borner la
+valeur aberrante et continuer ». Les participants n’ont pas conclu, mais
+les arguments de chaque option sont clairs. → <strong>Pour toi
+:</strong> choisir entre « borner et continuer » et « s’arrêter », c’est
+le choix d’une boucle de contrôle face à une mesure aberrante. À lire
+juste après l’article de Tweede Golf.</p></li>
+<li><p><code>c++</code> <strong>Effective Type: Part 1</strong> · Martin
+Uecker · ~10 min · <a
+href="https://uecker.codeberg.page/2026-10-31.html">lien</a> Un membre
+du comité de normalisation C explique les règles de « type effectif ».
+Lire un objet via un type incompatible est un comportement indéfini, et
+les compilateurs s’en servent pour optimiser. Il illustre avec des
+exemples courts et leur sortie assembleur, dont un cas où Clang
+compilerait mal. → <strong>Pour toi :</strong> le C++ hérite de la même
+règle, le <em>strict aliasing</em>. Elle rend dangereux le
+<code>reinterpret_cast</code> d’un tampon d’octets reçu vers une
+<code>struct</code>, un raccourci tentant quand on décode une trame ou
+une carte de registres.</p></li>
+<li><p><code>devtool</code> <strong>What a Coding Agent Needs from a CLI
+Failure</strong> · debuff · ~5 min · <a
+href="https://debuff.jp/research/what-agents-need-from-cli-failures">lien</a>
+L’auteur fait échouer 12 outils en ligne de commande de quatre façons et
+regarde ce qu’ils renvoient. Ses recommandations sont concrètes : un
+code de sortie distinct pour une erreur d’usage, un seul document JSON
+sur la sortie standard, et des codes d’erreur stables qui disent si
+réessayer a un sens. ⚠️ L’échantillon est réduit (12 outils, un seul
+système, une seule exécution), et l’auteur vend son propre format. Les
+principes valent mieux que les chiffres. → <strong>Pour toi :</strong>
+la séparation « mauvaise commande, échec réel, environnement à corriger
+» s’applique directement à tes outils CLI en Python, qu’un humain ou un
+script les appelle.</p></li>
+<li><p><code>rust</code> <strong>The heat is on: handling units in
+Rust</strong> · Bitfield Consulting · ~8 min · <a
+href="https://bitfieldconsulting.com/posts/heat-is-on">lien</a> Ce
+tutoriel enveloppe un <code>f64</code> dans un type dédié (le motif
+<em>newtype</em>) pour qu’une température ne soit jamais un nombre sans
+unité. L’auteur prévient bien qu’une différence de températures ne se
+convertit pas comme une température absolue. ⚠️ Le niveau est débutant à
+intermédiaire : lecture rapide si tu connais déjà le motif. →
+<strong>Pour toi :</strong> le type porte l’invariant « cette valeur a
+une unité », au lieu d’un facteur d’échelle documenté à côté d’une carte
+de registres.</p></li>
+</ol>
+<h2 id="stretch-bonus-si-tu-as-le-temps">🚀 Stretch — <em>bonus, si tu
+as le temps</em></h2>
+<ul>
+<li><code>stretch</code> <strong>Jepsen: ParticleDB 1.1.4</strong> ·
+Jepsen · ~60 min (lecture partielle conseillée) · <a
+href="https://jepsen.io/analyses/particledb-1.1.4">lien</a> Jepsen passe
+au crible une base de données vendue « entièrement ACID ». Il trouve 96
+problèmes, dont beaucoup sur un seul nœud en bonne santé : écritures
+validées puis perdues, lectures contradictoires dans une même
+transaction, corruption du journal d’écriture. → <strong>Pour grandir
+:</strong> le sujet est une base de données, mais c’est la méthode qui
+compte. Tu apprends à lire une garantie de cohérence avec précision. Tu
+vois aussi comment des tests générés, comparés à un système de référence
+et combinés à l’injection de pannes, trouvent ce que les tests par
+l’exemple ratent. C’est long : l’introduction, le résumé et deux
+sections d’anomalies suffisent.</li>
+</ul>
+<h2 id="métier-bonus">🧭 Métier — <em>bonus</em></h2>
+<ul>
+<li><code>métier</code> <strong>The Benchmarking Crisis</strong> · ~4
+min · <a
+href="http://databasearchitects.blogspot.com/2026/10/the-benchmarking-crisis.html">lien</a>
+Thomas Neumann applique la loi de Goodhart aux bancs d’essai : dès qu’un
+chiffre devient la cible, on optimise le chiffre et plus le système. Il
+cite une implémentation qui gagne en sautant des vérifications de
+correction. Ses remèdes valent pour toute mesure de performance : des
+jeux de tests cachés ou renouvelés, et des règles explicites sur les
+raccourcis permis.</li>
+<li><code>métier</code> <strong>Thank you, but I prefer it my
+way</strong> · ~20 min · <a
+href="https://blog.julik.nl/2026/10/thanks-but-i-prefer-it-my-way">lien</a>
+Quand réécrire une bibliothèque prend un après-midi, plus personne n’a
+besoin de convaincre le mainteneur. L’auteur montre ce qu’on y perd :
+des utilisateurs partagés, et des corrections qui profitent à tous. Il
+admet avoir lui-même abandonné une bibliothèque réécrite ainsi. C’est
+une réflexion sur la valeur du travail en commun, sans
+catastrophisme.</li>
+</ul>
+<h2 id="écho-décosystème-scan-pas-lecture">🎁 Écho d’écosystème —
+<em>scan, pas lecture</em></h2>
+<ul>
+<li><code>écosystème</code> <strong>std : <code>Instant</code> devient
+une durée signée sur toutes les plateformes</strong> · <a
+href="https://github.com/rust-lang/rust/pull/158368">lien</a> Le
+changement est en période de commentaires finale : retirer une grande
+durée de <code>Instant::now()</code> ne paniquera plus sous Windows et
+les autres plateformes non-UNIX. <em>Pas actionnable sous Linux, où
+c’était déjà le cas, mais bonne nouvelle pour l’arithmétique du temps
+portable.</em></li>
+<li><code>écosystème</code> <strong>Le JIT expérimental de CPython sera
+retiré</strong> · <a
+href="https://lwn.net/SubscriberLink/1102102/0c00e4d550f25f8c/">lien</a>
+Faute de moyens pour porter la proposition officielle, ses auteurs l’ont
+retirée, et le JIT sortira du dépôt principal au début du cycle 3.16.
+<em>Pas actionnable pour toi : pas de gain de vitesse gratuit côté
+CPython à court terme.</em></li>
+<li><code>écosystème</code> <strong>What stable Rust stands on</strong>
+· <a
+href="https://kivooeo.github.io/blog/what-stable-rust-stands-on/">lien</a>
+Le compilateur Rust stable est lui-même construit avec 83
+fonctionnalités instables, et l’auteur explique le mécanisme d’amorçage
+qui le permet. <em>Pas actionnable, mais une jolie visite des
+coulisses.</em> <em>Le titre parle de « Rust stable » alors qu’il s’agit
+du compilateur.</em></li>
+</ul>
+</body>
+</html>
