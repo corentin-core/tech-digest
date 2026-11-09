@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tech Digest — 2026-11-09</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tech Digest — 2026-11-09</h1>
+</header>
+<h1 id="tech-digest-hebdo-2-au-8-novembre-2026">📨 Tech Digest hebdo — 2
+au 8 novembre 2026</h1>
+<p><em>Menu, pas liste de tâches — pioche, le non-lu n’est pas une
+dette. Budget total : ~115 min de lecture, dont ~85 min pour le pick et
+« À lire ».</em></p>
+<h2 id="le-pick-de-la-semaine">⭐ Le pick de la semaine</h2>
+<p><code>archi</code> <strong>How we halved DNS build delay and cut
+memory use by 85%</strong> · Cloudflare · ~18 min · <a
+href="https://blog.cloudflare.com/dns-targeted-zone-builds/">lien</a>
+Quand un réglage change, Cloudflare choisit désormais la plus petite
+reconstruction qu’il peut <em>prouver</em> sûre, au lieu de tout
+reconstruire. La règle est limpide : chaque donnée écrite par une mise à
+jour partielle doit être identique, octet pour octet, à ce qu’écrirait
+une reconstruction complète. Si la preuve manque, le planificateur
+reconstruit tout : l’incertitude ne se traduit jamais en moins de
+travail. Le sujet est le DNS, mais la leçon porte sur la conception d’un
+incrémental correct, avec un ordonnanceur qui regroupe le travail par
+zone. → <strong>Pour toi :</strong> c’est la forme exacte d’une
+réconciliation de configuration, où un changement de réglage arrive et
+où il faut décider quoi recalculer sans laisser d’état périmé. La règle
+« en cas de doute, on reconstruit tout » se réutilise telle quelle.</p>
+<h2 id="à-lire">📚 À lire</h2>
+<ol type="1">
+<li><p><code>rust</code> <strong>Thinking in Traits</strong> ·
+corrode.dev (Matthias Endler) · ~15 min · <a
+href="https://corrode.dev/blog/thinking-in-traits/">lien</a> L’article
+part de la question « comment <code>collect()</code> sait-il qu’il doit
+produire un <code>Vec</code> ? » pour expliquer la composition par
+contrats (les traits) plutôt que l’héritage. Il se termine sur des
+règles concrètes de conception : écrire d’abord le code concret,
+découper un trait quand les appelants n’ont pas besoin de toutes ses
+capacités, peser le coût de lecture d’une abstraction. → <strong>Pour
+toi :</strong> c’est le cœur de « l’invariant porté par le type ». Les
+règles de fin servent directement quand tu dessines l’API publique d’une
+bibliothèque Rust.</p></li>
+<li><p><code>python</code> <strong>The State of Python Profiling in
+2026</strong> · Gabriele Tornetta · ~25 min · <a
+href="https://p403n1x87.github.io/the-state-of-python-profiling-in-2026.html">lien</a>
+Un panorama des profileurs Python par échantillonnage : Tachyon, py-spy,
+Scalene et Austin. Il explique aussi ce que changent CPython 3.14 et
+3.15, avec un profileur dans la bibliothèque standard et des graphes de
+tâches <code>asyncio</code> lisibles depuis l’extérieur du processus. ⚠️
+L’auteur maintient Austin, un des outils comparés. Il l’annonce et reste
+honnête, mais la dernière partie présente Austin 4.1. → <strong>Pour toi
+:</strong> tu peux attacher un profileur à un service de fond déjà
+lancé, sans le redémarrer, et voir les piles reconstruites <em>par tâche
+async</em> plutôt que par thread. C’est le chaînon qui manquait pour
+profiler de bout en bout une boucle asyncio longue durée.</p></li>
+<li><p><code>craft</code> <strong>sshole</strong> · sshhole.com · ~6 min
+· <a href="https://sshhole.com/">lien</a> Depuis 2016, OpenSSH sur musl
+(Alpine, Buildroot, Yocto, beaucoup d’images Docker) accepte n’importe
+quel mot de passe de plus de 256 caractères sur des comptes censés n’en
+accepter aucun. En cas d’échec, <code>crypt()</code> renvoie
+<code>*</code> au lieu de NULL, et <code>*</code> est justement la
+valeur qui marque un compte verrouillé. Le récit est drôle et remonte
+jusqu’en 1980. → <strong>Pour toi :</strong> c’est un résultat d’erreur
+avalé dans sa forme la plus pure, une valeur d’échec qui ressemble à une
+donnée valide. C’est un bon argument pour <code>Result</code> plutôt
+qu’une valeur sentinelle, et un rappel utile si tu construis des images
+sur musl.</p></li>
+<li><p><code>c++</code> <strong>C++26 DIS failed, how does C++
+survive?</strong> · Andreas Fertig · ~7 min · <a
+href="https://andreasfertig.com/blog/2026/11/cpp26-dis-failed-how-does-cpp-survive/">lien</a>
+Pour la première fois, le projet final de norme C++ a été rejeté au vote
+ISO. Les pays opposés refusent les <em>Contracts</em>, des préconditions
+et postconditions vérifiables écrites dans la signature d’une fonction.
+Un membre du comité explique les issues possibles, avant une réunion le
+16 novembre :</p>
+<ul>
+<li>retirer les Contracts de C++26 ;</li>
+<li>les maintenir et retenter le vote ;</li>
+<li>abandonner C++26 et repartir de C++23 vers C++29.</li>
+</ul>
+<p>→ <strong>Pour toi :</strong> l’article éclaire ce que tes
+compilateurs C++ auront ou n’auront pas dans deux ou trois ans. Les
+Contracts sont aussi la façon C++ de rendre un invariant explicite dans
+l’interface.</p></li>
+<li><p><code>perf</code> <strong>Shlemiel the Painter Is Back: How Zig’s
+libc Rewrite Made SQLite Slower</strong> · Dennis Forbes · ~5 min · <a
+href="https://dennisforbes.ca/blog/microblog/2026/10/the_accidental_12000x_sqlite_slowdown/">lien</a>
+Un service Rust adossé à SQLite met des minutes à insérer 40 000
+enregistrements, mais seulement sur Linux. La compilation croisée
+passait par la libc réécrite en Zig, dont <code>strspn</code> remesure
+toute la chaîne à chaque appel. Un tokeniseur devient alors quadratique
+: son coût croît comme le carré de la taille de l’entrée. ⚠️ Le « 12
+000× » est mesuré sur un fichier de 1,2 Mo, et le facteur grandit avec
+la taille de l’entrée. Retiens la forme du bug, pas le chiffre. →
+<strong>Pour toi :</strong> la chaîne de compilation a remplacé une
+brique sans que ton code bouge. C’est le cas où il faut descendre sous
+la couche appli, et un argument pour épingler la toolchain en CI au même
+titre que les dépendances.</p></li>
+<li><p><code>devtool</code> <strong>Nothing Installs Until It’s a Week
+Old</strong> · Bruno J. · ~9 min · <a
+href="https://brunoj.com/nothing-installs-at-our-company-until-its-a-week-old/">lien</a>
+Un mandataire placé devant npm et PyPI retient toute nouvelle version
+pendant sept jours, le temps que les versions malveillantes soient
+repérées. Il ajoute une liste de blocage par version exacte et un
+journal de qui a installé quoi. L’article détaille honnêtement ce que ça
+a cassé. ⚠️ L’auteur reconnaît que le titre force le trait : seuls npm
+et PyPI attendent une semaine, les autres registres sont seulement mis
+en cache. → <strong>Pour toi :</strong> c’est une couche de plus sur les
+pins multi-paquets et la CI. Le journal de téléchargements, qui répond
+en une requête à « qui a déjà installé la version piégée ? », se
+transpose facilement.</p></li>
+</ol>
+<h2 id="stretch-bonus-si-tu-as-le-temps">🚀 Stretch — <em>bonus, si tu
+as le temps</em></h2>
+<ul>
+<li><code>stretch</code> <strong>Userland Linux scheduler in Rust —
+faster than time</strong> · Kapteko · ~13 min · <a
+href="https://kapteko.com/userland-linux-scheduler-in-rust/">lien</a>
+L’auteur compte les changements de contexte d’un programme purement
+calcul, puis écrit en Rust un ordonnanceur en espace utilisateur. Une
+alarme toutes les 2 ms interrompt la tâche courante, et le gestionnaire
+de signal réécrit les registres pour rendre la main à la boucle
+d’ordonnancement. ⚠️ Le « temps négatif » est un gag : l’ordonnanceur
+ment au programme sur l’heure. L’article finit en teaser sans tenir sa
+promesse, mais sa liste de références (Shinjuku, préemption coopérative
+dans Tokio) vaut le détour. → <strong>Pour grandir :</strong> l’article
+ouvre la boîte noire de l’ordonnancement et de la préemption, qui
+expliquent pourquoi un cycle déborde parfois. C’est une porte vers la
+littérature sur la latence de queue (les pires cas, pas la moyenne) à
+l’échelle de la microseconde. C’est ambitieux : <code>unsafe</code> et
+manipulation de registres au programme.</li>
+</ul>
+<h2 id="métier-bonus">🧭 Métier — <em>bonus</em></h2>
+<ul>
+<li><code>métier</code> <strong>Don’t Build the Reusable Component
+Yet</strong> · <a
+href="https://stackoverflow.blog/2026/11/05/don-t-build-the-reusable-component-yet">lien</a>
+— Trois flux qui se ressemblaient à l’écran ont été fusionnés en un
+composant commun, vite couvert de drapeaux et de cas particuliers. Leurs
+vraies différences étaient ailleurs : la gestion des échecs partiels,
+les exigences d’audit, un système tiers qui peut refuser. L’exemple
+vient du frontend, mais la leçon vaut partout : une duplication se
+retire facilement, une mauvaise abstraction coûte cher à défaire.</li>
+<li><code>métier</code> <strong>Resisting Cognitive Surrender</strong> ·
+<a href="https://knlb.dev/essays/surrender">lien</a> — L’auteur appelle
+« reddition cognitive » le fait d’accepter la production d’un agent sans
+vraiment réfléchir. Il décrit ses parades : conduire soi-même sur les
+projets qui comptent, faire les modifications à la main, exiger de
+l’agent des étapes compréhensibles. Le ton est posé, sans
+catastrophisme.</li>
+</ul>
+<h2 id="écho-décosystème-scan-pas-lecture">🎁 Écho d’écosystème —
+<em>scan, pas lecture</em></h2>
+<ul>
+<li><code>écosystème</code> <strong>systemd ❤️ Rust</strong> · <a
+href="https://amutable.com/blog/systemd-loves-rust">lien</a> — systemd
+accepte désormais des binaires écrits en Rust, mais pas dans sa
+bibliothèque partagée centrale, faute d’ABI stable en Rust (une
+interface binaire figée entre bibliothèques). <em>Pas actionnable pour
+toi, mais c’est une adoption de plus au cœur de Linux.</em></li>
+<li><code>écosystème</code> <strong>Towards formal verification: mbrotli
+and mzstd</strong> · <a
+href="https://m-compressors.github.io/2026/formal-verification-mbrotli-mzstd/">lien</a>
+— Des réimplémentations Rust de Brotli et zstd commencent à porter des
+preuves, vérifiées par machine en Lean 4, de leur conformité aux RFC.
+<em>Pas actionnable, mais c’est un bel exemple de progression : tests
+différentiels, puis fuzzing, puis preuve.</em></li>
+<li><code>écosystème</code> <strong>Discord abandonne Electron pour un
+cœur Rust partagé</strong> · <a
+href="https://www.theverge.com/news/1027379/discord-ditching-electron-web-app">lien</a>
+— Le client bureau et la logique mobile passeront à du code Rust commun,
+et un aperçu Windows tourne à environ 290 Mo de RAM contre souvent plus
+d’un Go. <em>Pas actionnable pour toi, mais c’est une adoption grand
+public d’envergure.</em></li>
+</ul>
+</body>
+</html>
